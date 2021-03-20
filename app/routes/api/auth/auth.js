@@ -53,6 +53,39 @@ router.group((router) => {
 
         return res.json(resultMessage);
     });
+
+    router.post('/signup', middlewareFunctions.validateParams([
+        {
+            paramKey: 'nmUser',
+            required: true,
+            type: 'string',
+        },
+        {
+            paramKey: 'dsLogin',
+            required: true,
+            type: 'string',
+        },
+        {
+            paramKey: 'dsPassword',
+            required: true,
+            type: 'string',
+        },
+        {
+            paramKey: 'dsEmail',
+            required: true,
+            type: 'string',
+        },
+        {
+            paramKey: 'dsAvatar',
+            required: false,
+            type: 'string',
+        }
+    ]), async (req, res) => {
+        await UserController.create(req.body).then(response => {
+            res.status(response.statusCode)
+            res.json(response.data)
+        });
+    });
 });
 
 module.exports = router;
