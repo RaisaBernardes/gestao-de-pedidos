@@ -1,7 +1,10 @@
-var router = require('express').Router();
-const middlewareFunctions = require('../middleware/Middleware.js');
 const User = require('../../../model/User.js');
 const UsersController = require('../../../controller/User.js');
+
+var router = require('express').Router();
+
+const middlewareFunctions = require('../middleware/Middleware.js');
+
 const UserController = new UsersController(User);
 require('express-group-routes');
 
