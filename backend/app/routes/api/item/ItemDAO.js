@@ -1,5 +1,5 @@
 var router = require('express').Router();
-//const middlewareFunctions = require('../middleware/Middleware.js');
+const middlewareFunctions = require('../middleware/Middleware.js');
 const Item = require('../../../model/Item.js'); // import
 const ItemsController = require('../../../controller/Item'); // import
 
@@ -7,6 +7,7 @@ const ItemController = new ItemsController(Item);
 require('express-group-routes');
 
 router.group((router) => {
+    router.use(middlewareFunctions.auth);    // * authorize()
 
     // Test Get
     router.get('/test', (req, res) => {

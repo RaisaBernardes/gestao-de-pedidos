@@ -14,20 +14,20 @@ const Item = sequelizeConnect.define("item", {
         field: "category_item"
     },
     price: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.FLOAT,
         allowNull: false,
         field: "normal_price"
     },
     salePrice: {
-        type: Sequelize.NUMBER,
-        allowNull: false,
+        type: Sequelize.FLOAT,
+        allowNull: true,
         field: "sale_price"
     },
-    InSale: {
-        type: Sequelize.BOOLEAN,
-        field_name: "in_sale"
+    ckSale: {
+        type: Sequelize.STRING(1),
+        allowNull: false,
+        field: "ck_sale"
     }
-
-})
+});
 
 module.exports = Item;
