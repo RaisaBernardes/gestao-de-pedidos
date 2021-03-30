@@ -1,0 +1,28 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  background-color: black;
+  color: white;
+}
+
+.mat-toolbar-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 30px;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.mat-toolbar-option {
+  padding: 14px 20px;
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
+  color: white;
+}
+
+.mat-toolbar-title:hover, .mat-toolbar-option:hover {
+  color: rgba(255, 255, 255, 0.842);
+  text-decoration: none;
+}

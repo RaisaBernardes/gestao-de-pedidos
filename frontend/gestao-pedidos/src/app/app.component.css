@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&family=Permanent+Marker&display=swap');
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.main {
+    background-color: rgb(8, 7, 7);
+}

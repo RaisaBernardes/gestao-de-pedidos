@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap');
+
+.home-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 90px;
+    padding-bottom: 20px;
+}
+
+.container-fluid {
+  padding-top: 50px;
+  padding-bottom: 30px;
+  color: white;
+}
+
+.home-body {
+    padding-top: 20px;
+    font-family: 'Londrina Solid', cursive;
+    font-size: 30px;
+    line-height: 1em;
+}
