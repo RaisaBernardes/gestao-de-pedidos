@@ -21,5 +21,6 @@ router.use((req, res, next) => {
 router.use('/user', require('./user/UserDAO.js'));
 router.use('/auth', require('./auth/auth.js'));
 router.use('/item', require('./item/ItemDAO.js'));
+router.use('/order', require('./order/OrderDAO.js'));
 
 module.exports = router;

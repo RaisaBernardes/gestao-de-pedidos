@@ -19,7 +19,7 @@ const Order = sequelizeConnect.define("order", {
         field: "status"
     },
     price: {
-        type: Sequelize.NUMBER, 
+        type: Sequelize.FLOAT, 
         allowNull: false,
         field: "price"
     }
