@@ -1,4 +1,4 @@
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .mat-toolbar-option {
-  padding: 14px 20px;
+  padding: 10px 20px;
   font-family: 'Merienda', cursive;
   font-size: 20px;
   color: white;
