@@ -8,11 +8,14 @@
 }
 
 .mat-toolbar-title {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.company-name {
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
   color: white;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 .mat-toolbar-option {

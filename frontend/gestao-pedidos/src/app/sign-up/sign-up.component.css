@@ -1,4 +1,4 @@
-.display-card {
+.display-form {
    /* background-color: black;
     border-radius: 10px;
     border-color: rgb(58, 57, 57); */
@@ -63,7 +63,7 @@
 @media(max-width: 780px) {
   
 
-  .display-card {
+  .display-form {
     font-size: 15px;
   }
   
