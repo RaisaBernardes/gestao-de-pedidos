@@ -15,12 +15,12 @@
  }
  
  .form-title, .title {
-     font-family: 'Merienda', cursive;
+  font-family: 'Poppins', sans-serif;
      margin-top: 40px;
  }
 
  .company-name {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Poppins', sans-serif;
   font-size: 40px;
   color: white;
   margin-bottom: 50px;
