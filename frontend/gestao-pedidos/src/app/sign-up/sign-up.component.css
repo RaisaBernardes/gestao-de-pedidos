@@ -19,8 +19,9 @@
 }
 
 .row {
-  margin-left: 30px;
-}
+  margin: 0 auto; 
+  justify-content: center;
+ }
 
 .display-row {
   margin-left: 50px;

@@ -1,3 +1,50 @@
+.sidenav {
+  width: 200px;
+}
+
+mat-sidenav {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.774);
+}
+
+.mat-list-item {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.mat-list-item:hover {
+  background-color: rgba(211, 211, 211, 0.616);
+  color: black;
+}
+
+@media (max-width: 600px) {
+  .mat-toolbar-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 804px) {
+  .mat-toolbar-menu a {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 763px) {
+  .mat-toolbar-menu a {
+    font-size: 14px;
+  }
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -5,7 +52,6 @@
 .mat-toolbar {
   background-color: black;
   color: white;
-  border-bottom: 1px solid white;
 }
 
 .mat-toolbar-title {
@@ -20,7 +66,7 @@
 }
 
 .mat-toolbar-option {
-  padding: 10px 20px;
+  margin: 0 10px !important;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   color: white;
