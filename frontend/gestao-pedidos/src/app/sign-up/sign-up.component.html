@@ -27,26 +27,54 @@
                 </mat-form-field>
             </div>
 
-        <div class="row"> 
-                <mat-form-field class="example-full-width w-75">
-                  <input name="endereco" formControlName="endereco" matInput placeholder="Endereço">
-                  <mat-error  *ngIf="cadastroUsuario.touched && f.endereco.errors?.required">Campo Obrigatório</mat-error>
-                </mat-form-field>
+            <div class="row">
+              <mat-form-field class="example-full-width w-75">
+                <input name="senha" type="password" formControlName="senha" matInput placeholder="Senha">
+                <mat-error  *ngIf="cadastroUsuario.touched && f.senha.errors?.required">Campo Obrigatório</mat-error>
+              </mat-form-field>
             </div>
-
+        
         <div class="row">
-                <mat-form-field class="example-full-width w-75">
-                  <input name="senha" type="password" formControlName="senha" matInput placeholder="Senha">
-                  <mat-error  *ngIf="cadastroUsuario.touched && f.senha.errors?.required">Campo Obrigatório</mat-error>
-                </mat-form-field>
-            </div>
-          
-          <div class="row">
               <mat-form-field class="example-full-width w-75">
                 <input name="senhaConfirma" type="password" formControlName="senhaConfirma" matInput placeholder="Confirmar Senha">
                 <mat-error  *ngIf="cadastroUsuario.touched && f.senhaConfirma.errors?.required">Campo Obrigatório</mat-error>
               </mat-form-field>
-          </div>
+        </div>
+
+        <div class="row"> 
+                <mat-form-field class="example-full-width w-75">
+                  <input name="logradouro" formControlName="logradouro" matInput placeholder="Endereço">
+                  <mat-error  *ngIf="cadastroUsuario.touched && f.logradouro.errors?.required">Campo Obrigatório</mat-error>
+                </mat-form-field>
+        </div>
+
+        <div class="row"> 
+          <mat-form-field class="w-25">
+            <input name="numero" formControlName="numero" matInput placeholder="Número">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.numero.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-50">
+            <input name="bairro" formControlName="bairro" matInput placeholder="Bairro">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.bairro.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="w-75">
+            <input name="complemento" formControlName="complemento" matInput placeholder="Complemento">
+          </mat-form-field>
+        </div>
+
+        <div class="row"> 
+          <mat-form-field class="w-50">
+            <input name="cidade" formControlName="cidade" matInput placeholder="Cidade">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.cidade.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-25">
+            <input name="estado" formControlName="estado" matInput placeholder="Estado (UF)">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.estado.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+        </div>
 
         <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic">Cadastrar</button></div>
         </form>
@@ -55,7 +83,7 @@
 
   </div>
 
-  <div class="display-image container-fluid text-center">
+  <div class="display-image text-center">
 
     <h1 class="title">Já tem uma conta?</h1>
     <button class="w-25 rounded-pill" [routerLink]="['/login']" mat-raised-button color="basic">Login</button>

@@ -63,6 +63,7 @@ mat-sidenav {
   font-family: 'Poppins', sans-serif;
   font-size: 30px;
   color: white;
+  font-weight: bolder;
 }
 
 .mat-toolbar-option {

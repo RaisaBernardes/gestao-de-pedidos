@@ -1,6 +1,7 @@
 .company-name {
   font-family: 'Poppins', sans-serif;
     font-size: 70px;
+    font-weight: bolder;
     padding-bottom: 50px;
 }
 

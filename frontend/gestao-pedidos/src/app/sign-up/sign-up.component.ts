@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from '../shared/model.module';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,10 +26,16 @@ export class SignUpComponent implements OnInit {
     this.cadastroUsuario = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
       telefone: ['', [Validators.required, Validators.minLength(10)]],
-      endereco: ['', [Validators.required, Validators.minLength(10)]],
+      logradouro: ['', [Validators.required, Validators.minLength(10)]],
+      numero: ['', [Validators.required, Validators.minLength(1)]],
       email: ['', [Validators.required, Validators.minLength(5)]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      senhaConfirma: ['', [Validators.required, Validators.minLength(6)]]
+      senhaConfirma: ['', [Validators.required, Validators.minLength(6)]],
+      complemento: [''],
+      bairro: ['', [Validators.required, Validators.minLength(3)]],
+      cidade: ['', [Validators.required, Validators.minLength(3)]],
+      estado: ['', [Validators.required, Validators.minLength(3)]]
+
    })
   }
 
@@ -40,10 +47,15 @@ export class SignUpComponent implements OnInit {
     this.cadastroUsuario = this.fb.group({
       nome: [user.nome, [Validators.required, Validators.minLength(3)]],
       telefone: [user.telefone, [Validators.required, Validators.minLength(3)]],
-      endereco: [user.endereco, [Validators.required, Validators.minLength(10)]],
+      logradouro: [user.logradouro, [Validators.required, Validators.minLength(10)]],
       email: [user.email, [Validators.required, Validators.minLength(5)]],
       senha: [user.senha, [Validators.required, Validators.minLength(6)]],
-      senhaConfirma: [user.senhaConfirma, [Validators.required, Validators.minLength(6)]]
+      senhaConfirma: [user.senhaConfirma, [Validators.required, Validators.minLength(6)]],
+      numero: [user.numero, [Validators.required, Validators.minLength(1)]],
+      complemento: [user.complemento],
+      bairro: [user.bairro, [Validators.required, Validators.minLength(3)]],
+      cidade: [user.cidade, [Validators.required, Validators.minLength(3)]],
+      estado: [user.estado, [Validators.required, Validators.minLength(3)]]
     })
   }
 
@@ -53,9 +65,12 @@ export class SignUpComponent implements OnInit {
       return;
     } else {
       
-      const user = this.cadastroUsuario.getRawValue() //as User;
+      const userRaw = this.cadastroUsuario.getRawValue();
 
-      console.log(user);
+     // var user = new Usuario();
+     // user = {...userRaw, cd_tipo_usuario: "CLIENTE"};
+
+      console.log(userRaw);
       
       //this.insert(user);
       }
