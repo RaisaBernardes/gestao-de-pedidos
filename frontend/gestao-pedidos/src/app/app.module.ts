@@ -17,6 +17,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 
 import {AuthService} from './services/auth.service';
+import { CardapioComponent } from './cardapio/cardapio.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {AuthService} from './services/auth.service';
     FooterComponent,
     HomeComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    CardapioComponent
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,13 @@
     <mat-toolbar class="company-name">The Ranch</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/pedido">FAZER PEDIDO</a>
-      <a mat-list-item routerLink="/cardapio">CARDÁPIO</a>
+      <a mat-list-item [matMenuTriggerFor]="menu">CARDÁPIO</a>
+      <mat-menu class="mat-subnav-menu" #menu="matMenu">
+        <a class="mat-subnav-item" (click)="this.navigate('hamburgueres')" mat-menu-item>HAMBURGUERES</a>
+        <a class="mat-subnav-item" (click)="this.navigate('acompanhamentos')" mat-menu-item>ACOMPANHAMENTOS</a>
+        <a class="mat-subnav-item" (click)="this.navigate('bebidas')" mat-menu-item>BEBIDAS</a>
+        <a class="mat-subnav-item" (click)="this.navigate('sobremesas')" mat-menu-item>SOBREMESAS</a>
+      </mat-menu>
       <a mat-list-item routerLink="/sobre">SOBRE NÓS</a>
       <a mat-list-item routerLink="/login">CONTA</a>
     </mat-nav-list>
@@ -28,7 +34,13 @@
       <span class="spacer"></span>
       <div class="mat-toolbar-menu">
         <a routerLink="/pedido" class="mat-toolbar-option">FAZER PEDIDO</a>
-        <a routerLink="/cardapio"  class="mat-toolbar-option">CARDÁPIO</a>
+        <a [matMenuTriggerFor]="menu" class="mat-toolbar-option">CARDÁPIO</a>
+        <mat-menu class="mat-subnav-menu" #menu="matMenu">
+          <a class="mat-subnav-item" (click)="this.navigate('hamburgueres')" mat-menu-item>HAMBURGUERES</a>
+          <a class="mat-subnav-item" (click)="this.navigate('acompanhamentos')" mat-menu-item>ACOMPANHAMENTOS</a>
+          <a class="mat-subnav-item" (click)="this.navigate('bebidas')" mat-menu-item>BEBIDAS</a>
+          <a class="mat-subnav-item" (click)="this.navigate('sobremesas')" mat-menu-item>SOBREMESAS</a>
+        </mat-menu>
         <a routerLink="/sobre"  class="mat-toolbar-option">SOBRE NÓS</a>
         <a routerLink="/login"  class="mat-toolbar-option">CONTA</a>
       </div>

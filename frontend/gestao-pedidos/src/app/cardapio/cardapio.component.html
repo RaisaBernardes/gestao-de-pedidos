@@ -1,0 +1,168 @@
+<div class="container-fluid text-center fadeIn" [ngSwitch]="this.item">
+
+    <h1 class="item-title">{{item | uppercase }}</h1>
+
+    <div class="display-cards col-md-10 mx-auto" *ngSwitchCase="'hamburgueres'">
+    <div class="row justify-content-center">
+    
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/cheeseburger_tradicional.png">
+        <mat-card-content>
+            <mat-card-title>Cheeseburger Tradicional</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/cheeseburger_bacon.png">
+        <mat-card-content>
+            <mat-card-title>Cheeseburger Bacon</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/cheeseburger_duplo.png">
+        <mat-card-content>
+            <mat-card-title>Cheeseburger Duplo</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="row justify-content-center">
+
+        <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/hamburgueres/australian_cheese.png">
+            <mat-card-content>
+                <mat-card-title>Australian Cheese</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/hamburgueres/chicken_burger.png">
+            <mat-card-content>
+                <mat-card-title>Chickenburger</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/hamburgueres/vegan_burger.png">
+            <mat-card-content>
+                <mat-card-title>Veganburger</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+    </div>
+
+</div>
+
+<div class="display-cards col-md-6 mx-auto" *ngSwitchCase="'acompanhamentos'">
+
+    <div class="row justify-content-center">
+
+        <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/acompanhamentos/fritas_simples.png">
+            <mat-card-content>
+                <mat-card-title>Fritas Simples</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/acompanhamentos/fritas_cheddar_bacon.png">
+            <mat-card-content>
+                <mat-card-title>Fritas com Cheddar e Bacon</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+    </div>
+
+    <div class="row justify-content-center">
+    
+        
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/acompanhamentos/aneis_de_cebola.png">
+        <mat-card-content>
+            <mat-card-title>Aneis de Cebola</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/acompanhamentos/batata_rustica.png">
+        <mat-card-content>
+            <mat-card-title>Batata Rústica</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+</div>
+
+<div class="display-cards col-md-10 mx-auto" *ngSwitchCase="'bebidas'">
+
+    <div class="row justify-content-center">
+
+        <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/bebidas/cerveja.png">
+            <mat-card-content>
+                <mat-card-title>Cerveja</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/bebidas/refrigerante.png">
+            <mat-card-content>
+                <mat-card-title>Refrigerante</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/bebidas/suco.png">
+            <mat-card-content>
+                <mat-card-title>Suco</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+    </div>
+
+    <div class="row justify-content-center">
+    
+        
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/bebidas/milkshake.png">
+        <mat-card-content>
+            <mat-card-title>Milkshake</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/bebidas/agua.png">
+        <mat-card-content>
+            <mat-card-title>Água</mat-card-title>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+</div>
+
+<div class="display-cards col-md-10 mx-auto" *ngSwitchCase="'sobremesas'">
+
+    <div class="row justify-content-center">
+
+        <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/sobremesas/brownie.png">
+            <mat-card-content>
+                <mat-card-title>Brownie</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+          <mat-card class="card">
+            <img mat-card-image src="../../assets/cardapio/sobremesas/pudim.png">
+            <mat-card-content>
+                <mat-card-title>Pudim</mat-card-title>
+            </mat-card-content>
+          </mat-card>
+
+    </div>
+
+</div>
+
+</div>

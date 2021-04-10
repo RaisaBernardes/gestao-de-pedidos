@@ -2,6 +2,22 @@
   width: 200px;
 }
 
+.mat-subnav-item {
+  color: white;
+  background-color:rgba(0, 0, 0, 0.774);
+  font-family: 'Poppins', sans-serif;
+}
+
+/*.mat-subnav-menu {
+  background-color:rgba(0, 0, 0, 0.774) !important;
+}*/
+
+.mat-subnav-item:hover {
+  color:rgba(0, 0, 0, 0.774);
+  background-color:rgba(211, 211, 211, 0.616);
+  text-decoration: none;
+}
+
 mat-sidenav {
   color: white;
   background-color: rgba(0, 0, 0, 0.774);
@@ -31,6 +47,10 @@ mat-sidenav {
 
 @media (max-width: 763px) {
   .mat-toolbar-menu a {
+    font-size: 14px;
+  }
+
+  .mat-subnav-menu a {
     font-size: 14px;
   }
 }
