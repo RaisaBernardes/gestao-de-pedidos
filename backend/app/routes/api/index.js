@@ -18,9 +18,10 @@ router.use((req, res, next) => {
 });
 
 // Split up route handling
-router.use('/user', require('./user/UserDAO.js'));
 router.use('/auth', require('./auth/auth.js'));
+router.use('/user', require('./user/UserDAO.js'));
 router.use('/item', require('./item/ItemDAO.js'));
 router.use('/order', require('./order/OrderDAO.js'));
+router.use('/address', require('./address/AddressDAO.js'));
 
 module.exports = router;

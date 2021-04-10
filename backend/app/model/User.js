@@ -1,5 +1,6 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
 const bcrypt = require('bcrypt');
+const Address = require('Address.js');
 
 const User = sequelizeConnect.define('user', {
     idUser: {
@@ -14,11 +15,10 @@ const User = sequelizeConnect.define('user', {
         allowNull: false,
         field: "nm_user"
     },
-    dsLogin: {
+    dsPhone: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
-        field: "ds_login"
+        field: "nm_user"
     },
     dsPassword: {
         type: Sequelize.STRING,
@@ -30,9 +30,9 @@ const User = sequelizeConnect.define('user', {
         allowNull: false,
         field: "ds_email"
     },
-    dsAvatar: {
+    tpUser: {
         type: Sequelize.STRING,
-        field: "ds_avatar"
+        field: "tp_user"
     }
 }, {
     hooks: {
@@ -48,5 +48,8 @@ User.prototype.validPassword = async function (password) {
     const checkPass = await bcrypt.compareSync(password, this.dsPassword);
     return checkPass;
 }
+
+// Creater Address Foreign Key at User Table
+Address.hasMany(User);
 
 module.exports = User;
