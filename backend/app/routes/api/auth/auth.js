@@ -15,12 +15,12 @@ router.group((router) => {
 
     router.post('/login', middlewareFunctions.validateParams([
         {
-            paramKey: 'dsLogin',
+            paramKey: 'email',
             required: true,
             type: 'string',
         },
         {
-            paramKey: 'dsPassword',
+            paramKey: 'senha',
             required: true,
             type: 'string',
         }
@@ -28,11 +28,11 @@ router.group((router) => {
         const userLogin = req.body;
         let resultMessage = {};
 
-        const user = await User.findOne({ where: { dsLogin: userLogin.dsLogin } });
+        const user = await User.findOne({ where: { email: userLogin.email } });
 
         if(user){
             try {
-                if(await user.validPassword(userLogin.dsPassword)){
+                if(await user.validPassword(userLogin.senha)){
                     resultMessage = {
                         status: true,
                         result: user
