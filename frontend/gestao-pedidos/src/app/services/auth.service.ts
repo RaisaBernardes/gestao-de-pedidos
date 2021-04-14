@@ -21,7 +21,20 @@ export class AuthService {
     let request = this.http.post<any>(this.authUrl+"/signup", user);
 
     request.subscribe((data) => {
-     console.log(data);
+
+      if (data.status === false) {
+        Swal.fire(
+          {title: "Erro!", 
+           html: "<p>"+data.result+"<p>",
+           confirmButtonText: "Ok",
+           icon: "error"})
+      } else {
+        Swal.fire(
+          {title: "Usuário cadastrado com sucesso!",
+           confirmButtonText: "Ok",
+           icon: "success"})
+        console.log(data);
+      }
       //to-do: ARMAZENAR OS DADOS VINDOS NUM SESSIONSTORAGE
     }, (err) => {
      console.log(err);
@@ -33,7 +46,20 @@ export class AuthService {
     let request = this.http.post<any>(this.authUrl+"/login", user);
 
     request.subscribe((data) => {
-      console.log(data)
+      if (data.status === false) {
+        Swal.fire(
+          {title: "Erro!", 
+           html: "<p>"+data.result+"<p>",
+           confirmButtonText: "Ok",
+           icon: "error"
+          })
+      } else {
+        Swal.fire(
+          {title: "Usuário cadastrado com sucesso!",
+           confirmButtonText: "Ok",
+           icon: "success"})
+        console.log(data);
+      }
       //to-do: ARMAZENAR OS DADOS VINDOS NUM SESSIONSTORAGE
     }, (err) => {
      console.log(err)
