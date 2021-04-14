@@ -3,7 +3,6 @@ import { FormGroup, Validators, FormBuilder, AbstractControl, ValidationErrors }
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from '../shared/model.module';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -62,23 +61,19 @@ export class SignUpComponent implements OnInit {
     })
   }
 
-  async submit(): Promise<void> {
+  submit() {
     this.cadastroUsuario.markAllAsTouched();
     if (this.cadastroUsuario.invalid) {
       return;
     } else {
-<<<<<<< HEAD
       this.btDisabled = true;
 
-=======
->>>>>>> 214a0b424a45f445754f28dc6d8549afb99d9a3d
       const userRaw = this.cadastroUsuario.getRawValue();
       delete userRaw['senhaConfirma'];
 
       let user = new Usuario();
       user = {...userRaw, tp_usuario: 'CLIENTE'};
 
-<<<<<<< HEAD
       console.log(user);
       
       this.authService.cadastrar(user);
@@ -86,12 +81,8 @@ export class SignUpComponent implements OnInit {
       this.btDisabled = false;
       }
       
-=======
-      this.authService.cadastrar(user);
->>>>>>> 214a0b424a45f445754f28dc6d8549afb99d9a3d
     }
       
   }
 
-}
 

@@ -20,8 +20,6 @@ import {AuthService} from './services/auth.service';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
   declarations: [
     AppComponent,
