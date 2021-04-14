@@ -7,7 +7,7 @@ import { Usuario } from '../shared/model.module';
 })
 export class AuthService {
 
-  requestUrl = "localhost:3000";
+  requestUrl = "http://localhost:9090/api";
   userUrl = this.requestUrl + "/user";
   authUrl = this.requestUrl + "/auth";
   // SERVICE RESPONSAVEL PELA PARTE DE CADASTRO, LOGIN E LOGOUT
