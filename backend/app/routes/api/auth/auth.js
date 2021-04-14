@@ -3,6 +3,11 @@ const middlewareFunctions = require('../middleware/Middleware.js');
 const User = require('../../../model/User.js');
 const UsersController = require('../../../controller/User.js');
 const UserController = new UsersController(User);
+
+const Address = require('../../../model/Address.js');
+const AddressesController = require('../../../controller/Address.js');
+
+const AddressController = new AddressesController(Address);
 require('express-group-routes');
 
 router.group((router) => {
@@ -58,34 +63,66 @@ router.group((router) => {
 
     router.post('/signup', middlewareFunctions.validateParams([
         {
-            paramKey: 'nmUser',
+            paramKey: 'nome',
             required: true,
             type: 'string',
         },
         {
-            paramKey: 'dsLogin',
+            paramKey: 'telefone',
+            required: true,
+            type: 'number',
+        },
+        {
+            paramKey: 'logradouro',
             required: true,
             type: 'string',
         },
         {
-            paramKey: 'dsPassword',
+            paramKey: 'email',
             required: true,
             type: 'string',
         },
         {
-            paramKey: 'dsEmail',
-            required: true,
-            type: 'string',
-        },
-        {
-            paramKey: 'dsAvatar',
+            paramKey: 'senha',
             required: false,
             type: 'string',
-        }
+        },
+        {
+            paramKey: 'numero',
+            required: false,
+            type: 'string',
+        },
+        {
+            paramKey: 'complemento',
+            required: false,
+            type: 'string',
+        },
+        {
+            paramKey: 'bairro',
+            required: false,
+            type: 'string',
+        },
+        {
+            paramKey: 'cidade',
+            required: false,
+            type: 'string',
+        },
+        {
+            paramKey: 'estado',
+            required: false,
+            type: 'string',
+        },
     ]), async (req, res) => {
-        await UserController.create(req.body).then(response => {
-            res.status(response.statusCode)
-            res.json(response.data)
+        await AddressController.create(req.body).then(async responseAddress => {
+            if(responseAddress.statusCode == 200){
+                req.body.addressIdAddress = responseAddress.data.idAddress;
+                await UserController.create(req.body).then(responseUser => {
+                    res.status(responseUser.statusCode)
+                    res.json(responseUser.data)
+                });
+            }
+            // res.status(response.statusCode)
+            // res.json(response.data)
         });
     });
 });

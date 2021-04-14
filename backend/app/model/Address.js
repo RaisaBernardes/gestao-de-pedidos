@@ -9,32 +9,32 @@ const Address = sequelizeConnect.define('address', {
         primaryKey: true,
         field: "id_address"
     },
-    dsAddress: {
+    logradouro: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_address"
     },
-    dsNumber: {
+    numero: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_number"
     },
-    dsComplement: {
+    complemento: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_complement"
     },
-    dsDistrict: {
+    bairro: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_district"
     },
-    dsCity: {
+    cidade: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_city"
     },
-    dsState: {
+    estado: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_state"

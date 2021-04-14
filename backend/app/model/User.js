@@ -1,6 +1,6 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
 const bcrypt = require('bcrypt');
-const Address = require('Address.js');
+const Address = require('./Address.js');
 
 const User = sequelizeConnect.define('user', {
     idUser: {
@@ -10,27 +10,27 @@ const User = sequelizeConnect.define('user', {
         primaryKey: true,
         field: "id_user"
     },
-    nmUser: {
+    nome: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "nm_user"
     },
-    dsPhone: {
+    telefone: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "nm_user"
+        field: "ds_phone"
     },
-    dsPassword: {
+    senha: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_password"
     },
-    dsEmail: {
+    email: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "ds_email"
     },
-    tpUser: {
+    tp_usuario: {
         type: Sequelize.STRING,
         field: "tp_user"
     }
@@ -38,8 +38,8 @@ const User = sequelizeConnect.define('user', {
     hooks: {
         beforeCreate: async function(user) {
             const salt = bcrypt.genSaltSync();
-            const hashedPassword = await bcrypt.hashSync(user.dsPassword, salt);
-            user.dsPassword = hashedPassword;
+            const hashedPassword = await bcrypt.hashSync(user.senha, salt);
+            user.senha = hashedPassword;
         }
     }
 });

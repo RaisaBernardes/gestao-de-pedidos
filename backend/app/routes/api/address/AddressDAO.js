@@ -3,7 +3,7 @@ const middlewareFunctions = require('../middleware/Middleware.js');
 const Address = require('../../../model/Address.js'); // import
 const AddressesController = require('../../../controller/Address.js'); // import
 
-const AddressController = new AddressController(Address);
+const AddressController = new AddressesController(Address);
 require('express-group-routes');
 
 router.group((router) => {

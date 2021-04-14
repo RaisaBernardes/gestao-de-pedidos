@@ -1,0 +1,6 @@
+# All
+node_modules/
+package-*.json
+mysql/
+docker-compose.yml
+node/
