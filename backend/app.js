@@ -12,9 +12,10 @@ const PORT = process.env.PORT || 9090;
 const HOST = process.env.HOST || '0.0.0.0';
 
 const corsOpts = {
-	origin: '*',
+	origin: 'http://localhost:4200',
 	methods: ['GET', 'POST'],
-	allowedHeaders: ['Content-Type', 'Accept', 'Authorization']
+	allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
+	credentials: true
 }
 
 http.listen(PORT, HOST, (err) => {
