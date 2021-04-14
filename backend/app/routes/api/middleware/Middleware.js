@@ -12,7 +12,11 @@ function authorize(req, res, next) {
 // * Função para checar usuários logados.
 function sessionChecker (req, res, next) {
     if (req.session.user && req.cookies.SessionCookie) {
-        res.redirect('/home');
+        // res.redirect('/home');
+        return res.json({
+            status: false,
+            result: "Usuário já logado!"
+        });
     } else {
         next();
     }
