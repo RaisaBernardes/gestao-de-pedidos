@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 
 import {AuthService} from './services/auth.service';
 import { CardapioComponent } from './cardapio/cardapio.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CardapioComponent } from './cardapio/cardapio.component';
     MatButtonModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { Usuario } from '../shared/model.module';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   loginUsuario: FormGroup;
+  btDisabled: boolean = false; // for button
 
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router,  private activRoute: ActivatedRoute) { }
 
@@ -40,24 +42,21 @@ export class LoginComponent implements OnInit {
    })
   }
 
-  submit(): void {
+  async submit(): Promise<void> {
     this.loginUsuario.markAllAsTouched();
     if (this.loginUsuario.invalid) {
       return;
     } else {
-      
-      const user = this.loginUsuario.getRawValue() //as User;
+      this.btDisabled = true;
+      const user = this.loginUsuario.getRawValue() as Usuario;
 
       console.log(user);
+
+      this.authService.login(user);
       
-      this.login(user);
-      }
-      
+      this.btDisabled = false;
     }
 
-    login(user: any) {
-      this.authService.cadastrar(user);
-    }
-
+  }
 
 }

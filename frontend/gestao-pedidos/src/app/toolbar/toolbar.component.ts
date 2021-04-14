@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent {
 
+  private cartVisible: boolean = false;
+
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) { }
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
@@ -34,5 +36,8 @@ export class ToolbarComponent {
     refresh(): void {
       window.location.reload();
   }
+
+  // FOR ICONS AND PAGES
+  checkUserPrivilege = (cd: String) => {sessionStorage.getItem('cd_tipo_usuario') ===  cd ? true : false};
 
 }
