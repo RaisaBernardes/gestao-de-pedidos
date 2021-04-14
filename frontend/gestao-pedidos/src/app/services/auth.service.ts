@@ -12,13 +12,14 @@ export class AuthService {
   requestUrl = "http://localhost:9090/api";
   userUrl = this.requestUrl + "/user";
   authUrl = this.requestUrl + "/auth";
+  config = {withCredentials: true};
   // SERVICE RESPONSAVEL PELA PARTE DE CADASTRO, LOGIN E LOGOUT
 
   constructor(private http: HttpClient) { }
 
   cadastrar(user: Usuario): any {
     // chamada de servico rest /user/create
-    let request = this.http.post<any>(this.authUrl+"/signup", user);
+    let request = this.http.post<any>(this.authUrl+"/signup", user, this.config);
 
     request.subscribe((data) => {
      console.log(data);
@@ -30,7 +31,7 @@ export class AuthService {
 
   login(user): any {
     // chamada de servico rest /auth/login
-    let request = this.http.post<any>(this.authUrl+"/login", user);
+    let request = this.http.post<any>(this.authUrl+"/login", user, this.config);
 
     request.subscribe((data) => {
       console.log(data)
