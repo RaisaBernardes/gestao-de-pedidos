@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { Usuario } from '../shared/model.module';
 
 import Swal from 'sweetalert2';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,13 +17,18 @@ export class SignUpComponent implements OnInit {
   cadastroUsuario: FormGroup;
   btDisabled: boolean = false; // for button
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router,  private activRoute: ActivatedRoute) { }
+  constructor(private cookieService: CookieService, private fb: FormBuilder, private authService: AuthService, private router: Router,  private activRoute: ActivatedRoute) { }
 
   get f() {
     return this.cadastroUsuario.controls;
   }
 
   ngOnInit(): void {
+
+    if (this.checkUserLogged) {
+      this.router.navigateByUrl('/');
+    }
+
     this.emptyForm();
   }
 
@@ -106,6 +112,11 @@ export class SignUpComponent implements OnInit {
       this.btDisabled = false;
       }
       
+    }
+
+
+    checkUserLogged(): boolean {
+      return this.cookieService.check('SessionCookie');
     }
       
   }

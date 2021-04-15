@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { Usuario } from '../shared/model.module';
 
 import Swal from 'sweetalert2';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,14 @@ export class LoginComponent implements OnInit {
   loginUsuario: FormGroup;
   btDisabled: boolean = false; // for button
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router,  private activRoute: ActivatedRoute) { }
+  constructor(private cookieService: CookieService, private authService: AuthService, private fb: FormBuilder, private router: Router,  private activRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+  
+    if (this.checkUserLogged) {
+      this.router.navigateByUrl('/');
+    }
+
     this.emptyForm();
   }
 
@@ -69,9 +75,10 @@ export class LoginComponent implements OnInit {
               confirmButtonText: "Ok",
               icon: "success"
             });
+            sessionStorage.setItem('tp_usuario', data.result.tp_usuario);
+            sessionStorage.setItem('nome', data.result.nome);
             this.router.navigateByUrl("/")
           }
-            //to-do: ARMAZENAR OS DADOS VINDOS NUM SESSIONSTORAGE
           }, (err) => {
             Swal.fire(
               {
@@ -89,4 +96,8 @@ export class LoginComponent implements OnInit {
 
   }
 
+  checkUserLogged(): boolean {
+    return this.cookieService.check('SessionCookie');
+  }
+  
 }

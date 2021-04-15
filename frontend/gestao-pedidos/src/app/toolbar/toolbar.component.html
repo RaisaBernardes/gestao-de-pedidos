@@ -8,7 +8,7 @@
     >
     <mat-toolbar class="company-name">The Ranch</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/pedido">FAZER PEDIDO</a>
+      <a mat-list-item routerLink="/pedido" *ngIf="checkUserPrivilege('CLIENTE')">FAZER PEDIDO</a>
       <a mat-list-item [matMenuTriggerFor]="menu">CARDÁPIO</a>
       <mat-menu class="mat-subnav-menu" #menu="matMenu">
         <a class="mat-subnav-item" (click)="this.navigate('hamburgueres')" mat-menu-item>HAMBURGUERES</a>
@@ -16,10 +16,9 @@
         <a class="mat-subnav-item" (click)="this.navigate('bebidas')" mat-menu-item>BEBIDAS</a>
         <a class="mat-subnav-item" (click)="this.navigate('sobremesas')" mat-menu-item>SOBREMESAS</a>
       </mat-menu>
-      <a mat-list-item routerLink="/sobre">SOBRE NÓS</a>
-      <a mat-list-item routerLink="/login">CONTA</a>
-      <a routerLink="/comandas" mat-list-item ><mat-icon>event</mat-icon> COMANDAS</a>
-      <a routerLink="/conf" mat-list-item ><mat-icon>build</mat-icon> CONFIGURAÇÕES</a>
+      <a mat-list-item routerLink="/login" *ngIf="!checkUserLogged()">CONTA</a>
+      <a routerLink="/comandas" mat-list-item *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon> COMANDAS</a>
+      <a routerLink="/conf" mat-list-item *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>build</mat-icon> CONFIGURAÇÕES</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -35,7 +34,7 @@
       <a routerLink="/" routerLinkActive="active"> <h3 class="mat-toolbar-title company-name">The Ranch</h3></a>
       <span class="spacer"></span>
       <div class="mat-toolbar-menu">
-        <a routerLink="/pedido" class="mat-toolbar-option" *ngIf="checkUserPrivilege('1')">FAZER PEDIDO </a>
+        <a routerLink="/pedido" class="mat-toolbar-option" *ngIf="checkUserPrivilege('CLIENTE')">FAZER PEDIDO </a>
         <a [matMenuTriggerFor]="menu" class="mat-toolbar-option">CARDÁPIO</a>
         <mat-menu class="mat-subnav-menu" #menu="matMenu">
           <a class="mat-subnav-item" (click)="this.navigate('hamburgueres')" mat-menu-item>HAMBURGUERES</a>
@@ -43,11 +42,10 @@
           <a class="mat-subnav-item" (click)="this.navigate('bebidas')" mat-menu-item>BEBIDAS</a>
           <a class="mat-subnav-item" (click)="this.navigate('sobremesas')" mat-menu-item>SOBREMESAS</a>
         </mat-menu>
-        <a routerLink="/sobre"  class="mat-toolbar-option">SOBRE NÓS</a>
-        <a routerLink="/login"  class="mat-toolbar-option">CONTA</a>
-        <a routerLink="/conta" class="mat-toolbar-option"><mat-icon>account_circle</mat-icon></a>
-        <a routerLink="/comandas" class="mat-toolbar-option"><mat-icon>event</mat-icon></a>
-        <a routerLink="/conf" class="mat-toolbar-option"><mat-icon>build</mat-icon></a>
+        <a routerLink="/login"  class="mat-toolbar-option" *ngIf="!checkUserLogged()">CONTA</a>
+        <a routerLink="/conta" class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>account_circle</mat-icon></a>
+        <a routerLink="/comandas" class="mat-toolbar-option" *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon></a>
+        <a routerLink="/conf" class="mat-toolbar-option"  *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>build</mat-icon></a>
       </div>
     </mat-toolbar>
 

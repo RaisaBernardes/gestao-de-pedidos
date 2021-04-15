@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import {AuthService} from './services/auth.service';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
