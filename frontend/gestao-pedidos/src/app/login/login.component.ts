@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from '../shared/model.module';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -50,11 +52,39 @@ export class LoginComponent implements OnInit {
       this.btDisabled = true;
       const user = this.loginUsuario.getRawValue() as Usuario;
 
-      console.log(user);
+      this.authService.login(user).subscribe((data) => {
 
-      this.authService.login(user);
+        if (data.status === false) {
+          Swal.fire(
+            {
+              title: "Erro!",
+              html: "<p>" + data.result + "<p>",
+              confirmButtonText: "Ok",
+              icon: "error"
+            });
+        } else {
+          Swal.fire(
+            {
+              title: "Login efetuado com sucesso!",
+              confirmButtonText: "Ok",
+              icon: "success"
+            });
+            this.router.navigateByUrl("/")
+          }
+            //to-do: ARMAZENAR OS DADOS VINDOS NUM SESSIONSTORAGE
+          }, (err) => {
+            Swal.fire(
+              {
+                title: "Erro!",
+                html: "<p>Houve um problema na conexão com o servidor.<br>Tente novamente mais tarde.",
+                confirmButtonText: "Ok",
+                icon: "error"
+              });
+
+          });
+
+          this.btDisabled = false;
       
-      this.btDisabled = false;
     }
 
   }

@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from '../shared/model.module';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -76,7 +78,30 @@ export class SignUpComponent implements OnInit {
 
       console.log(user);
       
-      this.authService.cadastrar(user);
+      this.authService.cadastrar(user).subscribe((data) => {
+        if (data.status === false) {
+          Swal.fire(
+            {title: "Erro!", 
+             html: "<p>"+data.result+"<p>",
+             confirmButtonText: "Ok",
+             icon: "error"})
+        } else {
+          Swal.fire(
+            {title: "Usuário cadastrado com sucesso!",
+             confirmButtonText: "Ok",
+             icon: "success"})
+             this.router.navigateByUrl('/login');
+        }
+        //to-do: ARMAZENAR OS DADOS VINDOS NUM SESSIONSTORAGE
+      }, (err) => {
+        Swal.fire(
+          {
+            title: "Erro!",
+            html: "<p>Houve um problema na conexão com o servidor.<br>Tente novamente mais tarde.",
+            confirmButtonText: "Ok",
+            icon: "error"
+          });
+      });
 
       this.btDisabled = false;
       }
