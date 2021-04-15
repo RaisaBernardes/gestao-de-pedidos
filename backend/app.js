@@ -37,7 +37,7 @@ app.use(session({
     secret: 'Shsh!Secret!',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 600000, httpOnly = false } // Secure = True para usar o Secure do HTTPS
+    cookie: { maxAge: 600000, httpOnly: false } // Secure = True para usar o Secure do HTTPS
 }));
 
 // Anything beginning with "/api" will go into this
