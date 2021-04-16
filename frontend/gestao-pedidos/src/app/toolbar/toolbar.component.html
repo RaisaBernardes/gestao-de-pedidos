@@ -8,7 +8,7 @@
     >
     <mat-toolbar class="company-name">The Ranch</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/pedido" *ngIf="checkUserPrivilege('CLIENTE')">FAZER PEDIDO</a>
+      <a mat-list-item routerLink="/pedido" *ngIf="checkUserLogged()">FAZER PEDIDO</a>
       <a mat-list-item [matMenuTriggerFor]="menu">CARDÁPIO</a>
       <mat-menu class="mat-subnav-menu" #menu="matMenu">
         <a class="mat-subnav-item" (click)="this.navigate('hamburgueres')" mat-menu-item>HAMBURGUERES</a>
@@ -34,7 +34,7 @@
       <a routerLink="/" routerLinkActive="active"> <h3 class="mat-toolbar-title company-name">The Ranch</h3></a>
       <span class="spacer"></span>
       <div class="mat-toolbar-menu">
-        <a routerLink="/pedido" class="mat-toolbar-option" *ngIf="checkUserPrivilege('CLIENTE')">FAZER PEDIDO </a>
+        <a routerLink="/pedido" class="mat-toolbar-option" *ngIf="checkUserLogged()">FAZER PEDIDO </a>
         <a [matMenuTriggerFor]="menu" class="mat-toolbar-option">CARDÁPIO</a>
         <mat-menu class="mat-subnav-menu" #menu="matMenu">
           <a class="mat-subnav-item" (click)="this.navigate('hamburgueres')" mat-menu-item>HAMBURGUERES</a>

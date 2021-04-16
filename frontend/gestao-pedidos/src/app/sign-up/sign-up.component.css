@@ -7,11 +7,8 @@
     height: 650px;
 }
 
-.form-title, .title {
-  font-family: 'Poppins', sans-serif;
-}
-
 .title {
+  font-family: 'Poppins', sans-serif;
   margin-top: 80px;
 }
 

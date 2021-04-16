@@ -1,0 +1,98 @@
+<div class="container-fluid col-md-8 text-left fadeIn">
+    <h1 class="container-title">Pedido</h1>
+    
+    <div class="card">
+        
+          <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="cardapioFormGroup">
+              <form [formGroup]="cardapioFormGroup">
+
+                <div class="section-group">
+                    <div class="section-title">HAMBÚRGUERES</div>
+                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 1</strong> <br> Lorem ipsum dolor sit amet.
+                    </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 2</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 3</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                </div>
+
+                <div class="section-group">
+                    <div class="section-title">ACOMPANHAMENTOS</div>
+                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button>  <strong>Acompanhamento 1</strong> <br> Lorem ipsum dolor sit amet.
+                    </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Acompanhamento 2</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Acompanhamento 3</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                </div>
+
+                <div class="section-group">
+                    <div class="section-title">BEBIDAS</div>
+                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Bebida 1</strong> <br> Lorem ipsum dolor sit amet.
+                    </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Bebida 2</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Bebida 3</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                </div>
+
+                <div class="section-group">
+                    <div class="section-title">SOBREMESAS</div>
+                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Sobremesa 1</strong> <br> Lorem ipsum dolor sit amet.
+                    </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Sobremesa 2</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Sobremesa 3</strong> <br> Lorem ipsum dolor sit amet.
+                     </div>
+                </div>
+
+                <div>
+                  <button mat-button matStepperNext>Próximo</button>
+                </div>
+              </form>
+            </mat-step>
+            <!-- #docregion label -->
+            <mat-step [stepControl]="enderecoFormGroup">
+            <!-- #enddocregion label -->
+              <form [formGroup]="enderecoFormGroup">
+                <mat-form-field>
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="enderecoCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                        >
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Voltar</button>
+                  <button mat-button matStepperNext>Próximo</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <p>You are now done.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+
+
+        <!--
+        <div class="card-row">
+            HAMBURGUERES
+        </div>
+
+        <div class="card-row">
+            ACOMPANHAMENTOS
+        </div>
+        
+        <div class="card-row">
+            BEBIDAS
+        </div>
+
+        <div class="card-row">
+            SOBREMESAS
+        </div> -->
+    </div>
+
+</div>

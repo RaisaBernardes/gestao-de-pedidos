@@ -6,6 +6,7 @@
 }
 
 .container-fluid {
+  font-family: 'Poppins', sans-serif;
   padding-top: 80px;
   padding-bottom: 30px;
   color: white;
@@ -13,7 +14,6 @@
 
 .home-body {
     padding-top: 30px;
-    font-family: 'Poppins', sans-serif;
     font-style: italic;
     font-size: 20px;
     line-height: 1em;

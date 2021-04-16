@@ -20,6 +20,7 @@ import {AuthService} from './services/auth.service';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { PedidoComponent } from './pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     SignUpComponent,
     LoginComponent,
-    CardapioComponent
+    CardapioComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
