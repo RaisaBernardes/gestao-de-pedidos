@@ -19,7 +19,7 @@ router.group((router) => {
     });
 
     router.post('/findByPk', async (req, res) => {
-        await AddressController.getById(req.body.idAddress).then(response => {
+        await AddressController.getById(req.body.cdEndereco).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });

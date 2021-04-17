@@ -28,13 +28,12 @@ class ItemsController {
     }
 
     update(item) {
-        delete item.dsPassword;
-        return this.Items.update(item, { where: { idItem: item.idItem } }).then(result => defaultResponse(result))
+        return this.Items.update(item, { where: { cdItem: item.cdItem } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
 
     delete(item) {
-        return this.Items.destroy({ where: { idItem: item.idItem } }).then(result => defaultResponse(result))
+        return this.Items.destroy({ where: { cdItem: item.cdItem } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
 }

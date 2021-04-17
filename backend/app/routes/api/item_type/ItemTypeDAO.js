@@ -1,9 +1,9 @@
 var router = require('express').Router();
 const middlewareFunctions = require('../middleware/Middleware.js');
-const Item = require('../../../model/Item.js'); // import
-const ItemsController = require('../../../controller/Item.js'); // import
+const ItemType = require('../../../model/ItemType.js'); // import
+const ItemTypesController = require('../../../controller/ItemType.js'); // import
 
-const ItemController = new ItemsController(Item);
+const ItemTypeController = new ItemTypesController(ItemType);
 require('express-group-routes');
 
 router.group((router) => {
@@ -19,7 +19,7 @@ router.group((router) => {
     });
 
     router.post('/findByPk', async (req, res) => {
-        await ItemController.getById(req.body.cdItem).then(response => {
+        await ItemTypeController.getById(req.body.cdTipoItem).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
@@ -27,35 +27,35 @@ router.group((router) => {
 
     router.post('/findByWhere', async (req, res) => {
         const where = req.body;
-        await ItemController.getByWhere(where).then(response => {
+        await ItemTypeController.getByWhere(where).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
     });
 
     router.get('/findAll', async (req, res) => {
-        await ItemController.getAll().then(response => {
+        await ItemTypeController.getAll().then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
     });
 
     router.post('/create', async (req, res) => {
-        await ItemController.create(req.body).then(response => {
+        await ItemTypeController.create(req.body).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
     });
 
     router.post('/update', async (req, res) => {
-        await ItemController.update(req.body).then(response => {
+        await ItemTypeController.update(req.body).then(response => {
             res.status(response.statusCode);
             res.json(response.data);
         });
     });
 
     router.post('/delete', async (req, res) => {
-        await ItemController.delete(req.body).then(response => {
+        await ItemTypeController.delete(req.body).then(response => {
             res.status(response.statusCode);
             res.json(response.data);
         });

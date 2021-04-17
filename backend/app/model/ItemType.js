@@ -1,18 +1,12 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
-const ItemType = require('./ItemType.js');
 
-const Item = sequelizeConnect.define("item", {
-    cdItem: {
+const ItemType = sequelizeConnect.define("item_type", {
+    cdTipoItem: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-        field: "cd_item"
-    },
-    preco: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        field: "preco"
+        field: "cd_tipo_item"
     },
     descricao: {
         type: Sequelize.STRING,
@@ -21,6 +15,4 @@ const Item = sequelizeConnect.define("item", {
     },
 });
 
-ItemType.hasMany(Item);
-
-module.exports = Item;
+module.exports = ItemType;

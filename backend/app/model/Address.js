@@ -2,42 +2,42 @@ const {sequelizeConnect, Sequelize} = require('../config/db');
 const bcrypt = require('bcrypt');
 
 const Address = sequelizeConnect.define('address', {
-    idAddress: {
+    cdEndereco: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-        field: "id_address"
+        field: "cd_endereco"
     },
     logradouro: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_address"
+        field: "logradouro"
     },
     numero: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_number"
+        field: "numero"
     },
     complemento: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_complement"
+        field: "complemento"
     },
     bairro: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_district"
+        field: "bairro"
     },
     cidade: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_city"
+        field: "cidade"
     },
     estado: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_state"
+        field: "estado"
     }
 });
 

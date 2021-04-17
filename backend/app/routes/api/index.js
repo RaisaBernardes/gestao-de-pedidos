@@ -21,6 +21,7 @@ router.use((req, res, next) => {
 router.use('/auth', require('./auth/auth.js'));
 router.use('/user', require('./user/UserDAO.js'));
 router.use('/item', require('./item/ItemDAO.js'));
+router.use('/item_type', require('./item_type/ItemTypeDAO.js'));
 router.use('/order', require('./order/OrderDAO.js'));
 router.use('/address', require('./address/AddressDAO.js'));
 

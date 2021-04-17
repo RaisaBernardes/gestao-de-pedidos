@@ -3,36 +3,36 @@ const bcrypt = require('bcrypt');
 const Address = require('./Address.js');
 
 const User = sequelizeConnect.define('user', {
-    idUser: {
+    cdUsuario: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-        field: "id_user"
+        field: "cd_usuario"
     },
     nome: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "nm_user"
+        field: "nome"
     },
     telefone: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_phone"
+        field: "telefone"
     },
     senha: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_password"
+        field: "senha"
     },
     email: {
         type: Sequelize.STRING,
         allowNull: false,
-        field: "ds_email"
+        field: "email"
     },
     tp_usuario: {
         type: Sequelize.STRING,
-        field: "tp_user"
+        field: "tp_usuario"
     }
 }, {
     hooks: {

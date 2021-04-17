@@ -28,12 +28,12 @@ router.group((router) => {
 
     router.post('/findByPk', middlewareFunctions.validateParams([
         {
-            paramKey: 'idUser',
+            paramKey: 'cdUsuario',
             required: true,
             type: 'number',
         },
     ]), async (req, res) => {
-        await UserController.getById(req.body.idUser).then(response => {
+        await UserController.getById(req.body.cdUsuario).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
@@ -56,30 +56,20 @@ router.group((router) => {
 
     router.post('/create', middlewareFunctions.validateParams([
         {
-            paramKey: 'nmUser',
+            paramKey: 'nome',
             required: true,
             type: 'string',
         },
         {
-            paramKey: 'dsLogin',
+            paramKey: 'telefone',
+            required: true,
+            type: 'number',
+        },
+        {
+            paramKey: 'email',
             required: true,
             type: 'string',
         },
-        {
-            paramKey: 'dsPassword',
-            required: true,
-            type: 'string',
-        },
-        {
-            paramKey: 'dsEmail',
-            required: true,
-            type: 'string',
-        },
-        {
-            paramKey: 'dsAvatar',
-            required: false,
-            type: 'string',
-        }
     ]), async (req, res) => {
         await UserController.create(req.body).then(response => {
             res.status(response.statusCode)
@@ -89,28 +79,23 @@ router.group((router) => {
 
     router.post('/update', middlewareFunctions.validateParams([
         {
-            paramKey: 'idUser',
+            paramKey: 'cdUsuario',
             required: true,
             type: 'number',
         },
         {
-            paramKey: 'nmUser',
+            paramKey: 'nome',
             required: true,
             type: 'string',
         },
         {
-            paramKey: 'dsLogin',
+            paramKey: 'telefone',
             required: true,
-            type: 'string',
+            type: 'number',
         },
         {
-            paramKey: 'dsEmail',
+            paramKey: 'email',
             required: true,
-            type: 'string',
-        },
-        {
-            paramKey: 'dsAvatar',
-            required: false,
             type: 'string',
         }
     ]), async (req, res) => {
@@ -122,7 +107,7 @@ router.group((router) => {
 
     router.post('/delete', middlewareFunctions.validateParams([
         {
-            paramKey: 'idUser',
+            paramKey: 'cdUsuario',
             required: true,
             type: 'number',
         },

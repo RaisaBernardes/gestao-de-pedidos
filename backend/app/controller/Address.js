@@ -28,13 +28,12 @@ class AddressController {
     }
 
     update(address) {
-        delete address.dsPassword;
-        return this.Address.update(address, { where: { idAddress: address.idAddress } }).then(result => defaultResponse(result))
+        return this.Address.update(address, { where: { cdEndereco: address.cdEndereco } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
 
     delete(address) {
-        return this.Address.destroy({ where: { idAddress: address.idAddress } }).then(result => defaultResponse(result))
+        return this.Address.destroy({ where: { cdEndereco: address.cdEndereco } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
 }

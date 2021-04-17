@@ -28,7 +28,6 @@ class OrdersController {
     }
 
     update(order) {
-        delete order.dsPassword;
         return this.Orders.update(order, { where: { idOrder: order.idOrder } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
