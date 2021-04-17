@@ -7,6 +7,7 @@
             <mat-step [stepControl]="cardapioFormGroup">
               <form [formGroup]="cardapioFormGroup">
 
+                <div class="section-row">
                 <div class="section-group">
                     <div class="section-title">HAMBÚRGUERES</div>
                     <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 1</strong> <br> Lorem ipsum dolor sit amet.
@@ -16,6 +17,7 @@
                      <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 3</strong> <br> Lorem ipsum dolor sit amet.
                      </div>
                 </div>
+              </div>
 
                 <div class="section-group">
                     <div class="section-title">ACOMPANHAMENTOS</div>
@@ -76,23 +78,41 @@
             </mat-step>
           </mat-horizontal-stepper>
 
+          <div class="row">
+          <owl-carousel-o [options]="carouselOptions">
+            <ng-template carouselSlide *ngFor="let hamburguer of hamburguerImgs">
+                <div class="slide">
+                  <img src={{hamburguer}}>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
 
-        <!--
-        <div class="card-row">
-            HAMBURGUERES
-        </div>
+        <owl-carousel-o [options]="carouselOptions">
+          <ng-template carouselSlide *ngFor="let bebida of bebidasImgs">
+              <div class="slide">
+                <img src={{bebida}}>
+              </div>
+          </ng-template>
+      </owl-carousel-o>
 
-        <div class="card-row">
-            ACOMPANHAMENTOS
-        </div>
-        
-        <div class="card-row">
-            BEBIDAS
-        </div>
 
-        <div class="card-row">
-            SOBREMESAS
-        </div> -->
+      <owl-carousel-o [options]="carouselOptions">
+        <ng-template carouselSlide *ngFor="let acompanhamento of acompImgs">
+            <div class="slide">
+              <img src={{acompanhamento}}>
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+
+      <owl-carousel-o [options]="carouselOptions">
+        <ng-template carouselSlide *ngFor="let sobremesa of sobrImgs">
+            <div class="slide">
+              <img src={{sobremesa}}>
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+  </div>
+          
     </div>
 
 </div>

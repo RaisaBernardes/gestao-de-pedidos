@@ -14,6 +14,27 @@ export class PedidoComponent implements OnInit {
   enderecoFormGroup: FormGroup;
   pagamentoFormGroup: FormGroup;
 
+  hamburguerImgs = ['cheeseburger_tradicional', 'cheeseburger_duplo', 'cheeseburger_bacon', 'australian_cheese', 'chicken_burger', 'vegan_burger']
+  .map((item) => `../../assets/cardapio/hamburgueres/${item}.png`);
+
+  bebidasImgs = ['cerveja', 'refrigerante', 'suco', 'milkshake', 'agua', 'agua_com_gas']
+  .map((item) => `../../assets/cardapio/bebidas/${item}.png`);
+
+  acompImgs = ['fritas_simples', 'fritas_cheddar_bacon', 'aneis_de_cebola', 'batata_rustica']
+  .map((item) => `../../assets/cardapio/acompanhamentos/${item}.png`);
+
+  sobrImgs = ['brownie', 'pudim']
+  .map((item) => `../../assets/cardapio/sobremesas/${item}.png`);
+
+  carouselOptions: any = {
+    items: 1,
+    singleItem:true,
+    loop:true,
+    autoplayTimeout:3000,
+    autoplay:true,
+    responsiveClass: true
+  }
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -29,5 +50,6 @@ export class PedidoComponent implements OnInit {
     this.item++;
     console.log(this.item);
   }
+  
 
 }

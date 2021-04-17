@@ -8,6 +8,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from './shared/material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
+import {AuthService} from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -15,12 +20,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
-
-import {AuthService} from './services/auth.service';
 import { CardapioComponent } from './cardapio/cardapio.component';
-import { HttpClientModule } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 import { PedidoComponent } from './pedido/pedido.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { PedidoComponent } from './pedido/pedido.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CarouselModule,
     AppRoutingModule,
     FormsModule, 
     MatIconModule,

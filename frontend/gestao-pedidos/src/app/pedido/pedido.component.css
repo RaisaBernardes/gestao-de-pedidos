@@ -30,3 +30,12 @@
     background-color: white;
     border: none;
 }
+
+owl-carousel-o {
+    width: 300px;
+}
+
+.slide img {
+    height: 400px;
+    width: 100%;
+}
