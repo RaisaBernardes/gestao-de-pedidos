@@ -1,5 +1,4 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
-const bcrypt = require('bcrypt');
 
 const Address = sequelizeConnect.define('address', {
     cdEndereco: {
