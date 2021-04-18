@@ -25,5 +25,7 @@ router.use('/item_type', require('./item_type/ItemTypeDAO.js'));
 router.use('/order', require('./order/OrderDAO.js'));
 router.use('/itemInOrder', require('./item_in_order/ItemInOrderDAO.js'));
 router.use('/address', require('./address/AddressDAO.js'));
+router.use('/payment', require('./payment/PaymentDAO.js'));
+router.use('/formOfPayment', require('./formOfPayment/FormOfPaymentDAO.js'));
 
 module.exports = router;
