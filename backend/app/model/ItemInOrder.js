@@ -1,23 +1,29 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
+const Item = require('./Item.js');
 
 const ItemInOrder = sequelizeConnect.define("item_order", {
 
-    idItemOrder: {
+    cdItemPedido: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-        field: "id_item_order"
+        field: "cd_item_pedido"
     },
-    amount: {
-        type: Sequelize.NUMBER,
-        allowNull: false,
-        field: "item_amount"
-    }, // QUANTIA PARA O ITEM DO PEDIDO
-    idOrder: {
+    cdPedido: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        field: "id_order"
+        field: "cd_pedido"
     },
+    quantidade: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        field: "quantidade"
+    }, // QUANTIA PARA O ITEM DO PEDIDO 
 
 })
+
+// Creater Item Foreign Key at item_order Table
+Item.hasMany(ItemInOrder);
+
+module.exports = ItemInOrder;

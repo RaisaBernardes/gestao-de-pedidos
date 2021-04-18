@@ -84,32 +84,32 @@ router.group((router) => {
         },
         {
             paramKey: 'senha',
-            required: false,
+            required: true,
             type: 'string',
         },
         {
             paramKey: 'numero',
-            required: false,
+            required: true,
             type: 'string',
         },
         {
             paramKey: 'complemento',
-            required: false,
+            required: true,
             type: 'string',
         },
         {
             paramKey: 'bairro',
-            required: false,
+            required: true,
             type: 'string',
         },
         {
             paramKey: 'cidade',
-            required: false,
+            required: true,
             type: 'string',
         },
         {
             paramKey: 'estado',
-            required: false,
+            required: true,
             type: 'string',
         },
     ]), async (req, res) => {

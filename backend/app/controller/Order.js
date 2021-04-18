@@ -28,12 +28,12 @@ class OrdersController {
     }
 
     update(order) {
-        return this.Orders.update(order, { where: { idOrder: order.idOrder } }).then(result => defaultResponse(result))
+        return this.Orders.update(order, { where: { cdPedido: order.cdPedido } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
 
     delete(order) {
-        return this.Orders.destroy({ where: { idOrder: order.idOrder } }).then(result => defaultResponse(result))
+        return this.Orders.destroy({ where: { cdPedido: order.cdPedido } }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
     }
 }

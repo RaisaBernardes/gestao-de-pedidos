@@ -1,9 +1,9 @@
 var router = require('express').Router();
 const middlewareFunctions = require('../middleware/Middleware.js');
-const Order = require('../../../model/Order.js'); // import
-const OrdersController = require('../../../controller/Order.js'); // import
+const ItemInOrder = require('../../../model/ItemInOrder.js'); // import
+const ItensInOrdersController = require('../../../controller/ItemInOrder.js'); // import
 
-const OrderController = new OrdersController(Order);
+const ItemInOrderController = new ItensInOrdersController(ItemInOrder);
 require('express-group-routes');
 
 router.group((router) => {
@@ -19,7 +19,7 @@ router.group((router) => {
     });
 
     router.post('/findByPk', async (req, res) => {
-        await OrderController.getById(req.body.cdPedido).then(response => {
+        await ItemInOrderController.getById(req.body.cdItemPedido).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
@@ -27,35 +27,35 @@ router.group((router) => {
 
     router.post('/findByWhere', async (req, res) => {
         const where = req.body;
-        await OrderController.getByWhere(where).then(response => {
+        await ItemInOrderController.getByWhere(where).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
     });
 
     router.get('/findAll', async (req, res) => {
-        await OrderController.getAll().then(response => {
+        await ItemInOrderController.getAll().then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
     });
 
     router.post('/create', async (req, res) => {
-        await OrderController.create(req.body).then(response => {
+        await ItemInOrderController.create(req.body).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         });
     });
 
     router.post('/update', async (req, res) => {
-        await OrderController.update(req.body).then(response => {
+        await ItemInOrderController.update(req.body).then(response => {
             res.status(response.statusCode);
             res.json(response.data);
         });
     });
 
     router.post('/delete', async (req, res) => {
-        await OrderController.delete(req.body).then(response => {
+        await ItemInOrderController.delete(req.body).then(response => {
             res.status(response.statusCode);
             res.json(response.data);
         });

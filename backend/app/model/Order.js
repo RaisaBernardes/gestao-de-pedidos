@@ -1,28 +1,37 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
+const User = require('./User.js');
 
 const Order = sequelizeConnect.define("order", {
-    idOrder: {
+    cdPedido: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-        field: "id_order"
+        field: "cd_pedido"
     },
-    idClient: {
+    cdUsuario: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        field: "id_offer"
+        field: "cd_usuario"
     },
     status: {
         type: Sequelize.STRING,
         allowNull: false,
         field: "status"
     },
-    price: {
+    precoTotal: {
         type: Sequelize.FLOAT, 
         allowNull: false,
-        field: "price"
-    }
+        field: "preco_total"
+    },
+    hrRealizacaoPedido: {
+        type: Sequelize.TIME, 
+        allowNull: false,
+        field: "hr_realizacao_pedido"
+    },
 })
+
+// Creater User Foreign Key at Order Table
+User.hasMany(Order);
 
 module.exports = Order;
