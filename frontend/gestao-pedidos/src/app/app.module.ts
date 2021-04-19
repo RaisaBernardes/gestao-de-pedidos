@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import {AuthService} from './services/auth.service';
+import { WebSocketService } from './services/websocket.service';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -22,6 +23,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { PedidoService } from './services/pedido.service';
 
 
 @NgModule({
@@ -48,7 +50,7 @@ import { PedidoComponent } from './pedido/pedido.component';
     MaterialModule,
     HttpClientModule
   ],
-  providers: [AuthService, CookieService],
+  providers: [AuthService, CookieService, WebSocketService, PedidoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

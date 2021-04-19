@@ -3,79 +3,64 @@
     
     <div class="card">
         
-          <mat-horizontal-stepper [linear]="isLinear" #stepper>
-            <mat-step [stepControl]="cardapioFormGroup">
-              <form [formGroup]="cardapioFormGroup">
+          <mat-horizontal-stepper [linear]="true" #stepper>
+            <mat-step>
 
                 <div class="section-row">
                 <div class="section-group">
                     <div class="section-title">HAMBÚRGUERES</div>
-                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 1</strong> <br> Lorem ipsum dolor sit amet.
+                    <div class="section-item" *ngFor="let hamburguer of itensCardapio.hamburgueres">
+                      <button class="item-button" (click)="addItem(hamburguer)">+</button> <strong>{{hamburguer.descricao}}</strong> <br>{{hamburguer.ingredientes_descricao}}                    
                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 2</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Hambúrguer 3</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
                 </div>
               </div>
 
                 <div class="section-group">
                     <div class="section-title">ACOMPANHAMENTOS</div>
-                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button>  <strong>Acompanhamento 1</strong> <br> Lorem ipsum dolor sit amet.
+                    <div class="section-item" *ngFor="let ac of itensCardapio.acompanhamentos">
+                      <button class="item-button" (click)="addItem(ac)">+</button> <strong>{{ac.descricao}}</strong> <br>{{ac.ingredientes_descricao}}                    
                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Acompanhamento 2</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Acompanhamento 3</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
                 </div>
 
                 <div class="section-group">
                     <div class="section-title">BEBIDAS</div>
-                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Bebida 1</strong> <br> Lorem ipsum dolor sit amet.
+                    <div class="section-item" *ngFor="let bebida of itensCardapio.bebidas">
+                      <button class="item-button" (click)="addItem(bebida)">+</button> <strong>{{bebida.descricao}}</strong> <br>{{bebida.ingredientes_descricao}}                    
                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Bebida 2</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Bebida 3</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
                 </div>
 
                 <div class="section-group">
                     <div class="section-title">SOBREMESAS</div>
-                    <div class="section-item"><button class="item-button" (click)="addItem()">+</button> <strong>Sobremesa 1</strong> <br> Lorem ipsum dolor sit amet.
+                    <div class="section-item" *ngFor="let sobremesa of itensCardapio.sobremesas">
+                      <button class="item-button" (click)="addItem(sobremesa)">+</button> <strong>{{sobremesa.descricao}}</strong> <br>{{sobremesa.ingredientes_descricao}}                    
                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Sobremesa 2</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
-                     <div class="section-item"> <button class="item-button" (click)="addItem()">+</button> <strong>Sobremesa 3</strong> <br> Lorem ipsum dolor sit amet.
-                     </div>
                 </div>
 
+                <div class="text-center"><strong>TOTAL: R$ {{vlTotal | number : '1.2'}}</strong></div>
                 <div>
                   <button mat-button matStepperNext>Próximo</button>
                 </div>
-              </form>
             </mat-step>
-            <!-- #docregion label -->
-            <mat-step [stepControl]="enderecoFormGroup">
-            <!-- #enddocregion label -->
-              <form [formGroup]="enderecoFormGroup">
-                <mat-form-field>
-                  <mat-label>Address</mat-label>
-                  <input matInput formControlName="enderecoCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                        >
+           
+            
+             <mat-step [stepControl]="pagamentoFormGroup">
+
+                <form [formGroup]="pagamentoFormGroup">
+                  <mat-form-field appearance="fill" style="width: 500px">
+                  <mat-label>Escolha a forma do pagamento</mat-label>
+                  <mat-select required formControlName="forma">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let pagamento of formaPagamento" [value]="pagamento">
+                      {{pagamento.descricao}}
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Voltar</button>
-                  <button mat-button matStepperNext>Próximo</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step>
-              <p>You are now done.</p>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button (click)="stepper.reset()">Reset</button>
-              </div>
-            </mat-step>
+                  <div>
+                    <button mat-button matStepperPrevious>Anterior</button>
+                    <button mat-button (click)="finalizarPedido()">Confirmar</button>
+                  </div>
+                </form>
+              </mat-step>
           </mat-horizontal-stepper>
 
           <div class="row">
