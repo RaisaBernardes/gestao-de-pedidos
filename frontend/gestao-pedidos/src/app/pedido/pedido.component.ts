@@ -86,14 +86,36 @@ export class PedidoComponent implements OnInit {
        if (element.cd_item == item.cd_item) {
          exists = true;
          element.quantidade++;
-         this.vlTotal += item.preco * element.quantidade
        }
     });
 
     if (!exists) {
     this.itensPedido.push(new PedidoContem(item.cd_item))
-    this.vlTotal += item.preco;
     }
+    this.vlTotal += item.preco;
+
+    console.log(this.itensPedido);
+  }
+
+  removeItem(item: Item) {
+    var exists = false;
+
+    this.itensPedido.map(element => {
+      if (element.cd_item == item.cd_item && element.quantidade > 1) {
+        exists = true;
+        element.quantidade--; 
+      }
+   });
+
+   this.itensPedido.forEach(element => {
+    if (element.cd_item == item.cd_item) {
+      this.vlTotal -= item.preco;
+    }})
+
+   if (!exists) {
+    this.itensPedido = this.itensPedido.filter(element => element.cd_item !== item.cd_item);
+   }
+
     console.log(this.itensPedido);
   }
 

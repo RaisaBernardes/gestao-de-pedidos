@@ -10,7 +10,7 @@
                 <div class="section-group">
                     <div class="section-title">HAMBÚRGUERES</div>
                     <div class="section-item" *ngFor="let hamburguer of itensCardapio.hamburgueres">
-                      <button class="item-button" (click)="addItem(hamburguer)">+</button> <strong>{{hamburguer.descricao}}</strong> <br>{{hamburguer.ingredientes_descricao}}                    
+                      <button class="item-button" (click)="addItem(hamburguer)">+</button> <button class="item-button" (click)="removeItem(hamburguer)">—</button>  <strong>{{hamburguer.descricao}}</strong> <br>{{hamburguer.ingredientes_descricao}}                    
                     </div>
                 </div>
               </div>
@@ -18,21 +18,21 @@
                 <div class="section-group">
                     <div class="section-title">ACOMPANHAMENTOS</div>
                     <div class="section-item" *ngFor="let ac of itensCardapio.acompanhamentos">
-                      <button class="item-button" (click)="addItem(ac)">+</button> <strong>{{ac.descricao}}</strong> <br>{{ac.ingredientes_descricao}}                    
+                      <button class="item-button" (click)="addItem(ac)">+</button> <button class="item-button" (click)="removeItem(ac)">—</button>  <strong>{{ac.descricao}}</strong> <br>{{ac.ingredientes_descricao}}                    
                     </div>
                 </div>
 
                 <div class="section-group">
                     <div class="section-title">BEBIDAS</div>
                     <div class="section-item" *ngFor="let bebida of itensCardapio.bebidas">
-                      <button class="item-button" (click)="addItem(bebida)">+</button> <strong>{{bebida.descricao}}</strong> <br>{{bebida.ingredientes_descricao}}                    
+                      <button class="item-button" (click)="addItem(bebida)">+</button> <button class="item-button" (click)="removeItem(bebida)">—</button> <strong>{{bebida.descricao}}</strong> <br>{{bebida.ingredientes_descricao}}                    
                     </div>
                 </div>
 
                 <div class="section-group">
                     <div class="section-title">SOBREMESAS</div>
                     <div class="section-item" *ngFor="let sobremesa of itensCardapio.sobremesas">
-                      <button class="item-button" (click)="addItem(sobremesa)">+</button> <strong>{{sobremesa.descricao}}</strong> <br>{{sobremesa.ingredientes_descricao}}                    
+                      <button class="item-button" (click)="addItem(sobremesa)">+</button><button class="item-button" (click)="removeItem(sobremesa)">—</button> <strong>{{sobremesa.descricao}}</strong> <br>{{sobremesa.ingredientes_descricao}}                    
                     </div>
                 </div>
 
