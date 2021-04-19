@@ -19,6 +19,11 @@ const Item = sequelizeConnect.define("item", {
         allowNull: false,
         field: "descricao"
     },
+    ingredientesDescricao: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        field: "ingredientes_descricao"
+    },
 });
 
 ItemType.hasMany(Item);
