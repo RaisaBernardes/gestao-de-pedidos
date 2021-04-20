@@ -23,12 +23,7 @@ const Order = sequelizeConnect.define("order", {
         type: Sequelize.FLOAT, 
         allowNull: false,
         field: "preco_total"
-    },
-    hrRealizacaoPedido: {
-        type: Sequelize.TIME, 
-        allowNull: false,
-        field: "hr_realizacao_pedido"
-    },
+    }
 })
 
 // Creater User Foreign Key at Order Table

@@ -47,6 +47,21 @@ router.group((router) => {
         });
     });
 
+    router.post('/createAll', async (req, res) => {
+        let items = 0;
+        await req.body.forEach(async element => {
+            await ItemController.create(element).then(response => {
+                statusCode = response.statusCode;
+                data = response.data;
+                items++;
+            });
+            if(items == req.body.length){
+                res.status(statusCode)
+                res.json(data)
+            }
+        });
+    });
+
     router.post('/update', async (req, res) => {
         await ItemController.update(req.body).then(response => {
             res.status(response.statusCode);

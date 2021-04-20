@@ -70,7 +70,7 @@ router.group((router) => {
         {
             paramKey: 'telefone',
             required: true,
-            type: 'number',
+            type: 'string',
         },
         {
             paramKey: 'logradouro',
@@ -115,7 +115,7 @@ router.group((router) => {
     ]), async (req, res) => {
         await AddressController.create(req.body).then(async responseAddress => {
             if(responseAddress.statusCode == 200){
-                req.body.addressIdAddress = responseAddress.data.idAddress;
+                req.body.addressCdEndereco = responseAddress.data.cdEndereco;
                 await UserController.create(req.body).then(responseUser => {
                     res.status(responseUser.statusCode)
                     res.json(responseUser.data)

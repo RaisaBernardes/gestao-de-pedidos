@@ -1,10 +1,10 @@
 var router = require('express').Router();
 const middlewareFunctions = require('../middleware/Middleware.js');
 const formOfPayment = require('../../../model/FormOfPayment.js'); // import
-// const formOfPaymentsController = require('../../../controller/FormOfPayment.js'); // import
-const abstractController = require('../../../controller/AbstractController.js'); // import
+const formOfPaymentsController = require('../../../controller/FormOfPayment.js'); // import
+// const abstractController = require('../../../controller/AbstractController.js'); // import
 
-const formOfPaymentController = new abstractController(formOfPayment);
+const formOfPaymentController = new formOfPaymentsController(formOfPayment);
 require('express-group-routes');
 
 router.group((router) => {

@@ -1,9 +1,18 @@
 var router = require('express').Router();
 const middlewareFunctions = require('../middleware/Middleware.js');
+
 const Order = require('../../../model/Order.js'); // import
 const OrdersController = require('../../../controller/Order.js'); // import
-
 const OrderController = new OrdersController(Order);
+
+const payment = require('../../../model/Payment.js'); // import
+const paymentsController = require('../../../controller/Payment.js'); // import
+const paymentController = new paymentsController(payment);
+
+const ItemInOrder = require('../../../model/ItemInOrder.js'); // import
+const ItensInOrdersController = require('../../../controller/ItemInOrder.js'); // import
+const ItemInOrderController = new ItensInOrdersController(ItemInOrder);
+
 require('express-group-routes');
 
 router.group((router) => {
@@ -41,9 +50,48 @@ router.group((router) => {
     });
 
     router.post('/create', async (req, res) => {
-        await OrderController.create(req.body).then(response => {
-            res.status(response.statusCode)
-            res.json(response.data)
+        let paymentAndItemInOrder = req.body;
+
+        let payment = {
+            'vlTotal': paymentAndItemInOrder.pagamento.vlTotal,
+            'formOfPaymentCdFormaPagamento': paymentAndItemInOrder.pagamento.forma.cdFormaPagamento
+        };
+
+        let order = {
+            'cdUsuario': req.session.user.cdUsuario,
+            'status': "PEDIDO_REALIZADO",
+            'precoTotal': payment.vlTotal
+        };
+
+        let statusCode = {
+            'paymentStatusCode': "",
+            'itemInOrderStatusCode': "",
+            'orderStatusCode': ""
+        };
+
+        let resultData = {
+            'paymentData': "",
+            'itemInOrderData': "",
+            'orderData': ""
+        };
+
+        await OrderController.create(order).then(async responseOrder => {
+            payment.orderCdPedido = response.data.cdPedido; // Pegando a PK do pedido e Adicionando no Pagamento
+            await paymentController.create(payment).then(responsePayment => {
+                statusCode.paymentStatusCode = responsePayment.statusCode;
+                resultData.paymentData = responsePayment.data;
+            });
+
+            await paymentAndItemInOrder.pedidos.forEach(async element => {
+                element.orderCdPedido = response.data.cdPedido; // Pegando a PK do pedido e Adicionando no Pedido Contem
+                await ItemInOrderController.create(element).then(responseItemInOrder => {
+                    statusCode.itemInOrderStatusCode = responseItemInOrder.statusCode;
+                    resultData.itemInOrderData = responseItemInOrder.data;
+                });
+            });
+
+            statusCode.orderStatusCode = responseOrder.statusCode;
+            resultData.orderData = responseOrder.data;
         });
     });
 
