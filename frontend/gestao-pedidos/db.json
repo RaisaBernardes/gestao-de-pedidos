@@ -35,128 +35,128 @@
       {
         "cd_item": 1,
         "descricao": "Cheeseburger Tradicional",
-        "ingredientes_descricao": "pão brioche, hambúrguer bovino 120g, alface, cebola, tomate, queijo, maionese da casa",
+        "ingredientesDescricao": "pão brioche, hambúrguer bovino 120g, alface, cebola, tomate, queijo, maionese da casa",
         "preco": 23.00,
-        "cd_tipo_item": 1
+        "itemTypeCdTipoItem": 1
       },
       {
         "cd_item": 2,
         "descricao": "Cheeseburger Bacon",
-        "ingredientes_descricao": "pão brioche, hambúrguer bovino 120g, bacon, alface, cebola, tomate, queijo, maionese da casa",
+        "ingredientesDescricao": "pão brioche, hambúrguer bovino 120g, bacon, alface, cebola, tomate, queijo, maionese da casa",
         "preco": 26.00,
-        "cd_tipo_item": 1
+        "itemTypeCdTipoItem": 1
       },
       {
         "cd_item": 3,
         "descricao": "Cheeseburger Duplo",
-        "ingredientes_descricao": "pão brioche, hambúrguer bovino 120g, baco, alface, cebola, tomate, queijo, maionese da casa",
+        "ingredientesDescricao": "pão brioche, hambúrguer bovino 120g, baco, alface, cebola, tomate, queijo, maionese da casa",
         "preco": 30.00,
-        "cd_tipo_item": 1
+        "itemTypeCdTipoItem": 1
       },
       {
         "cd_item": 4,
         "descricao": "Australian Cheese",
-        "ingredientes_descricao": "pão australiano, hambúrguer bovino 120g, alface, cebola, tomate, queijo, maionese da casa",
+        "ingredientesDescricao": "pão australiano, hambúrguer bovino 120g, alface, cebola, tomate, queijo, maionese da casa",
         "preco": 25.00,
-        "cd_tipo_item": 1
+        "itemTypeCdTipoItem": 1
       },
       {
         "cd_item": 5,
         "descricao": "Chicken Burger",
-        "ingredientes_descricao": "pão brioche, hambúrguer de frango 120g, alface, cebola, tomate, queijo, maionese da casa",
+        "ingredientesDescricao": "pão brioche, hambúrguer de frango 120g, alface, cebola, tomate, queijo, maionese da casa",
         "preco": 23.00,
-        "cd_tipo_item": 1
+        "itemTypeCdTipoItem": 1
       },
       {
         "cd_item": 6,
         "descricao": "Vegan Burger",
-        "ingredientes_descricao": "pão brioche, hambúrguer de grão de bico 120g, alface, cebola, tomate, queijo cheddar cremoso vegano, maionese da casa vegana",
+        "ingredientesDescricao": "pão brioche, hambúrguer de grão de bico 120g, alface, cebola, tomate, queijo cheddar cremoso vegano, maionese da casa vegana",
         "preco": 25.00,
-        "cd_tipo_item": 1
+        "itemTypeCdTipoItem": 1
       },
       {
         "cd_item": 7,
         "descricao": "Fritas Simples",
-        "ingredientes_descricao": "deliciosas fritas crocantes",
+        "ingredientesDescricao": "deliciosas fritas crocantes",
         "preco": 10.00,
-        "cd_tipo_item": 2
+        "itemTypeCdTipoItem": 2
       },
       {
         "cd_item": 8,
         "descricao": "Fritas com Cheddar e Bacon",
-        "ingredientes_descricao": "cestinha de batatas fritas com cheddar e bacon",
+        "ingredientesDescricao": "cestinha de batatas fritas com cheddar e bacon",
         "preco": 13.00,
-        "cd_tipo_item": 2
+        "itemTypeCdTipoItem": 2
       },
       {
         "cd_item": 9,
         "descricao": "Anéis de Cebola",
-        "ingredientes_descricao": "porção com 10 anéis de cebola",
+        "ingredientesDescricao": "porção com 10 anéis de cebola",
         "preco": 13.00,
-        "cd_tipo_item": 2
+        "itemTypeCdTipoItem": 2
       },
       {
         "cd_item": 10,
         "descricao": "Batata Rústica",
-        "ingredientes_descricao": "cestinha de batatas rústicas temperadas com páprica e ervas",
+        "ingredientesDescricao": "cestinha de batatas rústicas temperadas com páprica e ervas",
         "preco": 13.00,
-        "cd_tipo_item": 2
+        "itemTypeCdTipoItem": 2
       },
       {
         "cd_item": 11,
         "descricao": "Cerveja (Long Neck 330ml)",
-        "ingredientes_descricao": "opções: heineken, budweiser",
+        "ingredientesDescricao": "opções: heineken, budweiser",
         "preco": 9.00,
-        "cd_tipo_item": 3
+        "itemTypeCdTipoItem": 3
       },
       {
         "cd_item": 12,
         "descricao": "Refrigerante (Lata 350ml)",
-        "ingredientes_descricao": "opções: coca-cola, coca-cola zero açúcar, sprite, fanta, guaraná antártica",
+        "ingredientesDescricao": "opções: coca-cola, coca-cola zero açúcar, sprite, fanta, guaraná antártica",
         "preco": 6.00,
-        "cd_tipo_item": 3
+        "itemTypeCdTipoItem": 3
       },
       {
         "cd_item": 13,
         "descricao": "Suco (Copo 300ml)",
-        "ingredientes_descricao": "opções: morango, laranja, limão, morango com laranja",
+        "ingredientesDescricao": "opções: morango, laranja, limão, morango com laranja",
         "preco": 6.00,
-        "cd_tipo_item": 3
+        "itemTypeCdTipoItem": 3
       },
       {
         "cd_item": 14,
         "descricao": "Milkshake (Tarça 400ml)",
-        "ingredientes_descricao": "opções: ovomaltine, morango, ninho com nutella",
+        "ingredientesDescricao": "opções: ovomaltine, morango, ninho com nutella",
         "preco": 13.00,
-        "cd_tipo_item": 3
+        "itemTypeCdTipoItem": 3
       },
       {
         "cd_item": 15,
         "descricao": "Água",
-        "ingredientes_descricao": "",
+        "ingredientesDescricao": "",
         "preco": 3.00,
-        "cd_tipo_item": 3
+        "itemTypeCdTipoItem": 3
       },
       {
         "cd_item": 16,
         "descricao": "Água com Gás",
-        "ingredientes_descricao": "",
+        "ingredientesDescricao": "",
         "preco": 4.00,
-        "cd_tipo_item": 3
+        "itemTypeCdTipoItem": 3
       },
       {
         "cd_item": 17,
         "descricao": "Brownie",
-        "ingredientes_descricao": "opções: chocolate tradicional, chocolate meio amargo, doce de leite",
+        "ingredientesDescricao": "opções: chocolate tradicional, chocolate meio amargo, doce de leite",
         "preco": 9.00,
-        "cd_tipo_item": 4
+        "itemTypeCdTipoItem": 4
       },
       {
         "cd_item": 18,
         "descricao": "Pudim",
-        "ingredientes_descricao": "",
+        "ingredientesDescricao": "",
         "preco": 7.00,
-        "cd_tipo_item": 4
+        "itemTypeCdTipoItem": 4
       }
     ],
     "pedidos": []
