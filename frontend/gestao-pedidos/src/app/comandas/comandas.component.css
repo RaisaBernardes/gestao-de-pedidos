@@ -1,0 +1,15 @@
+.container-fluid {
+    padding-bottom: 20px;
+}
+
+.container-title {
+    color: white;
+    font-size: 30px;
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    height: 500px;
+    padding: 30px;
+}
