@@ -53,13 +53,14 @@ router.group((router) => {
         let paymentAndItemInOrder = req.body;
 
         let payment = {
+            'orderCdPedido': '',
             'vlTotal': paymentAndItemInOrder.pagamento.vlTotal,
-            'formOfPaymentCdFormaPagamento': paymentAndItemInOrder.pagamento.forma.cdFormaPagamento
+            'formOfPaymentCdFormaPagamento': paymentAndItemInOrder.pagamento.formaPagamento.cdFormaPagamento
         };
-
+        
         let order = {
             'cdUsuario': req.session.user.cdUsuario,
-            'status': "PEDIDO_REALIZADO",
+            'status': "CRIADO",
             'precoTotal': payment.vlTotal
         };
 
@@ -76,14 +77,14 @@ router.group((router) => {
         };
 
         await OrderController.create(order).then(async responseOrder => {
-            payment.orderCdPedido = response.data.cdPedido; // Pegando a PK do pedido e Adicionando no Pagamento
+            payment.orderCdPedido = responseOrder.data.cdPedido; // Pegando a PK do pedido e Adicionando no Pagamento
             await paymentController.create(payment).then(responsePayment => {
                 statusCode.paymentStatusCode = responsePayment.statusCode;
                 resultData.paymentData = responsePayment.data;
             });
 
             await paymentAndItemInOrder.pedidos.forEach(async element => {
-                element.orderCdPedido = response.data.cdPedido; // Pegando a PK do pedido e Adicionando no Pedido Contem
+                element.orderCdPedido = responseOrder.data.cdPedido; // Pegando a PK do pedido e Adicionando no Pedido Contem
                 await ItemInOrderController.create(element).then(responseItemInOrder => {
                     statusCode.itemInOrderStatusCode = responseItemInOrder.statusCode;
                     resultData.itemInOrderData = responseItemInOrder.data;
@@ -92,6 +93,10 @@ router.group((router) => {
 
             statusCode.orderStatusCode = responseOrder.statusCode;
             resultData.orderData = responseOrder.data;
+
+            res.status(statusCode.orderStatusCode);
+            res.json(resultData);
+
         });
     });
 
