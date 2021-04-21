@@ -33,7 +33,11 @@
     width: 30px;
     text-align: center;
     margin-right: 5px;
-    border-color:rgb(0, 0, 0);
+    border-color:none;
+}
+
+.item-button:hover {
+    background-color: rgb(65, 57, 57);
 }
 
 owl-carousel-o {
@@ -44,3 +48,19 @@ owl-carousel-o {
     height: 400px;
     width: 100%;
 }
+
+::ng-deep mat-form-field {
+    color: black!important;
+  } 
+  
+  ::ng-deep mat-form-field  .mat-form-field-label {
+    color: black!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-form-field-underline {
+    background-color: black!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-input-element {
+    caret-color: black!important;
+  }

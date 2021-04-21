@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PedidoService } from '../services/pedido.service';
-import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento } from '../shared/model.module';
+import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco } from '../shared/model.module';
 
 @Component({
   selector: 'app-pedido',
@@ -14,11 +14,10 @@ export class PedidoComponent implements OnInit {
   vlTotal: number = 0;
 
   formaPagamento: FormaPagamento[] = new Array;
+  enderecos: Endereco[] = new Array;
   pagamentoUsuario: Pagamento = new Pagamento;
 
-  cardapioFormGroup: FormGroup;
-  enderecoFormGroup: FormGroup;
-  pagamentoFormGroup: FormGroup;
+  pedidoFormGroup: FormGroup;
 
   hamburguerImgs = ['cheeseburger_tradicional', 'cheeseburger_duplo', 'cheeseburger_bacon', 'australian_cheese', 'chicken_burger', 'vegan_burger']
   .map((item) => `../../assets/cardapio/hamburgueres/${item}.png`);
@@ -53,28 +52,33 @@ export class PedidoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.pedidoService.fetchMockCardapio(1).subscribe((data) => {
+    this.pedidoService.fetchCardapio(1).subscribe((data) => {
       this.itensCardapio.hamburgueres = this.itensCardapio.hamburgueres.concat(data);
     })
 
-    this.pedidoService.fetchMockCardapio(2).subscribe((data) => {
+    this.pedidoService.fetchCardapio(2).subscribe((data) => {
       this.itensCardapio.acompanhamentos = this.itensCardapio.acompanhamentos.concat(data);
     })
 
-    this.pedidoService.fetchMockCardapio(3).subscribe((data) => {
+    this.pedidoService.fetchCardapio(3).subscribe((data) => {
       this.itensCardapio.bebidas = this.itensCardapio.bebidas.concat(data);
     })
 
-    this.pedidoService.fetchMockCardapio(4).subscribe((data) => {
+    this.pedidoService.fetchCardapio(4).subscribe((data) => {
       this.itensCardapio.sobremesas = this.itensCardapio.sobremesas.concat(data);
     })
 
-    this.pedidoService.fetchMockPagamento().subscribe((data) => {
+    this.pedidoService.fetchPagamento().subscribe((data) => {
       this.formaPagamento = this.formaPagamento.concat(data);
     })
 
-    this.pagamentoFormGroup = this.formBuilder.group({
-      forma: ['']
+    this.pedidoService.fetchEnderecoUsuario().subscribe((data) => {
+      this.enderecos = this.enderecos.concat(data);
+    })
+
+    this.pedidoFormGroup = this.formBuilder.group({
+      forma: ['', [Validators.required]],
+      endereco: ['', [Validators.required]]
     })
   }
 
@@ -83,14 +87,14 @@ export class PedidoComponent implements OnInit {
     var exists = false;
 
     this.itensPedido.map(element => {
-       if (element.cd_item == item.cd_item) {
+       if (element.itemCdItem == item.cdItem) {
          exists = true;
          element.quantidade++;
        }
     });
 
     if (!exists) {
-    this.itensPedido.push(new PedidoContem(item.cd_item))
+    this.itensPedido.push(new PedidoContem(item.cdItem))
     }
     this.vlTotal += item.preco;
 
@@ -101,19 +105,19 @@ export class PedidoComponent implements OnInit {
     var exists = false;
 
     this.itensPedido.map(element => {
-      if (element.cd_item == item.cd_item && element.quantidade > 1) {
+      if (element.itemCdItem == item.cdItem && element.quantidade > 1) {
         exists = true;
         element.quantidade--; 
       }
    });
 
    this.itensPedido.forEach(element => {
-    if (element.cd_item == item.cd_item) {
+    if (element.itemCdItem == item.cdItem) {
       this.vlTotal -= item.preco;
     }})
 
    if (!exists) {
-    this.itensPedido = this.itensPedido.filter(element => element.cd_item !== item.cd_item);
+    this.itensPedido = this.itensPedido.filter(element => element.itemCdItem !== item.cdItem);
    }
 
     console.log(this.itensPedido);
@@ -121,16 +125,21 @@ export class PedidoComponent implements OnInit {
 
   finalizarPedido() {
     this.pagamentoUsuario = {
-      vl_total: this.vlTotal,
-      forma_pagamento: this.pagamentoFormGroup.getRawValue()
+      vlTotal: this.vlTotal,
+      formaPagamento: this.pedidoFormGroup.getRawValue().forma
     }
 
     var pedidoUsuario: Pedido = {
       pedidos: this.itensPedido,
       pagamento: this.pagamentoUsuario
+     // enderecoEntrega: this.pagamentoFormGroup.getRawValue().endereco
     } 
 
     console.log(pedidoUsuario);
+
+    this.pedidoService.realizarPedido(pedidoUsuario).subscribe((data) => {
+      console.log(data);
+    })
   }
   
 

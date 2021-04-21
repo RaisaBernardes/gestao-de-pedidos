@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormaPagamento, Item, Pedido, PedidoContem } from '../shared/model.module';
+import { Endereco, FormaPagamento, Item, Pedido } from '../shared/model.module';
 
 @Injectable({
   providedIn: 'root'
@@ -9,31 +9,33 @@ export class PedidoService {
 
   requestUrl = "http://localhost:9090/api";
   pedidoUrl = this.requestUrl + "/order";
+  tipoPagamentoUrl = this.requestUrl + "/formOfPayment"
   itemUrl = this.requestUrl + "/item";
+  addressUrl = this.requestUrl + "/address";
   config = {withCredentials: true}; // SEMPRE PASSAR
   // SERVICE RESPONSAVEL PELA PARTE DE PEDIDOS
-
-  // mock
-  pedidoMockUrl = "http://localhost:3000/item";
-  pagamentoMockUrl = "http://localhost:3000/formOfPayment"
 
   constructor(private http: HttpClient) {
    }
 
    // para cliente
    realizarPedido(pedido: Pedido) {
-     return this.http.post<any>(this.pedidoUrl+"/realizarPedido", pedido, this.config);
-     // O QUE SERIA IDEAL: FRONT-END ENVIA OBJETO PEDIDO COM PEDIDOCONTEM 
-     // E A API SERÁ RESPONSAVEL POR RELACIONAR OS DOIS
+     return this.http.post<any>(this.pedidoUrl+"/create", pedido, this.config);
    }
 
-   fetchMockCardapio(cd_tipo_item: any) {
-     return this.http.get<Item>(`${this.pedidoMockUrl}?cd_tipo_item=${cd_tipo_item}`);
+   fetchCardapio(itemTypeCdTipoItem: any) {
+     const body = {"itemTypeCdTipoItem": itemTypeCdTipoItem}
+
+     return this.http.post<Item>(this.itemUrl+"/findByWhere", body, this.config);
    }
 
-   fetchMockPagamento() {
-     return this.http.get<FormaPagamento>(this.pagamentoMockUrl);
-   }
+   fetchPagamento() {
+    return this.http.get<FormaPagamento>(this.tipoPagamentoUrl+"/findAll", this.config);
+  }
+
+  fetchEnderecoUsuario() {
+    return this.http.get<Endereco>(this.addressUrl+"/findByUser", this.config);
+  }
 
    // para admin
    mudarStatus(pedidoAtualizado: Pedido) {

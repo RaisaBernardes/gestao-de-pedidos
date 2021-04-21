@@ -2,6 +2,7 @@ export class Usuario {
     nm_completo?: String;
     email: String;
     senha: String;
+    telefone?: String;
     /* ENDEREÇO PRINCIPAL DO USUARIO PARA O FORM */
     logradouro?: String;
     numero?: number;
@@ -14,22 +15,14 @@ export class Usuario {
 }
 
 export class Endereco {
-    cd_endereco: number;
-    cd_usuario: number;
+    cdEndereco: number;
+    cdUsuario: number;
     logradouro: String;
     numero: number;
     complemento: String;
     bairro: String;
     cidade: String;
     estado: String;
-}
-
-export class PedidoComanda {
-    cd_user: number;
-    status: String;
-    hr_realizacao: Date;
-    pagamento: Pagamento;
-    pedidos: PedidoContem[];
 }
 
 export class Pedido {
@@ -39,11 +32,11 @@ export class Pedido {
 }
 
 export class Item {
-    cd_item: number;
+    cdItem: number;
     descricao: String;
-    ingredientes_descricao: String;
+    ingredientesDescricao: String;
     preco: number;
-    tipo_item: TipoItem;
+    itemTypeCdTipoItem: TipoItem;
 }
 
 export class TipoItem {
@@ -52,22 +45,22 @@ export class TipoItem {
 }
 
 export class Pagamento {
-    forma_pagamento: FormaPagamento;
-    vl_total: number;
+    formaPagamento: FormaPagamento;
+    vlTotal: number;
 }
 
 export class FormaPagamento {
-    cd_forma_pagamento: number;
+    cdFormaPagamento: number;
     descricao: String;
 }
 
 // RELAÇÃO ITEM COM PEDIDO
 export class PedidoContem {
-    cd_item: number;
+    itemCdItem: number;
     quantidade: number;
 
-    constructor(cd_item) {
-        this.cd_item = cd_item;
+    constructor(itemCdItem) {
+        this.itemCdItem = itemCdItem;
         this.quantidade = 1;
     }
 }

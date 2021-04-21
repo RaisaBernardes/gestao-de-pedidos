@@ -15,7 +15,7 @@
 
         <div class="row">
             <mat-form-field class="example-full-width w-75">
-              <input type="number" name="telefone" formControlName="telefone" matInput placeholder="Telefone">
+              <input name="telefone" formControlName="telefone" matInput placeholder="Telefone">
               <mat-error  *ngIf="cadastroUsuario.touched && f.telefone.errors?.required">Campo Obrigatório</mat-error>
             </mat-form-field>
             </div>
