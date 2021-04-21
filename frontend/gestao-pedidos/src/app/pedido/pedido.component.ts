@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import Swal from 'sweetalert2';
 import { PedidoService } from '../services/pedido.service';
 import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco } from '../shared/model.module';
 
@@ -12,6 +14,8 @@ import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco } from 
 })
 export class PedidoComponent implements OnInit {
 
+  @ViewChild('stepper') private myStepper: MatStepper; // stepper
+
   itensPedido: PedidoContem[] = new Array;
   vlTotal: number = 0;
 
@@ -19,6 +23,7 @@ export class PedidoComponent implements OnInit {
   enderecos: Endereco[] = new Array;
   pagamentoUsuario: Pagamento = new Pagamento;
 
+  pedidoUsuario: Pedido = new Pedido;
   pedidoFormGroup: FormGroup;
 
   hamburguerImgs = ['cheeseburger_tradicional', 'cheeseburger_duplo', 'cheeseburger_bacon', 'australian_cheese', 'chicken_burger', 'vegan_burger']
@@ -130,22 +135,45 @@ export class PedidoComponent implements OnInit {
   }
 
   finalizarPedido() {
-    this.pagamentoUsuario = {
-      vlTotal: this.vlTotal,
-      formaPagamento: this.pedidoFormGroup.getRawValue().forma
-    }
 
-    var pedidoUsuario: Pedido = {
-      pedidos: this.itensPedido,
-      pagamento: this.pagamentoUsuario,
-      enderecoEntrega: this.pedidoFormGroup.getRawValue().endereco
-    } 
+    this.pedidoFormGroup.get('forma').disable();
+    this.pedidoFormGroup.get('endereco').disable();
+    
+    Swal.fire({
+      title: 'Deseja confirmar este pedido?',
+      html: `<p>Total: R$ ${this.vlTotal.toFixed(2)} </p>` 
+      +`<p>Pagamento: <i>${this.pedidoFormGroup.getRawValue().forma.descricao}</i></p>`,
+      showDenyButton: true,
+      confirmButtonText: `Confirmar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isDenied) {
+        Swal.fire('Pedido cancelado!', '', 'info')
+        this.pedidoFormGroup.get('forma').enable();
+        this.pedidoFormGroup.get('endereco').enable();
+      } else {
 
-   // console.log(pedidoUsuario);
+        this.pagamentoUsuario = {
+          vlTotal: this.vlTotal,
+          formaPagamento: this.pedidoFormGroup.getRawValue().forma
+        }
+    
+        this.pedidoUsuario = {
+          pedidos: this.itensPedido,
+          pagamento: this.pagamentoUsuario,
+          enderecoEntrega: this.pedidoFormGroup.getRawValue().endereco
+        } 
+    
+        this.pedidoService.realizarPedido(this.pedidoUsuario).subscribe((data) => {
+          this.pedidoUsuario.cdPedido = data.orderData.cdPedido;
+          this.myStepper.next();
+        }) 
+    
+        console.log(this.pedidoUsuario);
 
-    this.pedidoService.realizarPedido(pedidoUsuario).subscribe((data) => {
-      console.log(data);
-    }) 
+      }
+    })
+
   }
 
   checkUserLogged(): boolean {

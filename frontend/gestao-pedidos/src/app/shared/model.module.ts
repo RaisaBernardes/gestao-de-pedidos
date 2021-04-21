@@ -26,7 +26,7 @@ export class Endereco {
 }
 
 export class Pedido {
-    cd_pedido?: number;
+    cdPedido?: number;
     pagamento: Pagamento;
     enderecoEntrega: Endereco;
     pedidos: PedidoContem[];

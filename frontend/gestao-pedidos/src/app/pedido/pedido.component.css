@@ -2,6 +2,7 @@
     color: white;
     font-size: 30px;
     padding: 30px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .card {
@@ -12,6 +13,7 @@
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 .section-title {
@@ -64,3 +66,8 @@ owl-carousel-o {
   ::ng-deep mat-form-field .mat-input-element {
     caret-color: black!important;
   }
+
+  /* DESABILITAR CLIQUE NO STEPPER*/
+  ::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}

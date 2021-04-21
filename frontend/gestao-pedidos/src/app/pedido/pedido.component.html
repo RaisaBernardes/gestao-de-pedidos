@@ -36,10 +36,14 @@
                     </div>
                 </div>
 
-                <div class="text-center"><strong>TOTAL: R$ {{vlTotal | number : '1.2'}}</strong></div>
-                <div>
-                  <button mat-button matStepperNext>Próximo</button>
+                <div class="section-group m-2">
+                  <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
                 </div>
+
+                <div>
+                  <button mat-button matStepperNext [disabled]="this.itensPedido.length < 1">Próximo</button>
+                </div>
+
             </mat-step>
            
             
@@ -65,15 +69,36 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
+
+                <div class="section-group m-2">
+                  <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
+                </div>
+
                   <div>
                     <button mat-button matStepperPrevious>Anterior</button>
-                    <button mat-button (click)="finalizarPedido()">Confirmar</button>
+                    <button mat-button (click)="finalizarPedido()" [disabled]="this.pedidoFormGroup.invalid">Confirmar</button>
                   </div>
                 </form>
+
+              </mat-step>
+              <mat-step>
+                <div class="section-group text-center pt-5">
+                <h1>Pedido nº {{pedidoUsuario.cdPedido}} realizado com sucesso!</h1>
+                <h2>Agradecemos pela preferência!</h2>
+                <p><span class="material-icons">
+                  location_on
+                  </span>
+                  <strong>Endereço de entrega: </strong> 
+                  {{this.pedidoFormGroup.getRawValue().endereco.logradouro}}, {{this.pedidoFormGroup.getRawValue().endereco.numero}}
+                {{this.pedidoFormGroup.getRawValue().endereco.complemento}} - {{this.pedidoFormGroup.getRawValue().endereco.bairro}},
+              {{this.pedidoFormGroup.getRawValue().endereco.cidade}}, {{this.pedidoFormGroup.getRawValue().endereco.estado}}</p>
+                <p>Fique no aguardo! Seu pedido será preparado!</p>
+                <h3><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h3>
+               </div>
               </mat-step>
           </mat-horizontal-stepper>
 
-          <div class="row">
+          <div class="row" style="display: none">
           <owl-carousel-o [options]="carouselOptions">
             <ng-template carouselSlide *ngFor="let hamburguer of hamburguerImgs">
                 <div class="slide">
