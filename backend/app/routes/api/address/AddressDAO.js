@@ -25,6 +25,13 @@ router.group((router) => {
         });
     });
 
+    router.get('/findByUser', async (req, res) => {
+        await AddressController.getByWhere({"cdUsuario": req.session.user.cdUsuario}).then(response => {
+            res.status(response.statusCode)
+            res.json(response.data)
+        })
+    })
+
     router.post('/findByWhere', async (req, res) => {
         const where = req.body;
         await AddressController.getByWhere(where).then(response => {
