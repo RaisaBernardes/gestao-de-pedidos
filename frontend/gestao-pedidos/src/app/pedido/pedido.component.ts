@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { PedidoService } from '../services/pedido.service';
 import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco } from '../shared/model.module';
 
@@ -48,9 +50,13 @@ export class PedidoComponent implements OnInit {
     responsiveClass: true
   }
 
-  constructor(private formBuilder: FormBuilder, private pedidoService: PedidoService) { }
+  constructor(private cookieService: CookieService, private router: Router, private formBuilder: FormBuilder, private pedidoService: PedidoService) { }
 
   ngOnInit(): void {
+
+    if (!this.checkUserLogged()) {
+      this.router.navigateByUrl('/');
+    }
 
     this.pedidoService.fetchCardapio(1).subscribe((data) => {
       this.itensCardapio.hamburgueres = this.itensCardapio.hamburgueres.concat(data);
@@ -131,15 +137,19 @@ export class PedidoComponent implements OnInit {
 
     var pedidoUsuario: Pedido = {
       pedidos: this.itensPedido,
-      pagamento: this.pagamentoUsuario
-     // enderecoEntrega: this.pagamentoFormGroup.getRawValue().endereco
+      pagamento: this.pagamentoUsuario,
+      enderecoEntrega: this.pedidoFormGroup.getRawValue().endereco
     } 
 
-    console.log(pedidoUsuario);
+   // console.log(pedidoUsuario);
 
     this.pedidoService.realizarPedido(pedidoUsuario).subscribe((data) => {
       console.log(data);
-    })
+    }) 
+  }
+
+  checkUserLogged(): boolean {
+    return this.cookieService.check('SessionCookie');
   }
   
 
