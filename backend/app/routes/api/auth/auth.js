@@ -113,17 +113,31 @@ router.group((router) => {
             type: 'string',
         },
     ]), async (req, res) => {
-        await AddressController.create(req.body).then(async responseAddress => {
-            if(responseAddress.statusCode == 200){
-                req.body.addressCdEndereco = responseAddress.data.cdEndereco;
-                await UserController.create(req.body).then(responseUser => {
-                    res.status(responseUser.statusCode)
-                    res.json(responseUser.data)
-                });
-            }
-            // res.status(response.statusCode)
-            // res.json(response.data)
+
+        var address = {
+            "cdUsuario": "",
+            "logradouro": req.body.logradouro,
+            "numero": req.body.numero,
+            "complemento": req.body.complemento,
+            "bairro": req.body.bairro,
+            "cidade": req.body.cidade,
+            "estado": req.body.estado
+        }
+
+        await UserController.create(req.body).then(async responseUser => {
+            var response = responseUser;
+
+            address.cdUsuario = responseUser.data.cdUsuario;
+
+            await AddressController.create(address).then(async responseAddress => {
+                if(responseAddress.statusCode == 200){
+
+                    res.status(response.statusCode)
+                    res.json(response.data)
+                }
+            });
         });
+
     });
 });
 

@@ -50,6 +50,6 @@ User.prototype.validPassword = async function (password) {
 }
 
 // Creater Address Foreign Key at User Table
-Address.hasMany(User);
+//Address.hasMany(User);
 
 module.exports = User;
