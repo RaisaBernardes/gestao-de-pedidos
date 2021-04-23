@@ -1,5 +1,4 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
-const User = require('./User');
 
 const Address = sequelizeConnect.define('address', {
     cdEndereco: {
@@ -38,14 +37,7 @@ const Address = sequelizeConnect.define('address', {
         type: Sequelize.STRING,
         allowNull: false,
         field: "estado"
-    },
-    cdUsuario: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        field: "cd_usuario"
     }
 });
-
-//User.hasMany(Address);
 
 module.exports = Address;

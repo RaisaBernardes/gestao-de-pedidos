@@ -15,11 +15,6 @@ const Order = sequelizeConnect.define("order", {
         allowNull: false,
         field: "cd_usuario"
     },
-    cdEndereco: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        field: "cd_endereco"
-    },
     status: {
         type: Sequelize.STRING,
         allowNull: false,
