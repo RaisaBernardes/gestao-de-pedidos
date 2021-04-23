@@ -59,16 +59,6 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="fill" style="width: 600px">
-                  <mat-label>Escolha o endereço de entrega</mat-label>
-                  <mat-select required formControlName="endereco">
-                    <mat-option>--</mat-option>
-                    <mat-option *ngFor="let endereco of enderecos" [value]="endereco">
-                      {{endereco.logradouro}}, {{endereco.numero}} {{endereco.complemento}}
-                      - {{endereco.bairro}}, {{endereco.cidade}}, {{endereco.estado}} 
-                    </mat-option>
-                  </mat-select>
-                </mat-form-field>
 
                 <div class="section-group m-2">
                   <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
@@ -85,13 +75,6 @@
                 <div class="section-group text-center pt-5">
                 <h1>Pedido nº {{pedidoUsuario.cdPedido}} realizado com sucesso!</h1>
                 <h2>Agradecemos pela preferência!</h2>
-                <p><span class="material-icons">
-                  location_on
-                  </span>
-                  <strong>Endereço de entrega: </strong> 
-                  {{this.pedidoFormGroup.getRawValue().endereco.logradouro}}, {{this.pedidoFormGroup.getRawValue().endereco.numero}}
-                {{this.pedidoFormGroup.getRawValue().endereco.complemento}} - {{this.pedidoFormGroup.getRawValue().endereco.bairro}},
-              {{this.pedidoFormGroup.getRawValue().endereco.cidade}}, {{this.pedidoFormGroup.getRawValue().endereco.estado}}</p>
                 <p>Fique no aguardo! Seu pedido será preparado!</p>
                 <h3><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h3>
                </div>

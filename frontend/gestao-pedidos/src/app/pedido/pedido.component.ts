@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 import { PedidoService } from '../services/pedido.service';
-import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco } from '../shared/model.module';
+import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento } from '../shared/model.module';
 
 @Component({
   selector: 'app-pedido',
@@ -20,7 +20,6 @@ export class PedidoComponent implements OnInit {
   vlTotal: number = 0;
 
   formaPagamento: FormaPagamento[] = new Array;
-  enderecos: Endereco[] = new Array;
   pagamentoUsuario: Pagamento = new Pagamento;
 
   pedidoUsuario: Pedido = new Pedido;
@@ -61,17 +60,11 @@ export class PedidoComponent implements OnInit {
       this.formaPagamento = this.formaPagamento.concat(data);
     })
 
-    this.pedidoService.fetchEnderecoUsuario().subscribe((data) => {
-      this.enderecos = this.enderecos.concat(data);
-    })
-
     this.pedidoFormGroup = this.formBuilder.group({
-      forma: ['', [Validators.required]],
-      endereco: ['', [Validators.required]]
+      forma: ['', [Validators.required]]
     })
   }
 
-  // somente teste - no futuro terá um parametro ID do item para somar no objeto pedido
   addItem(item: Item) {
     var exists = false;
 
@@ -115,7 +108,6 @@ export class PedidoComponent implements OnInit {
   finalizarPedido() {
 
     this.pedidoFormGroup.get('forma').disable();
-    this.pedidoFormGroup.get('endereco').disable();
     
     Swal.fire({
       title: 'Deseja confirmar este pedido?',
@@ -128,7 +120,6 @@ export class PedidoComponent implements OnInit {
       if (result.isDenied) {
         Swal.fire('Pedido cancelado!', '', 'info')
         this.pedidoFormGroup.get('forma').enable();
-        this.pedidoFormGroup.get('endereco').enable();
       } else {
 
         this.pagamentoUsuario = {
@@ -138,16 +129,19 @@ export class PedidoComponent implements OnInit {
     
         this.pedidoUsuario = {
           pedidos: this.itensPedido,
-          pagamento: this.pagamentoUsuario,
-          enderecoEntrega: this.pedidoFormGroup.getRawValue().endereco
+          pagamento: this.pagamentoUsuario
+         // enderecoEntrega: this.pedidoFormGroup.getRawValue().endereco
         } 
     
         this.pedidoService.realizarPedido(this.pedidoUsuario).subscribe((data) => {
           this.pedidoUsuario.cdPedido = data.orderData.cdPedido;
           this.myStepper.next();
+        }, (err) => {
+          Swal.fire({ title:'Erro!', html:"<p>Ocorreu algo de errado na conexão com o servidor.</p>"+
+          "<p>Tente novamente mais tarde</p>", icon: 'error'})
+          this.pedidoFormGroup.get('forma').enable();
         }) 
     
-        console.log(this.pedidoUsuario);
 
       }
     })

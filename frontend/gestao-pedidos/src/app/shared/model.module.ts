@@ -14,7 +14,7 @@ export class Usuario {
     cd_tipo_usuario?: String;
 }
 
-export class Endereco {
+/*export class Endereco {
     cdEndereco: number;
     cdUsuario: number;
     logradouro: String;
@@ -23,12 +23,12 @@ export class Endereco {
     bairro: String;
     cidade: String;
     estado: String;
-}
+}*/
 
 export class Pedido {
     cdPedido?: number;
     pagamento: Pagamento;
-    enderecoEntrega: Endereco;
+    //enderecoEntrega: Endereco;
     pedidos: PedidoContem[];
 }
 
