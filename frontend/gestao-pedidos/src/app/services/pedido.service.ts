@@ -36,9 +36,5 @@ export class PedidoService {
   fetchEnderecoUsuario() {
     return this.http.get<Endereco>(this.addressUrl+"/findByUser", this.config);
   }
-
-   // para admin
-   mudarStatus(pedidoAtualizado: Pedido) {
-     return this.http.put<any>(this.pedidoUrl+"/update", pedidoAtualizado);
-   }
+  
 }

@@ -32,10 +32,6 @@ export class LoginComponent implements OnInit {
     return this.loginUsuario.controls;
   }
 
-  restart(): void {
-    this.loginUsuario.reset();
- }
-
   private emptyForm() {
     this.loginUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(5)]],
@@ -76,6 +72,7 @@ export class LoginComponent implements OnInit {
               icon: "success"
             });
             sessionStorage.setItem('tp_usuario', data.result.tp_usuario);
+            sessionStorage.setItem('cd_usuario', data.result.cdUsuario);
             sessionStorage.setItem('nome', data.result.nome);
             this.router.navigateByUrl("/")
           }

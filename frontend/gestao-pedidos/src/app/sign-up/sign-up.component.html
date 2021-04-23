@@ -2,7 +2,7 @@
 
   <div class="display-row">
   <div class="display-form">
-    <form [formGroup]="cadastroUsuario" novalidate (ngSubmit)="submit()" (ngReset)="restart()">
+    <form [formGroup]="cadastroUsuario" novalidate (ngSubmit)="submit()">
     
       <h1 class="form-title text-center">Registrar-se</h1>
 
@@ -76,7 +76,7 @@
           </mat-form-field>
         </div>
 
-        <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic" [disabled]="btDisabled ? true : null">Cadastrar</button></div>
+        <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic" [disabled]="this.btDisabled">Cadastrar</button></div>
         </form>
 
         

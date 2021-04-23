@@ -49,10 +49,6 @@ export class SignUpComponent implements OnInit {
    })
   }
 
-  restart(): void {
-    this.cadastroUsuario.reset();
- }
-
    private createForm(user: any) {
     this.cadastroUsuario = this.fb.group({
       nome: [user.nome, [Validators.required, Validators.minLength(3)]],

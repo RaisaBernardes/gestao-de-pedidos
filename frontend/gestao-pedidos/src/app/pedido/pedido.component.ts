@@ -26,33 +26,11 @@ export class PedidoComponent implements OnInit {
   pedidoUsuario: Pedido = new Pedido;
   pedidoFormGroup: FormGroup;
 
-  hamburguerImgs = ['cheeseburger_tradicional', 'cheeseburger_duplo', 'cheeseburger_bacon', 'australian_cheese', 'chicken_burger', 'vegan_burger']
-  .map((item) => `../../assets/cardapio/hamburgueres/${item}.png`);
-
-  bebidasImgs = ['cerveja', 'refrigerante', 'suco', 'milkshake', 'agua', 'agua_com_gas']
-  .map((item) => `../../assets/cardapio/bebidas/${item}.png`);
-
-  acompImgs = ['fritas_simples', 'fritas_cheddar_bacon', 'aneis_de_cebola', 'batata_rustica']
-  .map((item) => `../../assets/cardapio/acompanhamentos/${item}.png`);
-
-  sobrImgs = ['brownie', 'pudim']
-  .map((item) => `../../assets/cardapio/sobremesas/${item}.png`);
-
   itensCardapio = {
     "hamburgueres": [],
     "acompanhamentos": [],
     "bebidas": [],
     "sobremesas": []
-  }
-
-
-  carouselOptions: any = {
-    items: 1,
-    singleItem:true,
-    loop:true,
-    autoplayTimeout:3000,
-    autoplay:true,
-    responsiveClass: true
   }
 
   constructor(private cookieService: CookieService, private router: Router, private formBuilder: FormBuilder, private pedidoService: PedidoService) { }

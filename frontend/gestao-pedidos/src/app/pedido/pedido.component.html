@@ -97,41 +97,6 @@
                </div>
               </mat-step>
           </mat-horizontal-stepper>
-
-          <div class="row" style="display: none">
-          <owl-carousel-o [options]="carouselOptions">
-            <ng-template carouselSlide *ngFor="let hamburguer of hamburguerImgs">
-                <div class="slide">
-                  <img src={{hamburguer}}>
-                </div>
-            </ng-template>
-        </owl-carousel-o>
-
-        <owl-carousel-o [options]="carouselOptions">
-          <ng-template carouselSlide *ngFor="let bebida of bebidasImgs">
-              <div class="slide">
-                <img src={{bebida}}>
-              </div>
-          </ng-template>
-      </owl-carousel-o>
-
-
-      <owl-carousel-o [options]="carouselOptions">
-        <ng-template carouselSlide *ngFor="let acompanhamento of acompImgs">
-            <div class="slide">
-              <img src={{acompanhamento}}>
-            </div>
-        </ng-template>
-    </owl-carousel-o>
-
-      <owl-carousel-o [options]="carouselOptions">
-        <ng-template carouselSlide *ngFor="let sobremesa of sobrImgs">
-            <div class="slide">
-              <img src={{sobremesa}}>
-            </div>
-        </ng-template>
-    </owl-carousel-o>
-  </div>
           
     </div>
 
