@@ -59,7 +59,7 @@ router.group((router) => {
         };
         
         let order = {
-            'cdUsuario': req.session.user.cdUsuario,
+            'userCdUsuario': req.session.user.cdUsuario,
             'status': "CRIADO",
             'precoTotal': payment.vlTotal
         };

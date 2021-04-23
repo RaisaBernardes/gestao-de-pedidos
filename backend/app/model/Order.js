@@ -10,11 +10,6 @@ const Order = sequelizeConnect.define("order", {
         primaryKey: true,
         field: "cd_pedido"
     },
-    cdUsuario: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        field: "cd_usuario"
-    },
     status: {
         type: Sequelize.STRING,
         allowNull: false,
