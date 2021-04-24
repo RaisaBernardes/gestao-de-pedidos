@@ -40,13 +40,6 @@ router.group((router) => {
         });
     });
 
-    router.get('/findAllMirna', async (req, res) => {
-        await ItemInOrderController.getByWhereMirna().then(response => {
-            res.status(response.statusCode)
-            res.json(response.data)
-        });
-    });
-
     router.post('/create', async (req, res) => {
         await ItemInOrderController.create(req.body).then(response => {
             res.status(response.statusCode)

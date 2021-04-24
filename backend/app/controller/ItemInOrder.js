@@ -19,12 +19,7 @@ class ItemInOrderController {
     }
 
     getByWhere(where){
-        return this.ItemInOrder.findAll({ where: where }).then(result => defaultResponse(result))
-        .catch(error => errorResponse(error.message));
-    }
-
-    getByWhereMirna(where){
-        return this.ItemInOrder.findAll({ where: where, include: [Item] }).then(result => defaultResponse(result))
+        return this.ItemInOrder.findAll({ where: where,  include: [Item] }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message));
     }
 

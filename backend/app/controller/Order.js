@@ -1,4 +1,5 @@
 const httpStatus = require('http-status');
+const User = require('../model/User');
 const defaultResponse = (data, statusCode = httpStatus.OK) => ({data, statusCode});
 const errorResponse = (message, statusCode = httpStatus.BAD_REQUEST) => defaultResponse({error: message}, statusCode);
 
@@ -18,7 +19,7 @@ class OrdersController {
     }
 
     getByWhere(where){
-        return this.Orders.findAll({ where: where }).then(result => defaultResponse(result))
+        return this.Orders.findAll({ where: where, include: [User] }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message));
     }
 
