@@ -37,10 +37,6 @@ export class ComandasComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
 
       // movendo para outra lista
       this.comandaService.atualizarStatus(pedidoAtualizado).subscribe(data => {
@@ -49,7 +45,13 @@ export class ComandasComponent implements OnInit {
         // SWEET ALERT
         Swal.fire({ title:'Erro!', html:"<p>Ocorreu algo de errado na conexão com o servidor.</p>"+
         "<p>Tente novamente mais tarde</p>", icon: 'error'})
+        return;
       });
+
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
 
