@@ -42,7 +42,6 @@
           <a class="mat-subnav-item" (click)="this.navigate('sobremesas')" mat-menu-item>SOBREMESAS</a>
         </mat-menu>
         <a routerLink="/login"  class="mat-toolbar-option" *ngIf="!checkUserLogged()">CONTA</a>
-        <a routerLink="/conta" class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>account_circle</mat-icon></a>
         <a routerLink="/comandas" class="mat-toolbar-option" *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon></a>
       </div>
     </mat-toolbar>
