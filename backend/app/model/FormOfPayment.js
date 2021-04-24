@@ -16,6 +16,7 @@ const formOfPayment = sequelizeConnect.define("form_of_payment", {
     },
 })
 
+formOfPayment.hasMany(payment);
 payment.belongsTo(formOfPayment);
 
 module.exports = formOfPayment;

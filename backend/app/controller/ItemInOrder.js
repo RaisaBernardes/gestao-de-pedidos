@@ -1,6 +1,7 @@
 const httpStatus = require('http-status');
 const defaultResponse = (data, statusCode = httpStatus.OK) => ({data, statusCode});
 const errorResponse = (message, statusCode = httpStatus.BAD_REQUEST) => defaultResponse({error: message}, statusCode);
+const Item = require('../model/Item.js');
 
 class ItemInOrderController {
     constructor(ItemInOrder) {
@@ -19,6 +20,11 @@ class ItemInOrderController {
 
     getByWhere(where){
         return this.ItemInOrder.findAll({ where: where }).then(result => defaultResponse(result))
+        .catch(error => errorResponse(error.message));
+    }
+
+    getByWhereMirna(where){
+        return this.ItemInOrder.findAll({ where: where, include: [Item] }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message));
     }
 

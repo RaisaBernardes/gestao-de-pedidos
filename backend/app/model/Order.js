@@ -24,6 +24,9 @@ const Order = sequelizeConnect.define("order", {
 
 // Creater User Foreign Key at Order Table
 User.hasMany(Order);
+Order.belongsTo(User);
+
 Address.hasMany(Order);
+Order.belongsTo(Address);
 
 module.exports = Order;

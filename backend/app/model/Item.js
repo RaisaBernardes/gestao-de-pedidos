@@ -1,5 +1,6 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
 const ItemType = require('./ItemType.js');
+//const ItemInOrder = require('./ItemInOrder.js');
 
 const Item = sequelizeConnect.define("item", {
     cdItem: {
@@ -27,5 +28,6 @@ const Item = sequelizeConnect.define("item", {
 });
 
 ItemType.hasMany(Item);
+Item.belongsTo(ItemType);
 
 module.exports = Item;
