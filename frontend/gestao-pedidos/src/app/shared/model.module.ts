@@ -32,6 +32,14 @@ export class Pedido {
     pedidos: PedidoContem[];
 }
 
+export class PedidoDTO {
+    cdPedido: number;
+    precoTotal?: number;
+    status: string;
+    usuario?: Usuario;
+    pedidos?: PedidoContem[];
+}
+
 export class Item {
     cdItem: number;
     descricao: String;

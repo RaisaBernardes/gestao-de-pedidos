@@ -18,7 +18,6 @@
       </mat-menu>
       <a mat-list-item routerLink="/login" *ngIf="!checkUserLogged()">CONTA</a>
       <a routerLink="/comandas" mat-list-item *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon> COMANDAS</a>
-      <a routerLink="/conf" mat-list-item *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>build</mat-icon> CONFIGURAÇÕES</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -45,7 +44,6 @@
         <a routerLink="/login"  class="mat-toolbar-option" *ngIf="!checkUserLogged()">CONTA</a>
         <a routerLink="/conta" class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>account_circle</mat-icon></a>
         <a routerLink="/comandas" class="mat-toolbar-option" *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon></a>
-        <a routerLink="/conf" class="mat-toolbar-option"  *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>build</mat-icon></a>
       </div>
     </mat-toolbar>
 

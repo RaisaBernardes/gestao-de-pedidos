@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Endereco, FormaPagamento, Item, Pedido } from '../shared/model.module';
+import { FormaPagamento, Item, Pedido } from '../shared/model.module';
 
 @Injectable({
   providedIn: 'root'
