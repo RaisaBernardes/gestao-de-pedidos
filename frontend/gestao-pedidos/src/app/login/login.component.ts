@@ -62,14 +62,16 @@ export class LoginComponent implements OnInit {
               title: "Erro!",
               html: "<p>" + data.result + "<p>",
               confirmButtonText: "Ok",
-              icon: "error"
+              icon: "error",
+              confirmButtonColor: '#000000'
             });
         } else {
           Swal.fire(
             {
               title: "Login efetuado com sucesso!",
               confirmButtonText: "Ok",
-              icon: "success"
+              icon: "success",
+              confirmButtonColor: '#000000'
             });
             sessionStorage.setItem('tp_usuario', data.result.tp_usuario);
             sessionStorage.setItem('cd_usuario', data.result.cdUsuario);
@@ -82,7 +84,8 @@ export class LoginComponent implements OnInit {
                 title: "Erro!",
                 html: "<p>Houve um problema na conexão com o servidor.<br>Tente novamente mais tarde.",
                 confirmButtonText: "Ok",
-                icon: "error"
+                icon: "error",
+                confirmButtonColor: '#000000'
               });
 
           });

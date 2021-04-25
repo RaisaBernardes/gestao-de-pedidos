@@ -62,3 +62,7 @@
   ::ng-deep .mat-horizontal-stepper-header{
     pointer-events: none !important;
 }
+
+::ng-deep.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: black!important
+}

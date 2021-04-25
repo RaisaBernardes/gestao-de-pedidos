@@ -86,12 +86,14 @@ export class SignUpComponent implements OnInit {
             {title: "Erro!", 
              html: "<p>"+data.result+"<p>",
              confirmButtonText: "Ok",
+             confirmButtonColor: '#000000',
              icon: "error"})
         } else {
           Swal.fire(
             {title: "Usuário cadastrado com sucesso!",
              confirmButtonText: "Ok",
-             icon: "success"})
+             icon: "success",
+             confirmButtonColor: '#000000'})
              this.router.navigateByUrl('/login');
         }
         //to-do: ARMAZENAR OS DADOS VINDOS NUM SESSIONSTORAGE
@@ -101,6 +103,7 @@ export class SignUpComponent implements OnInit {
             title: "Erro!",
             html: "<p>Houve um problema na conexão com o servidor.<br>Tente novamente mais tarde.",
             confirmButtonText: "Ok",
+            confirmButtonColor: '#000000',
             icon: "error"
           });
       });

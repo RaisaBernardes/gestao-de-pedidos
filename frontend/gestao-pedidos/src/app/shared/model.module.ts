@@ -26,18 +26,29 @@ export class Usuario {
 }*/
 
 export class Pedido {
-    cdPedido?: number;
+    cdPedido?: string;
     pagamento: Pagamento;
     //enderecoEntrega: Endereco;
     pedidos: PedidoContem[];
 }
 
 export class PedidoDTO {
-    cdPedido: number;
+    cdPedido: string;
     precoTotal?: number;
     status: string;
-    usuario?: Usuario;
-    pedidos?: PedidoContem[];
+    user?: UsuarioDTO;
+    pedidos?: PedidoContemDTO[];
+}
+
+export class UsuarioDTO {
+    nome: string;
+    telefone: string;
+    email: string;
+}
+
+export class PedidoContemDTO {
+    item: Item;
+    quantidade: number;
 }
 
 export class Item {

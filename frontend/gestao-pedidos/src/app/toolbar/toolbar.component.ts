@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ToolbarComponent {
 
-  private cartVisible: boolean = false;
   private tp_usuario: String;
 
   constructor(private cookieService: CookieService, private breakpointObserver: BreakpointObserver, private router: Router) { }

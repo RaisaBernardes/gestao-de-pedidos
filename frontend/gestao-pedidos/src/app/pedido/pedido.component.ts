@@ -115,12 +115,12 @@ export class PedidoComponent implements OnInit {
       +`<p>Pagamento: <i>${this.pedidoFormGroup.getRawValue().forma.descricao}</i></p>`,
       showDenyButton: true,
       confirmButtonText: `Confirmar`,
+      confirmButtonColor: '#000000',
       denyButtonText: `Cancelar`,
     }).then((result) => {
       if (result.isDenied) {
-        Swal.fire('Pedido cancelado!', '', 'info')
         this.pedidoFormGroup.get('forma').enable();
-      } else {
+      } else if (result.isConfirmed) {
 
         this.pagamentoUsuario = {
           vlTotal: this.vlTotal,
@@ -138,7 +138,7 @@ export class PedidoComponent implements OnInit {
           this.myStepper.next();
         }, (err) => {
           Swal.fire({ title:'Erro!', html:"<p>Ocorreu algo de errado na conexão com o servidor.</p>"+
-          "<p>Tente novamente mais tarde</p>", icon: 'error'})
+          "<p>Tente novamente mais tarde</p>", icon: 'error',  confirmButtonColor: '#000000'})
           this.pedidoFormGroup.get('forma').enable();
         }) 
     
