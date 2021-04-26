@@ -8,6 +8,10 @@ body { margin: 0; }
     background-color: rgb(8, 7, 7);
 }
 
+.mat-menu-content {
+    padding: 0 !important;
+}
+
 /* ANIMAÇÃO DE REVELAR NA TELA */
 @-webkit-keyframes fadeIn {
     0% { opacity: 0; }
