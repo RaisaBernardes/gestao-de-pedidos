@@ -1,0 +1,77 @@
+<div class="container-fluid col-md-10 text-left fadeIn">
+    <h1 class="container-title">Comandas</h1>
+    
+    <div class="card">
+
+        <div class="row">
+        <div class="list-container text-center">
+            <h2>Criado</h2>
+          
+            <div
+              cdkDropList
+              #listPedidosCriados="cdkDropList"
+              [cdkDropListData]="pedidosCriados"
+              [cdkDropListConnectedTo]="[listPedidosPreparando, listPedidosFinalizados]"
+              class="list"
+              (cdkDropListDropped)="drop($event, 'CRIADO')">
+                <mat-card class="box" *ngFor="let item of pedidosCriados" cdkDrag>
+                  <mat-card-header>
+                    <mat-card-title>Pedido Nº {{item.cdPedido}}</mat-card-title>
+                    <mat-card-subtitle>R$ {{item.precoTotal | number : '1.2'}}</mat-card-subtitle>
+                    <button mat-icon-button class="detailsBtn" (click)="exibirDetalhesPedido(item)"><mat-icon>launch</mat-icon></button>
+                  </mat-card-header>
+                  <mat-card-content><p><strong>CLIENTE: </strong>{{item.user.nome}}</p>
+                    <p><strong>CONTATO: </strong>{{item.user.telefone}}</p></mat-card-content>
+                </mat-card>
+            </div>
+          </div>
+          
+          <div class="list-container text-center">
+            <h2>Preparando</h2>
+          
+            <div
+              cdkDropList
+              #listPedidosPreparando="cdkDropList"
+              [cdkDropListData]="pedidosPreparando"
+              [cdkDropListConnectedTo]="[listPedidosCriados, listPedidosFinalizados]"
+              class="list"
+              (cdkDropListDropped)="drop($event, 'PREPARANDO')">
+              <mat-card class="box" *ngFor="let item of pedidosPreparando" cdkDrag>
+                <mat-card-header>
+                  <mat-card-title>Pedido Nº {{item.cdPedido}}</mat-card-title>
+                  <mat-card-subtitle>R$ {{item.precoTotal | number : '1.2'}}</mat-card-subtitle>
+                  <button mat-icon-button class="detailsBtn" (click)="exibirDetalhesPedido(item)"><mat-icon>launch</mat-icon></button>
+                </mat-card-header>
+                <mat-card-content><p><strong>CLIENTE: </strong>{{item.user.nome}}</p>
+                  <p><strong>CONTATO: </strong>{{item.user.telefone}}</p></mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+
+          <div class="list-container text-center">
+            <h2>Finalizado</h2>
+          
+            <div
+              cdkDropList
+              #listPedidosFinalizados="cdkDropList"
+              [cdkDropListData]="pedidosFinalizados"
+              [cdkDropListConnectedTo]="[listPedidosCriados, listPedidosPreparando]"
+              class="list"
+              (cdkDropListDropped)="drop($event, 'FINALIZADO')">
+              <mat-card class="box" *ngFor="let item of pedidosFinalizados" cdkDrag>
+                <mat-card-header>
+                  <mat-card-title>Pedido Nº {{item.cdPedido}}</mat-card-title>
+                  <mat-card-subtitle>R$ {{item.precoTotal | number : '1.2'}}</mat-card-subtitle>
+                  <button mat-icon-button class="detailsBtn" (click)="exibirDetalhesPedido(item)"><mat-icon>launch</mat-icon></button>
+                </mat-card-header>
+                <mat-card-content><p><strong>CLIENTE: </strong>{{item.user.nome}}</p>
+                                  <p><strong>CONTATO: </strong>{{item.user.telefone}}</p></mat-card-content>
+              </mat-card>
+            </div>
+
+           </div>
+        </div>
+
+        
+    </div>
+</div>

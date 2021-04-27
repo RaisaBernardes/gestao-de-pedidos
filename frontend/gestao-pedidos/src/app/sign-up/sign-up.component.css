@@ -1,0 +1,89 @@
+.display-form {
+   /* background-color: black;
+    border-radius: 10px;
+    border-color: rgb(58, 57, 57); */
+    font-size: 15px;
+    width: 400px;
+    height: 650px;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  margin-top: 80px;
+}
+
+.row {
+  margin: 0 auto; 
+  justify-content: center;
+ }
+
+.display-row {
+  display: flex;
+  flex-direction: row;
+  padding-top: 50px;
+  padding-bottom: 30px;
+  color: rgb(255, 255, 255);
+}
+
+::ng-deep mat-form-field {
+    color: white!important;
+  } 
+  
+  ::ng-deep mat-form-field  .mat-form-field-label {
+    color: white!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-form-field-underline {
+    background-color: #ffffff!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-input-element {
+    caret-color: #ffffff!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-form-field-ripple {
+    background-color: #ffffff!important;
+  }
+
+.display-image {
+  background-image: url("../../assets/signup/banner-signup2.jpg");
+  width: 500px;
+  height: 640px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  border-color: rgb(58, 57, 57);
+  font-size: 20px;
+}
+
+/* RESPONSIVIDADE DA PAGINA */
+
+@media(min-width: 700px) {
+  .display-row {
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
+@media(max-width: 600px) {
+
+  .display-row {
+    flex-direction: column-reverse;
+  }
+
+  .display-form {
+    width: 100%;
+  }
+
+  .form-title {
+    padding-top: 20px;
+  }
+
+  .display-image {
+    width: 75%;
+    height: 300px;
+    margin: 50px;
+  }
+  
+}

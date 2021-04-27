@@ -1,0 +1,162 @@
+<div class="main-section container-fluid text-center fadeIn" [ngSwitch]="this.route.snapshot.params.item">
+  <h1 class="item-title">{{this.route.snapshot.params.item | uppercase }}</h1>
+  <div class="display-cards mx-auto" *ngSwitchCase="'hamburgueres'">
+    <div class="row justify-content-center">
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/cheeseburger_tradicional.png">
+        <mat-card-content>
+          <mat-card-title>Cheeseburger Tradicional <p class="paragraph-price">R$ 23,00</p></mat-card-title>
+          pão brioche, hambúrguer bovino 120g, alface, cebola, tomate, queijo, maionese da casa      
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/cheeseburger_bacon.png">
+        <mat-card-content>
+          <mat-card-title>Cheeseburger Bacon <p class="paragraph-price">R$ 26,00</p></mat-card-title>
+          pão brioche, hambúrguer bovino 120g, bacon, alface, cebola, tomate, queijo, maionese da casa
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/cheeseburger_duplo.png">
+        <mat-card-content>
+          <mat-card-title>Cheeseburger Duplo <p class="paragraph-price">R$ 30,00</p></mat-card-title>
+          pão brioche, hambúrguer bovino 120g, baco, alface, cebola, tomate, queijo, maionese da casa
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="row justify-content-center">
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/australian_cheese.png">
+        <mat-card-content>
+          <mat-card-title>Australian Cheese <p class="paragraph-price">R$ 25,00</p></mat-card-title>
+          pão australiano, hambúrguer bovino 120g, alface, cebola, tomate, queijo, maionese da casa
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/chicken_burger.png">
+        <mat-card-content>
+          <mat-card-title>Chicken Burger <p class="paragraph-price">R$ 23,00</p></mat-card-title>
+            pão brioche, hambúrguer de frango 120g, alface, cebola, tomate, queijo, maionese da casa 
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="card">
+        <img mat-card-image src="../../assets/cardapio/hamburgueres/vegan_burger.png">
+        <mat-card-content>
+          <mat-card-title>Vegan Burger <p class="paragraph-price">R$ 25,00</p></mat-card-title>
+            pão brioche, hambúrguer de grão de bico 120g, alface, cebola, tomate, queijo cheddar cremoso vegano, maionese da casa vegana
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="display-cards mx-auto" *ngSwitchCase="'acompanhamentos'">
+      <div class="row justify-content-center">
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/acompanhamentos/fritas_simples.png">
+          <mat-card-content>
+              <mat-card-title>Fritas Simples <p class="paragraph-price">R$ 10,00</p></mat-card-title>
+              deliciosas fritas crocantes
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/acompanhamentos/fritas_cheddar_bacon.png">
+          <mat-card-content>
+              <mat-card-title>Fritas com Cheddar e Bacon <p class="paragraph-price">R$13,00</p> </mat-card-title>
+              cestinha de batatas fritas com cheddar e bacon
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="row justify-content-center">
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/acompanhamentos/aneis_de_cebola.png">
+          <mat-card-content>
+              <mat-card-title>Anéis de Cebola  <p class="paragraph-price">R$13,00</p></mat-card-title>
+              porção com 10 anéis de cebola
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/acompanhamentos/batata_rustica.png">
+          <mat-card-content>
+              <mat-card-title>Batata Rústica  <p class="paragraph-price">R$13,00</p></mat-card-title>
+              cestinha de batatas rústicas temperadas com páprica e ervas
+          </mat-card-content>
+        </mat-card>
+      </div>
+  </div>
+
+  <div class="display-cards mx-auto" *ngSwitchCase="'bebidas'">
+      <div class="row justify-content-center">
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/bebidas/cerveja.png">
+          <mat-card-content>
+              <mat-card-title>Cerveja (Long Neck 330ml) <p class="paragraph-price">R$ 9,00</p></mat-card-title>
+              <strong>opções: </strong>heineken, budweiser
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/bebidas/refrigerante.png">
+          <mat-card-content>
+              <mat-card-title>Refrigerante (Lata 350ml) <p class="paragraph-price">R$ 6,00</p> </mat-card-title>
+              <strong>opções: </strong>coca-cola, coca-cola zero açúcar, sprite, fanta, guaraná antártica
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/bebidas/suco.png">
+          <mat-card-content>
+              <mat-card-title>Suco (Copo 300ml)<p class="paragraph-price">R$ 6,00</p></mat-card-title>
+              <strong>opções: </strong>morango, laranja, limão, morango com laranja
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="row justify-content-center">
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/bebidas/milkshake.png">
+          <mat-card-content>
+              <mat-card-title>Milkshake (Tarça 400ml) <p class="paragraph-price">R$ 13,00</p> </mat-card-title>
+              <strong>opções: </strong>ovomaltine, morango, ninho com nutella
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/bebidas/agua.png">
+          <mat-card-content>
+              <mat-card-title>Água <p class="paragraph-price">R$ 3,00</p></mat-card-title>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/bebidas/agua_com_gas.png">
+          <mat-card-content>
+            <mat-card-title>Água com Gás <p class="paragraph-price">R$ 4,00</p></mat-card-title>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  </div>
+
+  <div class="display-cards mx-auto" *ngSwitchCase="'sobremesas'">
+      <div class="row justify-content-center">
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/sobremesas/brownie.png">
+          <mat-card-content>
+              <mat-card-title>Brownie <p class="paragraph-price">R$ 9,00</p></mat-card-title>
+              <strong>opções: </strong>chocolate tradicional, chocolate meio amargo, doce de leite 
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="card">
+          <img mat-card-image src="../../assets/cardapio/sobremesas/pudim.png">
+          <mat-card-content>
+              <mat-card-title>Pudim <p class="paragraph-price">R$ 7,00</p></mat-card-title>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="display-main container-fluid col-md-10 fadeIn">
+
+    <div class="display-row">
+
+    <div class="display-image text-center">
+  
+        <h1 class="title">Não possui uma conta?</h1>
+        <button class="w-50 rounded-pill" [routerLink]="['/cadastro']" mat-raised-button color="basic">Registrar-se</button>
+        
+    </div>
+
+    <div class="display-form">
+      <form [formGroup]="loginUsuario" novalidate (ngSubmit)="submit()">
+      
+        <h1 class="company-name text-center">The Ranch</h1>
+        <h1 class="form-title text-center">Entrar</h1>
+  
+          <div class="row">
+                  <mat-form-field class="example-full-width w-75">
+                    <input type="email" name="email" formControlName="email" matInput placeholder="Email">
+                    <mat-error  *ngIf="loginUsuario.touched && f.email.errors?.required">Campo Obrigatório</mat-error>
+                  </mat-form-field>
+              </div>
+  
+          <div class="row">
+                  <mat-form-field class="example-full-width w-75">
+                    <input name="senha" type="password" formControlName="senha" matInput placeholder="Senha">
+                    <mat-error  *ngIf="loginUsuario.touched && f.senha.errors?.required">Campo Obrigatório</mat-error>
+                  </mat-form-field>
+              </div>
+  
+          <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic" [disabled]="btDisabled ? true : null">Confirmar</button></div>
+          </form>
+    </div>
+  
+    </div>
+  </div>

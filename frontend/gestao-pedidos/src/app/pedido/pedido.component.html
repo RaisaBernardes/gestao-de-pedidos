@@ -1,0 +1,86 @@
+<div class="container-fluid col-md-8 text-left fadeIn">
+    <h1 class="container-title">Pedido</h1>
+    
+    <div class="card">
+        
+          <mat-horizontal-stepper [linear]="true" #stepper>
+            <mat-step>
+
+                <div class="section-row">
+                <div class="section-group">
+                    <div class="section-title">HAMBÚRGUERES</div>
+                    <div class="section-item" *ngFor="let hamburguer of itensCardapio.hamburgueres">
+                      <button class="item-button" (click)="addItem(hamburguer)">+</button> <button class="item-button" (click)="removeItem(hamburguer)">—</button>  <strong>{{hamburguer.descricao}}</strong> <br>{{hamburguer.ingredientesDescricao}}                    
+                    </div>
+                </div>
+              </div>
+
+                <div class="section-group">
+                    <div class="section-title">ACOMPANHAMENTOS</div>
+                    <div class="section-item" *ngFor="let ac of itensCardapio.acompanhamentos">
+                      <button class="item-button" (click)="addItem(ac)">+</button> <button class="item-button" (click)="removeItem(ac)">—</button>  <strong>{{ac.descricao}}</strong> <br>{{ac.ingredientesDescricao}}                    
+                    </div>
+                </div>
+
+                <div class="section-group">
+                    <div class="section-title">BEBIDAS</div>
+                    <div class="section-item" *ngFor="let bebida of itensCardapio.bebidas">
+                      <button class="item-button" (click)="addItem(bebida)">+</button> <button class="item-button" (click)="removeItem(bebida)">—</button> <strong>{{bebida.descricao}}</strong> <br>{{bebida.ingredientesDescricao}}                    
+                    </div>
+                </div>
+
+                <div class="section-group">
+                    <div class="section-title">SOBREMESAS</div>
+                    <div class="section-item" *ngFor="let sobremesa of itensCardapio.sobremesas">
+                      <button class="item-button" (click)="addItem(sobremesa)">+</button><button class="item-button" (click)="removeItem(sobremesa)">—</button> <strong>{{sobremesa.descricao}}</strong> <br>{{sobremesa.ingredientesDescricao}}                    
+                    </div>
+                </div>
+
+                <div class="section-group m-2">
+                  <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
+                </div>
+
+                <div>
+                  <button mat-button matStepperNext [disabled]="this.itensPedido.length < 1">Próximo</button>
+                </div>
+
+            </mat-step>
+           
+            
+             <mat-step [stepControl]="pedidoFormGroup">
+
+                <form [formGroup]="pedidoFormGroup">
+                  <mat-form-field appearance="fill" style="width: 600px">
+                  <mat-label>Escolha a forma do pagamento</mat-label>
+                  <mat-select required formControlName="forma">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let pagamento of formaPagamento" [value]="pagamento">
+                      {{pagamento.descricao}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <div class="section-group m-2">
+                  <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
+                </div>
+
+                  <div>
+                    <button mat-button matStepperPrevious>Anterior</button>
+                    <button mat-button (click)="finalizarPedido()" [disabled]="this.pedidoFormGroup.invalid">Confirmar</button>
+                  </div>
+                </form>
+
+              </mat-step>
+              <mat-step>
+                <div class="section-group text-center pt-5">
+                <h1>Pedido nº {{pedidoUsuario.cdPedido}} realizado com sucesso!</h1>
+                <h2>Agradecemos pela preferência!</h2>
+                <p>Fique no aguardo! Seu pedido será preparado!</p>
+                <h3><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h3>
+               </div>
+              </mat-step>
+          </mat-horizontal-stepper>
+          
+    </div>
+
+</div>

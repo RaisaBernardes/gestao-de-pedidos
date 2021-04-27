@@ -1,0 +1,94 @@
+<div class="display-main container-fluid col-md-10 fadeIn">
+
+  <div class="display-row">
+  <div class="display-form">
+    <form [formGroup]="cadastroUsuario" novalidate (ngSubmit)="submit()">
+    
+      <h1 class="form-title text-center">Registrar-se</h1>
+
+      <div class="row">
+        <mat-form-field class="example-full-width w-75">
+          <input name="nome" formControlName="nome" matInput placeholder="Nome Completo">
+          <mat-error  *ngIf="cadastroUsuario.touched && f.nome.errors?.required">Campo Obrigatório</mat-error>
+        </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="example-full-width w-75">
+              <input name="telefone" formControlName="telefone" matInput placeholder="Telefone">
+              <mat-error  *ngIf="cadastroUsuario.touched && f.telefone.errors?.required">Campo Obrigatório</mat-error>
+            </mat-form-field>
+            </div>
+
+        <div class="row">
+                <mat-form-field class="example-full-width w-75">
+                  <input type="email" name="email" formControlName="email" matInput placeholder="Email">
+                  <mat-error  *ngIf="cadastroUsuario.touched && f.email.errors?.required">Campo Obrigatório</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="example-full-width w-75">
+                <input name="senha" type="password" formControlName="senha" matInput placeholder="Senha">
+                <mat-error  *ngIf="cadastroUsuario.touched && f.senha.errors?.required">Campo Obrigatório</mat-error>
+              </mat-form-field>
+            </div>
+        
+        <div class="row">
+              <mat-form-field class="example-full-width w-75">
+                <input name="senhaConfirma" type="password" formControlName="senhaConfirma" matInput placeholder="Confirmar Senha">
+                <mat-error  *ngIf="cadastroUsuario.touched && f.senhaConfirma.errors?.required">Campo Obrigatório</mat-error>
+              </mat-form-field>
+        </div>
+
+        <div class="row"> 
+                <mat-form-field class="example-full-width w-75">
+                  <input name="logradouro" formControlName="logradouro" matInput placeholder="Endereço">
+                  <mat-error  *ngIf="cadastroUsuario.touched && f.logradouro.errors?.required">Campo Obrigatório</mat-error>
+                </mat-form-field>
+        </div>
+
+        <div class="row"> 
+          <mat-form-field class="w-25">
+            <input name="numero" formControlName="numero" matInput placeholder="Número">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.numero.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-50">
+            <input name="bairro" formControlName="bairro" matInput placeholder="Bairro">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.bairro.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="w-75">
+            <input name="complemento" formControlName="complemento" matInput placeholder="Complemento">
+          </mat-form-field>
+        </div>
+
+        <div class="row"> 
+          <mat-form-field class="w-50">
+            <input name="cidade" formControlName="cidade" matInput placeholder="Cidade">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.cidade.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+          <mat-form-field class="w-25">
+            <input name="estado" formControlName="estado" matInput placeholder="Estado (UF)">
+            <mat-error  *ngIf="cadastroUsuario.touched && f.estado.errors?.required">Campo Obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic" [disabled]="this.btDisabled">Cadastrar</button></div>
+        </form>
+
+        
+
+  </div>
+
+  <div class="display-image text-center">
+
+    <h1 class="title">Já tem uma conta?</h1>
+    <button class="w-25 rounded-pill" [routerLink]="['/login']" mat-raised-button color="basic">Login</button>
+
+  </div>
+
+  </div>
+</div>

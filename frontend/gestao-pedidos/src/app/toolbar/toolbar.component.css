@@ -1,0 +1,93 @@
+.sidenav {
+  width: 200px;
+}
+
+.mat-subnav-item {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background-color:rgba(0, 0, 0, 0.774);
+}
+
+.mat-subnav-item:hover {
+  color:rgba(0, 0, 0, 0.774);
+  background-color:rgba(211, 211, 211, 0.616);
+  text-decoration: none;
+}
+
+mat-sidenav {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.774);
+}
+
+.mat-list-item {
+  color: white;
+}
+
+.mat-list-item:hover {
+  background-color: rgba(211, 211, 211, 0.616);
+  color: black;
+}
+
+@media (max-width: 600px) {
+  .mat-toolbar-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 804px) {
+  .mat-toolbar-menu a {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 763px) {
+  .mat-toolbar-menu a {
+    font-size: 14px;
+  }
+
+  .mat-subnav-menu a {
+    font-size: 14px;
+  }
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.mat-toolbar-title {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.company-name {
+  font-size: 30px;
+  color: white;
+  font-weight: bolder;
+}
+
+.mat-toolbar-option {
+  margin: 0 10px !important;
+  font-size: 20px;
+  color: white;
+}
+
+.mat-toolbar-title:hover, .mat-toolbar-option:hover {
+  color: rgba(255, 255, 255, 0.842);
+  text-decoration: none;
+}
