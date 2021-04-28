@@ -33,3 +33,33 @@
 .paragraph-price {
     font-size: 15px;
 }
+
+@media only screen and (min-width: 701px) and (max-width: 800px) {
+    .item-title {
+        font-size: 60px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 700px) {
+    .item-title {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 600px) {
+    .item-title {
+        font-size: 45px;
+    }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 500px) {
+    .item-title {
+        font-size: 35px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .item-title {
+        font-size: 28px;
+    }
+}
