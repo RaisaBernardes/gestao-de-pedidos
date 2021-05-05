@@ -26,7 +26,7 @@ router.group((router) => {
     });
 
     router.get('/findByUser', async (req, res) => {
-        await AddressController.getByWhere({"cdUsuario": req.session.user.cdUsuario}).then(response => {
+        await AddressController.getByWhere({"userCdUsuario": req.session.user.cdUsuario}).then(response => {
             res.status(response.statusCode)
             res.json(response.data)
         })

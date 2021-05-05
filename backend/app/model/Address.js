@@ -1,4 +1,5 @@
 const {sequelizeConnect, Sequelize} = require('../config/db');
+const User = require('./User');
 
 const Address = sequelizeConnect.define('address', {
     cdEndereco: {
@@ -39,5 +40,9 @@ const Address = sequelizeConnect.define('address', {
         field: "estado"
     }
 });
+
+// Creater Address Foreign Key at User Table
+User.hasMany(Address);
+Address.belongsTo(User);
 
 module.exports = Address;

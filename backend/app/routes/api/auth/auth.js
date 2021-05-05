@@ -113,16 +113,18 @@ router.group((router) => {
             type: 'string',
         },
     ]), async (req, res) => {
-        await AddressController.create(req.body).then(async responseAddress => {
-            if(responseAddress.statusCode == 200){
-                req.body.addressCdEndereco = responseAddress.data.cdEndereco;
-                await UserController.create(req.body).then(responseUser => {
-                    res.status(responseUser.statusCode)
-                    res.json(responseUser.data)
-                });
-            }
-            // res.status(response.statusCode)
-            // res.json(response.data)
+        await UserController.create(req.body).then(async responseUser => {
+
+            req.body.userCdUsuario = responseUser.data.cdUsuario;
+
+            await AddressController.create(req.body).then(async responseAddress => {
+                if(responseAddress.statusCode == 200){
+                    console.log("STATUS 200 OK - Usuário com endereço cadastrado com sucesso")
+                }
+        
+            });
+             res.status(responseUser.statusCode)
+             res.json(responseUser.data)
         });
     });
 });

@@ -61,7 +61,8 @@ router.group((router) => {
         let order = {
             'userCdUsuario': req.session.user.cdUsuario,
             'status': "CRIADO",
-            'precoTotal': payment.vlTotal
+            'precoTotal': payment.vlTotal,
+            'addressCdEndereco': paymentAndItemInOrder.enderecoEntrega.cdEndereco
         };
 
         let statusCode = {
