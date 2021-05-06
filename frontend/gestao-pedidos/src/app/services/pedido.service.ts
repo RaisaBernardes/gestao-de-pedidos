@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormaPagamento, Item, Pedido } from '../shared/model.module';
+import { Endereco, FormaPagamento, Item, Pedido } from '../shared/model.module';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,10 @@ export class PedidoService {
 
    fetchPagamento() {
     return this.http.get<FormaPagamento>(this.tipoPagamentoUrl+"/findAll", this.config);
+  }
+
+  fetchEnderecoUsuario() {
+    return this.http.get<Endereco>(this.addressUrl+"/findByUser", this.config);
   }
   
 }
