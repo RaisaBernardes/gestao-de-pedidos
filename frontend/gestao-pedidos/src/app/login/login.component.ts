@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
             });
             sessionStorage.setItem('tp_usuario', data.result.tp_usuario);
             sessionStorage.setItem('cd_usuario', data.result.cdUsuario);
-            sessionStorage.setItem('nome', data.result.nome);
             this.router.navigateByUrl("/")
           }
           }, (err) => {

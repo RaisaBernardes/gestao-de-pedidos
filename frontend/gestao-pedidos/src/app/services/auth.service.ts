@@ -29,7 +29,7 @@ export class AuthService {
 
   logout(): Observable<any> {
     // to-do: chamada de servico rest /user/logout
-    return this.http.get<any>(this.userUrl+"/logout");
+    return this.http.get<any>(this.userUrl+"/logout", this.config);
   }
 
 

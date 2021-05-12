@@ -5,6 +5,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,7 +16,7 @@ export class ToolbarComponent {
 
   private tp_usuario: String;
 
-  constructor(private cookieService: CookieService, private breakpointObserver: BreakpointObserver, private router: Router) { }
+  constructor(private authService: AuthService, private cookieService: CookieService, private breakpointObserver: BreakpointObserver, private router: Router) { }
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
@@ -48,6 +49,13 @@ export class ToolbarComponent {
 
   checkUserLogged(): boolean {
     return this.cookieService.check('SessionCookie');
+  }
+
+  logout() {
+    this.authService.logout().subscribe(() => {
+      sessionStorage.removeItem('tp_usuario');
+      this.router.navigate(['/']);
+    })
   }
 
 }

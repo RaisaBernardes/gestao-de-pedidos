@@ -50,7 +50,6 @@ export class PerfilComponent implements OnInit {
       console.log(endereco);
 
       this.usuarioService.addEnderecoUsuario(endereco).subscribe((data) => {
-        console.log(data);
         window.location.reload();
       })
     }

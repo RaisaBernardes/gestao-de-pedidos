@@ -19,7 +19,7 @@
       <a mat-list-item routerLink="/login" *ngIf="!checkUserLogged()">CONTA</a>
       <a mat-list-item routerLink="/comandas" *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon> COMANDAS</a>
       <a mat-list-item routerLink="/perfil" *ngIf="checkUserLogged()"><mat-icon>account_circle</mat-icon> MEU PERFIL</a>
-      <a mat-list-item class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>exit_to_app</mat-icon> SAIR</a>
+      <a mat-list-item (click)="this.logout()" class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>exit_to_app</mat-icon> SAIR</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -46,7 +46,7 @@
         <a routerLink="/login"  class="mat-toolbar-option" *ngIf="!checkUserLogged()">CONTA</a>
         <a routerLink="/perfil" class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>account_circle</mat-icon></a>
         <a routerLink="/comandas" class="mat-toolbar-option" *ngIf="checkUserPrivilege('ADMIN')"><mat-icon>event</mat-icon></a>
-        <a class="mat-toolbar-option" *ngIf="checkUserLogged()"><mat-icon>exit_to_app</mat-icon></a>
+        <a class="mat-toolbar-option" (click)="this.logout()" *ngIf="checkUserLogged()"><mat-icon>exit_to_app</mat-icon></a>
       </div>
     </mat-toolbar>
 
