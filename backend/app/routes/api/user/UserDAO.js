@@ -27,6 +27,7 @@ router.group((router) => {
     router.get('/logout', async (req, res) => {
         res.clearCookie('SessionCookie');
         req.session.destroy;
+        res.json({status: true, message: 'Logout!'})
     });
 
     router.post('/findByPk', middlewareFunctions.validateParams([
