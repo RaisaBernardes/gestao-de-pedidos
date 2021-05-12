@@ -41,6 +41,7 @@ export class PedidoDTO {
 }
 
 export class UsuarioDTO {
+    cdUsuario?: number;
     nome: string;
     telefone: string;
     email: string;

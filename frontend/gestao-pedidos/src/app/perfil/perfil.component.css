@@ -1,0 +1,57 @@
+.info-container {
+    min-height: 500px;
+}
+
+.container-fluid, .display-3 {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.info-card-title {
+    font-size: 25px;
+}
+
+.info-card {
+    padding: 30px;
+    border: 0.5px solid white;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row dt {
+    font-size: 18px;
+}
+
+.info-row button {
+    border: 0.5px solid white;
+}
+
+::ng-deep mat-form-field {
+    color: white!important;
+  } 
+  
+  ::ng-deep mat-form-field  .mat-form-field-label {
+    color: white!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-form-field-underline {
+    background-color: #ffffff!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-input-element {
+    caret-color: #ffffff!important;
+  }
+  
+  ::ng-deep mat-form-field .mat-form-field-ripple {
+    background-color: #ffffff!important;
+  }

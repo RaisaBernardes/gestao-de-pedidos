@@ -25,6 +25,7 @@ import { CardapioComponent } from './cardapio/cardapio.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { PedidoService } from './services/pedido.service';
 import { ComandasComponent } from './comandas/comandas.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ComandasComponent } from './comandas/comandas.component';
     LoginComponent,
     CardapioComponent,
     PedidoComponent,
-    ComandasComponent
+    ComandasComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

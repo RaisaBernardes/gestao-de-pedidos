@@ -1,0 +1,60 @@
+<div class="info-container container-fluid col-md-9 pt-5 pb-5 fadeIn">
+
+    <div class="info-card">
+    <h3 class="info-card-title">Informações Pessoais</h3>
+    <div class="info-row pt-4">
+        <dt class="col-sm-4">Nome Completo</dt>
+        <dt class="col-sm-4">Email</dt>
+        <dt class="col-sm-3">Telefone</dt>
+    </div>
+
+    <div class="info-row">
+        <dd class="col-sm-4">{{this.usuario.nome}}</dd>
+        <dd class="col-sm-4">{{this.usuario.email}}</dd>
+        <dd class="col-sm-3">{{this.usuario.telefone}}</dd>
+    </div>
+
+    <div class="info-row pt-3">
+        <dt class="col-sm-9">Endereços Cadastrados</dt>
+    </div>
+
+    <div class="info-column">
+        <dd class="col-sm-9" *ngFor="let endereco of enderecos">
+            {{endereco.logradouro}}, {{endereco.numero}} {{endereco.complemento}}
+            - {{endereco.bairro}}, {{endereco.cidade}}, {{endereco.estado}}  </dd>
+    </div>
+
+    <div class="info-row pt-5">
+        <button mat-button (click)="revealDisplayEndereco()" *ngIf="!this.revealDisplay">Adicionar endereço</button>
+        <button mat-button (click)="addEndereco()" *ngIf="this.revealDisplay">Confirmar</button>
+        <button mat-button (click)="revealDisplayEndereco()" *ngIf="this.revealDisplay">Cancelar</button>
+    </div>
+
+    <form *ngIf="this.revealDisplay" [formGroup]="enderecoUsuario" novalidate >
+    <div class="info-row">
+        <mat-form-field class="example-full-width w-50">
+            <input matInput name="logradouro" formControlName="logradouro" placeholder="Logradouro">
+          </mat-form-field>
+          <mat-form-field class="example-full-width w-20">
+            <input matInput name="numero" formControlName="numero" placeholder="Numero">
+          </mat-form-field>
+          <mat-form-field class="example-full-width w-50">
+            <input matInput name="complemento" formControlName="complemento" placeholder="Complemento">
+          </mat-form-field>
+    </div>
+    <div class="info-row">
+          <mat-form-field class="example-full-width w-50">
+              <input matInput name="bairro" formControlName="bairro" placeholder="Bairro">
+          </mat-form-field>
+          <mat-form-field class="example-full-width w-50">
+            <input matInput name="cidade" formControlName="cidade" placeholder="Cidade">
+        </mat-form-field>
+        <mat-form-field class="example-full-width w-20">
+            <input matInput name="estado" formControlName="estado" placeholder="Estado (UF)">
+        </mat-form-field>
+    </div>
+   </form>
+
+    </div>
+
+</div>
