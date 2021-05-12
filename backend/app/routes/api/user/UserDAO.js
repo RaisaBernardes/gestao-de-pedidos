@@ -20,10 +20,13 @@ router.group((router) => {
         });
     });
 
+    router.get('/userLogged', (req,res) => {
+        res.json({status: true, userLogged: req.session.user})
+    })
+
     router.get('/logout', async (req, res) => {
         res.clearCookie('SessionCookie');
         req.session.destroy;
-        res.redirect('/');
     });
 
     router.post('/findByPk', middlewareFunctions.validateParams([
