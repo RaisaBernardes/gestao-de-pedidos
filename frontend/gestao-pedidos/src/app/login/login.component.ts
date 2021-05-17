@@ -39,13 +39,6 @@ export class LoginComponent implements OnInit {
    })
   }
 
-  private createForm(user: any) {
-    this.loginUsuario = this.fb.group({
-      email: [user.email, [Validators.required, Validators.minLength(5)]],
-      senha: [user.senha, [Validators.required, Validators.minLength(6)]]
-   })
-  }
-
   async submit(): Promise<void> {
     this.loginUsuario.markAllAsTouched();
     if (this.loginUsuario.invalid) {

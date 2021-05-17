@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import Swal from 'sweetalert2';
 import { UsuarioService } from '../services/usuario.service';
 import { UsuarioDTO, Endereco } from '../shared/model.module';
 
@@ -15,15 +18,20 @@ export class PerfilComponent implements OnInit {
   enderecos: Endereco[] = new Array();
   revealDisplay: boolean = false;
 
-  constructor(private usuarioService: UsuarioService,  private fb: FormBuilder) { }
+  constructor(private cookieService: CookieService, private usuarioService: UsuarioService,  private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+
+    if(!this.checkUserLogged()) {
+      this.router.navigateByUrl('/');
+    }
+
     this.usuarioService.getUserLogged().subscribe((data) => {
-      const {nome, email, telefone} = data.userLogged;
+      const {cdUsuario, nome, email, telefone} = data.userLogged;
       this.usuario.nome = nome;
       this.usuario.telefone = telefone;
       this.usuario.email = email;
-      this.usuario.cdUsuario = data.userLogged.cdUsuario;
+      this.usuario.cdUsuario = cdUsuario;
 
       console.log(this.usuario)
     })
@@ -39,6 +47,10 @@ export class PerfilComponent implements OnInit {
     this.revealDisplay = ( this.revealDisplay ? false : true );
   }
 
+  get f() {
+    return this.enderecoUsuario.controls;
+  }
+
   addEndereco() {
     this.enderecoUsuario.markAllAsTouched();
 
@@ -47,10 +59,15 @@ export class PerfilComponent implements OnInit {
     } else {
       var endereco = this.enderecoUsuario.getRawValue() as Endereco;
       endereco.userCdUsuario = this.usuario.cdUsuario;
-      console.log(endereco);
 
       this.usuarioService.addEnderecoUsuario(endereco).subscribe((data) => {
-        window.location.reload();
+        this.enderecoUsuario.reset();
+        Swal.fire({title:"Endereço cadastrado com sucesso!", icon: 'success'})
+        
+        this.usuarioService.fetchEnderecoUsuario().subscribe((data) => {
+          this.enderecos = new Array();
+          this.enderecos = this.enderecos.concat(data);
+        })
       })
     }
   }
@@ -65,6 +82,10 @@ export class PerfilComponent implements OnInit {
       cidade: ['', [Validators.required, Validators.minLength(3)]],
       estado: ['', [Validators.required, Validators.minLength(2)]]
    })
+  }
+
+  checkUserLogged(): boolean {
+    return this.cookieService.check('SessionCookie');
   }
 
 }

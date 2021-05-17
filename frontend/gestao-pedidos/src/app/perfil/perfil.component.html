@@ -30,27 +30,33 @@
         <button mat-button (click)="revealDisplayEndereco()" *ngIf="this.revealDisplay">Cancelar</button>
     </div>
 
-    <form *ngIf="this.revealDisplay" [formGroup]="enderecoUsuario" novalidate >
+    <form class="pt-2" *ngIf="this.revealDisplay" [formGroup]="enderecoUsuario" novalidate >
     <div class="info-row">
         <mat-form-field class="example-full-width w-50">
             <input matInput name="logradouro" formControlName="logradouro" placeholder="Logradouro">
-          </mat-form-field>
+            <mat-error  *ngIf="enderecoUsuario.touched && f.logradouro.errors?.required">Campo Obrigatório</mat-error>  
+        </mat-form-field>
           <mat-form-field class="example-full-width w-20">
             <input matInput name="numero" formControlName="numero" placeholder="Numero">
+            <mat-error  *ngIf="enderecoUsuario.touched && f.numero.errors?.required">Campo Obrigatório</mat-error>  
           </mat-form-field>
           <mat-form-field class="example-full-width w-50">
             <input matInput name="complemento" formControlName="complemento" placeholder="Complemento">
+            <mat-error  *ngIf="enderecoUsuario.touched && f.complemento.errors?.required">Campo Obrigatório</mat-error>  
           </mat-form-field>
     </div>
     <div class="info-row">
           <mat-form-field class="example-full-width w-50">
               <input matInput name="bairro" formControlName="bairro" placeholder="Bairro">
+              <mat-error  *ngIf="enderecoUsuario.touched && f.bairro.errors?.required">Campo Obrigatório</mat-error>  
           </mat-form-field>
           <mat-form-field class="example-full-width w-50">
             <input matInput name="cidade" formControlName="cidade" placeholder="Cidade">
+            <mat-error  *ngIf="enderecoUsuario.touched && f.cidade.errors?.required">Campo Obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width w-20">
             <input matInput name="estado" formControlName="estado" placeholder="Estado (UF)">
+            <mat-error  *ngIf="enderecoUsuario.touched && f.estado.errors?.required">Campo Obrigatório</mat-error>
         </mat-form-field>
     </div>
    </form>
