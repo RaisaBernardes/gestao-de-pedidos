@@ -1,4 +1,4 @@
-<div class="container-fluid col-md-8 text-left fadeIn">
+<div class="container-fluid col-md-8 text-left fadeIn pb-5">
     <h1 class="container-title">Pedido</h1>
     
     <div class="card">
@@ -36,12 +36,29 @@
                     </div>
                 </div>
 
-                <div class="section-group m-2">
-                  <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
+                <div class="section-group m-2" *ngIf="this.itensPedidoDetalhe?.length > 0">
+                  <div>
+                    <h1><strong>Resumo do Pedido:</strong></h1>
+                    <table class="table table-borderless table-hover table-sm">
+                      <thead >
+                        <tr>
+                          <th scope="col">Item</th>
+                          <th scope="col">Quantidade</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pedido of itensPedidoDetalhe">
+                          <td>{{pedido.item.descricao}}</td>
+                          <td>{{pedido.quantidade}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h3><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h3>
+                  </div>
                 </div>
 
                 <div>
-                  <button mat-button matStepperNext [disabled]="this.itensPedido.length < 1">Próximo</button>
+                  <button mat-button matStepperNext [disabled]="this.itensPedidoDetalhe?.length < 1">Próximo</button>
                 </div>
 
             </mat-step>
@@ -49,8 +66,8 @@
             
              <mat-step [stepControl]="pedidoFormGroup">
 
-                <form [formGroup]="pedidoFormGroup">
-                  <mat-form-field appearance="fill" style="width: 600px">
+                <form [formGroup]="pedidoFormGroup" class="pt-3">
+                  <mat-form-field appearance="fill" class="w-100">
                   <mat-label>Escolha a forma do pagamento</mat-label>
                   <mat-select required formControlName="forma">
                     <mat-option>--</mat-option>
@@ -59,7 +76,7 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field appearance="fill" style="width: 600px">
+                <mat-form-field appearance="fill" class="w-100">
                   <mat-label>Escolha o endereço de entrega</mat-label>
                   <mat-select required formControlName="endereco">
                     <mat-option>--</mat-option>
@@ -69,16 +86,40 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <div class="section-group m-2">
-                  <h1><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h1>
-                </div>
 
                   <div>
                     <button mat-button matStepperPrevious>Anterior</button>
-                    <button mat-button (click)="finalizarPedido()" [disabled]="this.pedidoFormGroup.invalid">Confirmar</button>
+                    <button mat-button matStepperNext [disabled]="this.pedidoFormGroup.invalid">Próximo</button>
                   </div>
                 </form>
 
+              </mat-step>
+              <mat-step>
+                <div class="section-group m-2">
+                  <div>
+                    <h1><strong>Resumo do Pedido:</strong></h1>
+                    <table class="table table-borderless table-hover table-sm">
+                      <thead >
+                        <tr>
+                          <th scope="col">Item</th>
+                          <th scope="col">Quantidade</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pedido of itensPedidoDetalhe">
+                          <td>{{pedido.item.descricao}}</td>
+                          <td>{{pedido.quantidade}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <h3><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h3>
+                  </div>
+                </div>
+
+                <div>
+                  <button mat-button matStepperPrevious>Anterior</button>
+                  <button mat-button (click)="finalizarPedido()">Confirmar</button>
+                </div>
               </mat-step>
               <mat-step>
                 <div class="section-group text-center pt-5">
@@ -88,9 +129,9 @@
                   location_on
                   </span>
                   <strong>Endereço de entrega: </strong> 
-                  {{this.pedidoFormGroup.getRawValue().endereco.logradouro}}, {{this.pedidoFormGroup.getRawValue().endereco.numero}}
-                {{this.pedidoFormGroup.getRawValue().endereco.complemento}} - {{this.pedidoFormGroup.getRawValue().endereco.bairro}},
-              {{this.pedidoFormGroup.getRawValue().endereco.cidade}}, {{this.pedidoFormGroup.getRawValue().endereco.estado}}</p>
+                  {{this.pedidoUsuario?.enderecoEntrega?.logradouro}}, {{this.pedidoUsuario?.enderecoEntrega?.numero}}
+                {{this.pedidoUsuario?.enderecoEntrega?.complemento}} - {{this.pedidoUsuario?.enderecoEntrega?.bairro}},
+              {{this.pedidoUsuario?.enderecoEntrega?.cidade}}, {{this.pedidoUsuario?.enderecoEntrega?.estado}}</p>
                 <p>Fique no aguardo! Seu pedido será preparado!</p>
                 <h3><strong>Total:</strong> R$ {{vlTotal | number : '1.2'}}</h3>
                </div>

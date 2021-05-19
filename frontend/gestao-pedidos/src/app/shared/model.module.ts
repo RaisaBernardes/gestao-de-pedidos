@@ -50,10 +50,15 @@ export class UsuarioDTO {
 export class PedidoContemDTO {
     item: Item;
     quantidade: number;
+
+    constructor(item) {
+        this.item = item;
+        this.quantidade = 1;
+    }
 }
 
 export class Item {
-    cdItem: number;
+    cdItem?: number;
     descricao: String;
     ingredientesDescricao: String;
     preco: number;
@@ -75,13 +80,13 @@ export class FormaPagamento {
     descricao: String;
 }
 
-// RELAÇÃO ITEM COM PEDIDO
+// RELAÇÃO ITEM COM PEDIDO 
 export class PedidoContem {
     itemCdItem: number;
     quantidade: number;
 
-    constructor(itemCdItem) {
+    constructor(itemCdItem, quantidade) {
         this.itemCdItem = itemCdItem;
-        this.quantidade = 1;
+        this.quantidade = quantidade;
     }
 }

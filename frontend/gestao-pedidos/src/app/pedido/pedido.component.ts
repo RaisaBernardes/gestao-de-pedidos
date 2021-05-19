@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 import { PedidoService } from '../services/pedido.service';
-import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco } from '../shared/model.module';
+import { Item, FormaPagamento, PedidoContem, Pedido, Pagamento, Endereco, PedidoContemDTO } from '../shared/model.module';
 
 @Component({
   selector: 'app-pedido',
@@ -16,6 +16,7 @@ export class PedidoComponent implements OnInit {
 
   @ViewChild('stepper') private myStepper: MatStepper; // stepper
 
+  itensPedidoDetalhe: PedidoContemDTO[] = new Array;
   itensPedido: PedidoContem[] = new Array;
   vlTotal: number = 0;
 
@@ -74,45 +75,45 @@ export class PedidoComponent implements OnInit {
   addItem(item: Item) {
     var exists = false;
 
-    this.itensPedido.map(element => {
-       if (element.itemCdItem == item.cdItem) {
+    this.itensPedidoDetalhe.map(element => {
+       if (element.item.cdItem == item.cdItem) {
          exists = true;
          element.quantidade++;
        }
     });
 
     if (!exists) {
-    this.itensPedido.push(new PedidoContem(item.cdItem))
+    this.itensPedidoDetalhe.push(new PedidoContemDTO(item))
     }
     this.vlTotal += item.preco;
 
-    console.log(this.itensPedido);
+    console.log(this.itensPedidoDetalhe);
   }
 
   removeItem(item: Item) {
     var exists = false;
 
-    this.itensPedido.map(element => {
-      if (element.itemCdItem == item.cdItem && element.quantidade > 1) {
+    this.itensPedidoDetalhe.map(element => {
+      if (element.item.cdItem == item.cdItem && element.quantidade > 1) {
         exists = true;
         element.quantidade--; 
       }
    });
 
-   this.itensPedido.forEach(element => {
-    if (element.itemCdItem == item.cdItem) {
+   this.itensPedidoDetalhe.forEach(element => {
+    if (element.item.cdItem == item.cdItem) {
       this.vlTotal -= item.preco;
     }})
 
    if (!exists) {
-    this.itensPedido = this.itensPedido.filter(element => element.itemCdItem !== item.cdItem);
+    this.itensPedidoDetalhe = this.itensPedidoDetalhe.filter(element => element.item.cdItem !== item.cdItem);
    }
 
-    console.log(this.itensPedido);
+    console.log(this.itensPedidoDetalhe);
   }
 
   finalizarPedido() {
-
+    this.itensPedido = new Array();
     this.pedidoFormGroup.get('forma').disable();
     this.pedidoFormGroup.get('endereco').disable();
     
@@ -135,6 +136,16 @@ export class PedidoComponent implements OnInit {
           formaPagamento: this.pedidoFormGroup.getRawValue().forma
         }
     
+        // DTO PARA OBJETO PASSADO PARA BACKEND
+        this.itensPedidoDetalhe.forEach(itemPedido => {
+          const pedido = {"itemCdItem": itemPedido.item.cdItem, 
+                          "quantidade": itemPedido.quantidade}
+          this.itensPedido.push(pedido);
+        })
+
+        console.log(this.itensPedido);
+
+
         this.pedidoUsuario = {
           pedidos: this.itensPedido,
           pagamento: this.pagamentoUsuario,

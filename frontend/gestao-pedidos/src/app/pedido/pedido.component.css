@@ -16,6 +16,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.section-group h1 {
+    font-family: 'Poppins', sans-serif;
+}
+
 .section-title {
     font-size: 20px;
     font-style: italic;
@@ -56,6 +60,10 @@
   
   ::ng-deep mat-form-field .mat-input-element {
     caret-color: black!important;
+  }
+
+  ::ng-deep .mat-step-header .mat-step-icon-state-edit {
+      background-color: black !important;
   }
 
   /* DESABILITAR CLIQUE NO STEPPER*/
