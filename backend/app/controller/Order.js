@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const User = require('../model/User');
+const Address = require('../model/Address');
 const defaultResponse = (data, statusCode = httpStatus.OK) => ({data, statusCode});
 const errorResponse = (message, statusCode = httpStatus.BAD_REQUEST) => defaultResponse({error: message}, statusCode);
 
@@ -9,7 +10,7 @@ class OrdersController {
     }
 
     getAll() {
-        return this.Orders.findAll().then(result => defaultResponse(result))
+        return this.Orders.findAll({include: [User, Address] }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message));
     }
 
