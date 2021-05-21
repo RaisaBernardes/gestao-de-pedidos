@@ -1,0 +1,34 @@
+<div class="container-fluid col-md-10 text-left fadeIn">
+    <h1 class="container-title">Histórico de Comandas</h1>
+    
+    <div class="card">
+
+        <table class="table table-borderless table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Nº do Pedido</th>
+                <th scope="col">Data</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Endereço de Entrega</th>
+                <th scope="col">Status</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Itens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pedido of pedidos">
+                <td>{{pedido.cdPedido}}</td>
+                <td>{{pedido.createdAt | date: 'dd/MM/yyyy'}}</td>
+                <td>R$ {{pedido.precoTotal | number : '1.2'}}</td>
+                <td>{{pedido.address.logradouro}}, {{pedido.address.numero}}
+                    - {{pedido.address.bairro}}, {{pedido.address.cidade}}, {{pedido.address.estado}}</td>
+                <td>{{pedido.status}}</td>
+                <td><button mat-button class="table-btn" (click)="this.exibirModalCliente(pedido.user)">Info</button></td>
+                <td><button mat-button class="table-btn" (click)="this.exibirModalItens(pedido.pedidos)">Info</button></td>
+              </tr>
+            </tbody>
+          </table>
+        
+    </div>
+</div>
+

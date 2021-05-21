@@ -1,0 +1,26 @@
+.container-fluid {
+    padding-bottom: 20px;
+}
+
+.container-title {
+    color: white;
+    font-size: 30px;
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card {
+    padding: 30px;
+    display: grid;
+    place-items: center;
+    min-height: fit-content;
+}
+
+table {
+    font-family: 'Poppins', sans-serif;
+}
+
+.table-btn {
+    background-color: black;
+    color: white;
+}

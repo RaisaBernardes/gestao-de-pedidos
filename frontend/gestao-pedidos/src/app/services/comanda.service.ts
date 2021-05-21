@@ -22,6 +22,10 @@ export class ComandaService {
                                {"status": status}, this.config);
   }
 
+  fetchAll(): Observable<PedidoDTO[]> {
+    return this.http.get<PedidoDTO[]>(this.orderUrl+"/findAll", this.config)
+  }
+
   atualizarStatus(pedidoAtualizado: PedidoDTO): Observable<any> {
     return this.http.post<any>(this.orderUrl+"/update", pedidoAtualizado, this.config)
   }

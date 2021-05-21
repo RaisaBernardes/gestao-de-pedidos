@@ -37,7 +37,9 @@ export class PedidoDTO {
     precoTotal?: number;
     status: string;
     user?: UsuarioDTO;
+    address?: Endereco;
     pedidos?: PedidoContemDTO[];
+    createdAt?: Date;
 }
 
 export class UsuarioDTO {
