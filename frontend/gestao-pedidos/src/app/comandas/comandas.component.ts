@@ -60,8 +60,12 @@ export class ComandasComponent implements OnInit {
   }
 
   fetchLists() {
+
     this.comandaService.fetchByStatus("CRIADO").subscribe((data) => {
      this.pedidosCriados = this.pedidosCriados.concat(data);
+
+     this.pedidosCriados = this.filterListByCurrentDate(this.pedidosCriados);
+
      this.pedidosCriados.forEach(element => {
        element = this.fetchDetalhesPedidos(element);
      })
@@ -69,13 +73,19 @@ export class ComandasComponent implements OnInit {
 
     this.comandaService.fetchByStatus("PREPARANDO").subscribe((data) => {
       this.pedidosPreparando = this.pedidosPreparando.concat(data);
+
+      this.pedidosPreparando = this.filterListByCurrentDate(this.pedidosPreparando);
+
       this.pedidosPreparando.forEach(element => {
         element = this.fetchDetalhesPedidos(element);
       })
      })
 
      this.comandaService.fetchByStatus("FINALIZADO").subscribe((data) => {
-      this.pedidosFinalizados = this.pedidosFinalizados.concat(data);
+      this.pedidosFinalizados = this.pedidosFinalizados.concat(data)
+
+      this.pedidosFinalizados = this.filterListByCurrentDate(this.pedidosFinalizados);
+
       this.pedidosFinalizados.forEach(element => {
         element = this.fetchDetalhesPedidos(element);
       })
@@ -114,5 +124,13 @@ export class ComandasComponent implements OnInit {
     pedido.pedidos = pedidosDetalhados;
 
     return pedido;
+  }
+
+  filterListByCurrentDate(pedidos: PedidoDTO[]) {
+    var currentDate = new Date();
+    currentDate.setHours(0,0,0,0);
+
+    pedidos.forEach(element => console.log(new Date(element.createdAt)))
+    return pedidos.filter(pedido => new Date(pedido.createdAt) > currentDate);
   }
 }

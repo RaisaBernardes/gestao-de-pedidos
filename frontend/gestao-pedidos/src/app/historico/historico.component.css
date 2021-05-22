@@ -13,14 +13,25 @@
     padding: 30px;
     display: grid;
     place-items: center;
-    min-height: fit-content;
+    height: fit-content;
 }
 
 table {
     font-family: 'Poppins', sans-serif;
+    min-height: 400px;
+}
+
+.back-link {
+    color: white;
+}
+
+.back-link:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.911);
 }
 
 .table-btn {
     background-color: black;
     color: white;
+    width: 30px;
 }
