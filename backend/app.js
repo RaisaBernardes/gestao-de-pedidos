@@ -37,7 +37,7 @@ app.use(session({
     secret: 'Shsh!Secret!',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 600000, httpOnly: false } // Secure = True para usar o Secure do HTTPS
+    cookie: { maxAge: 600000, httpOnly: false, sameSite: "none", secure: true } // Secure = True para usar o Secure do HTTPS
 }));
 
 // Anything beginning with "/api" will go into this
@@ -51,4 +51,12 @@ app.get('/', function(req, res){
 // Test
 app.get('/test', function(req, res){
 	res.sendFile(__dirname + '/html/test/index.html');
+});
+
+app.get('/testRoute', function(req, res){
+	res.json({
+		status: true,
+		message: 'Hello world ;D',
+		userLogged: req.session.user
+	});
 });
