@@ -20,7 +20,7 @@ class OrdersController {
     }
 
     getByWhere(where){
-        return this.Orders.findAll({ where: where, include: [User] }).then(result => defaultResponse(result))
+        return this.Orders.findAll({ where: where, include: [User, Address] }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message));
     }
 
