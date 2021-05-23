@@ -7,7 +7,7 @@ import { Endereco, FormaPagamento, Item, Pedido } from '../shared/model.module';
 })
 export class PedidoService {
 
-  requestUrl = "http://ranch-backend-fbv.herokuapp.com/api/";
+  requestUrl = "http://ranch-backend-fbv.herokuapp.com/api";
   pedidoUrl = this.requestUrl + "/order";
   tipoPagamentoUrl = this.requestUrl + "/formOfPayment"
   itemUrl = this.requestUrl + "/item";

@@ -8,9 +8,9 @@ import { Item, PedidoDTO, Usuario } from '../shared/model.module';
 })
 export class ComandaService {
 
-  requestUrl = "http://ranch-backend-fbv.herokuapp.com/api/"
-  orderUrl = this.requestUrl+"order";
-  itemInOrderUrl = this.requestUrl+"itemInOrder";
+  requestUrl = "http://ranch-backend-fbv.herokuapp.com/api"
+  orderUrl = this.requestUrl+"/order";
+  itemInOrderUrl = this.requestUrl+"/itemInOrder";
   config = {withCredentials: true}; // SEMPRE PASSAR
   // SERVICE RESPONSAVEL PELA PARTE DE ORDER (PEDIDO/COMANDA)
 
