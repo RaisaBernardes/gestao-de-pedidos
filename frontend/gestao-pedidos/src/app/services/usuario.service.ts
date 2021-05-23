@@ -7,7 +7,7 @@ import { Endereco } from '../shared/model.module';
 })
 export class UsuarioService {
 
-  requestUrl = "http://localhost:9090/api";
+  requestUrl = "http://ranch-backend-fbv.herokuapp.com/api/";
   addressUrl = this.requestUrl + "/address";
   userUrl = this.requestUrl + "/user";
   config = {withCredentials: true}; // SEMPRE PASSAR

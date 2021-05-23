@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  requestUrl = "http://localhost:9090/api";
+  requestUrl = "http://ranch-backend-fbv.herokuapp.com/api/";
   userUrl = this.requestUrl + "/user";
   authUrl = this.requestUrl + "/auth";
   config = {withCredentials: true}; // SEMPRE PASSAR

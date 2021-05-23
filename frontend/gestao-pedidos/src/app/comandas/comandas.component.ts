@@ -154,6 +154,7 @@ export class ComandasComponent implements OnInit {
           }
        // CANCELANDO PEDIDO
        this.comandaService.atualizarStatus(pedidoAtualizado).subscribe(data => {
+         Swal.fire({title: "Pedido Cancelado!", icon: 'info', showConfirmButton: false, timer: 2000})
          window.location.reload();
        }, (err) => {
          // SWEET ALERT
