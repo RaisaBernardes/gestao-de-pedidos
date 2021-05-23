@@ -40,7 +40,6 @@ export class ComandasComponent implements OnInit {
 
       // movendo para outra lista
       this.comandaService.atualizarStatus(pedidoAtualizado).subscribe(data => {
-        console.log(data);
       }, (err) => {
         // SWEET ALERT
         Swal.fire({ title:'Erro!', html:"<p>Ocorreu algo de errado na conexão com o servidor.</p>"+
@@ -102,7 +101,10 @@ export class ComandasComponent implements OnInit {
 
     var usuarioDescricao = `<p class="font-weight-light"><strong>Nome do Cliente:</strong> ${pedido.user.nome}</p>` 
                         + `<p class="font-weight-light"><strong>Contato:</strong> ${pedido.user.telefone}</p>` 
-                        + `<p class="font-weight-light"><strong>Email:</strong> ${pedido.user.email}</p>`
+                        + `<p class="font-weight-light"><strong>Email:</strong> ${pedido.user.email}</p>` 
+                        + `<hr>`
+                        + `<p class="font-weight-light"><strong>Endereço de Entrega:</strong> <br> ${pedido.address?.logradouro}, ${pedido.address?.numero} ${pedido.address?.complemento} -`
+                        +` ${pedido.address?.bairro}, ${pedido.address?.cidade}, ${pedido.address?.estado}`
 
     Swal.fire({title: `Detalhes do Pedido Nº ${pedido.cdPedido}`, 
                html: `<hr>` + itensDescricao +
@@ -130,7 +132,36 @@ export class ComandasComponent implements OnInit {
     var currentDate = new Date();
     currentDate.setHours(0,0,0,0);
 
-    pedidos.forEach(element => console.log(new Date(element.createdAt)))
     return pedidos.filter(pedido => new Date(pedido.createdAt) > currentDate);
+  }
+
+  cancelarPedido(pedido: PedidoDTO) {
+
+    Swal.fire({
+      title: 'Deseja cancelar este pedido?',
+      showDenyButton: true,
+      confirmButtonText: `Confirmar`,
+      confirmButtonColor: '#000000',
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isDenied) {
+        return;
+      } else if (result.isConfirmed) {
+        
+        const pedidoAtualizado = {
+          "cdPedido": pedido.cdPedido,
+          "status": "CANCELADO"
+          }
+       // CANCELANDO PEDIDO
+       this.comandaService.atualizarStatus(pedidoAtualizado).subscribe(data => {
+         window.location.reload();
+       }, (err) => {
+         // SWEET ALERT
+         Swal.fire({ title:'Erro!', html:"<p>Ocorreu algo de errado na conexão com o servidor.</p>"+
+         "<p>Tente novamente mais tarde</p>", icon: 'error',  confirmButtonColor: '#000000'})
+         return;
+       });
+      }
+    });
   }
 }

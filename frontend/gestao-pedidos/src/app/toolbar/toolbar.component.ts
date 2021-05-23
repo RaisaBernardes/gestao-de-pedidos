@@ -6,6 +6,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-toolbar',
@@ -52,10 +53,22 @@ export class ToolbarComponent {
   }
 
   logout() {
-    this.authService.logout().subscribe(() => {
-      sessionStorage.removeItem('tp_usuario');
-      this.router.navigate(['/']);
+    Swal.fire({
+      title: 'Deseja realmente sair?',
+      showDenyButton: true,
+      confirmButtonText: `Sim`,
+      confirmButtonColor: '#000000',
+      denyButtonText: `Não`,
+    }).then((result) => {
+      if (result.isDenied) {
+       return;
+      } else if (result.isConfirmed) {
+       this.authService.logout().subscribe(() => {
+       sessionStorage.removeItem('tp_usuario');
+       this.router.navigate(['/']);
     })
+    }
+  })
   }
 
 }

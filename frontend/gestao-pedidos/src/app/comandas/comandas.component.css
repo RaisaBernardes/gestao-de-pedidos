@@ -54,6 +54,15 @@
     overflow: hidden;
     display: block;
   }
+
+  .mat-card-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cancelBtn {
+    color: rgb(177, 6, 6);
+  }
   
   .box {
     padding: 20px 10px;
