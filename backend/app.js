@@ -37,6 +37,7 @@ app.use(session({
     secret: 'Shsh!Secret!',
     resave: false,
     saveUninitialized: false,
+	proxy: true,
     cookie: { maxAge: 600000, httpOnly: false, sameSite: "none", secure: true } // Secure = True para usar o Secure do HTTPS
 }));
 
