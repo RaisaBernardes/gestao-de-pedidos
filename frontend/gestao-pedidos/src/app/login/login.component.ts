@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
               confirmButtonColor: '#000000'
             });
             sessionStorage.setItem('tp_usuario', data.result.tp_usuario);
-            sessionStorage.setItem('cd_usuario', data.result.cdUsuario);
+            this.cookieService.set('SessionCookie', Math.random().toString(36).substr(2, 5), 1)
             this.router.navigateByUrl("/")
           }
           }, (err) => {

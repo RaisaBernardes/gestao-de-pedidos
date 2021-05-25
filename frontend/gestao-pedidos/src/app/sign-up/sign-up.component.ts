@@ -15,7 +15,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class SignUpComponent implements OnInit {
 
   cadastroUsuario: FormGroup;
-  btDisabled: boolean = false; // for button
+  invalidPwd: boolean = false;
 
   constructor(private cookieService: CookieService, private fb: FormBuilder, private authService: AuthService, private router: Router,  private activRoute: ActivatedRoute) { }
 
@@ -34,35 +34,19 @@ export class SignUpComponent implements OnInit {
 
   private emptyForm() {
     this.cadastroUsuario = this.fb.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
-      telefone: ['', [Validators.required, Validators.minLength(10)]],
-      logradouro: ['', [Validators.required, Validators.minLength(8)]],
-      numero: ['', [Validators.required, Validators.minLength(1)]],
-      email: ['', [Validators.required, Validators.minLength(5)]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      senhaConfirma: ['', [Validators.required, Validators.minLength(6)]],
+      nome: ['', [Validators.required]],
+      telefone: ['', [Validators.required]],
+      logradouro: ['', [Validators.required]],
+      numero: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      senha: ['', [Validators.required]],
+      senhaConfirma: ['', [Validators.required]],
       complemento: [''],
-      bairro: ['', [Validators.required, Validators.minLength(3)]],
-      cidade: ['', [Validators.required, Validators.minLength(3)]],
-      estado: ['', [Validators.required, Validators.minLength(2)]]
+      bairro: ['', [Validators.required]],
+      cidade: ['', [Validators.required]],
+      estado: ['', [Validators.required]]
 
    })
-  }
-
-   private createForm(user: any) {
-    this.cadastroUsuario = this.fb.group({
-      nome: [user.nome, [Validators.required, Validators.minLength(3)]],
-      telefone: [user.telefone, [Validators.required, Validators.minLength(3)]],
-      logradouro: [user.logradouro, [Validators.required, Validators.minLength(8)]],
-      email: [user.email, [Validators.required, Validators.minLength(5)]],
-      senha: [user.senha, [Validators.required, Validators.minLength(6)]],
-      senhaConfirma: [user.senhaConfirma, [Validators.required, Validators.minLength(6)]],
-      numero: [user.numero, [Validators.required, Validators.minLength(1)]],
-      complemento: [user.complemento],
-      bairro: [user.bairro, [Validators.required, Validators.minLength(3)]],
-      cidade: [user.cidade, [Validators.required, Validators.minLength(3)]],
-      estado: [user.estado, [Validators.required, Validators.minLength(2)]]
-    })
   }
 
   submit() {
@@ -70,10 +54,18 @@ export class SignUpComponent implements OnInit {
     if (this.cadastroUsuario.invalid) {
       return;
     } else {
-      this.btDisabled = true;
 
       const userRaw = this.cadastroUsuario.getRawValue();
+
+
+      if (userRaw.senha != userRaw.senhaConfirma) {
+        this.invalidPwd = true;
+        console.log(this.invalidPwd)
+        return;
+      }
+
       delete userRaw['senhaConfirma'];
+      this.invalidPwd = false;
 
       let user = new Usuario();
       user = {...userRaw, tp_usuario: 'CLIENTE'};
@@ -108,7 +100,6 @@ export class SignUpComponent implements OnInit {
           });
       });
 
-      this.btDisabled = false;
       }
       
     }

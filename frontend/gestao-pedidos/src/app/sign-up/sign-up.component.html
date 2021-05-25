@@ -31,6 +31,7 @@
               <mat-form-field class="example-full-width w-75">
                 <input name="senha" type="password" formControlName="senha" matInput placeholder="Senha">
                 <mat-error  *ngIf="cadastroUsuario.touched && f.senha.errors?.required">Campo Obrigatório</mat-error>
+                <mat-error *ngIf="invalidPwd">Senhas não estão correspondendo</mat-error>
               </mat-form-field>
             </div>
         
@@ -38,6 +39,7 @@
               <mat-form-field class="example-full-width w-75">
                 <input name="senhaConfirma" type="password" formControlName="senhaConfirma" matInput placeholder="Confirmar Senha">
                 <mat-error  *ngIf="cadastroUsuario.touched && f.senhaConfirma.errors?.required">Campo Obrigatório</mat-error>
+                <mat-error *ngIf="invalidPwd">Senhas não estão correspondendo</mat-error>
               </mat-form-field>
         </div>
 
@@ -76,7 +78,7 @@
           </mat-form-field>
         </div>
 
-        <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic" [disabled]="this.btDisabled">Cadastrar</button></div>
+        <div class="row"> <button class="w-75 text-center rounded-pill" type="submit" mat-raised-button color="basic">Cadastrar</button></div>
         </form>
 
         
