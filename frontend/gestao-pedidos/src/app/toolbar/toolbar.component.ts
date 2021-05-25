@@ -65,7 +65,7 @@ export class ToolbarComponent {
       } else if (result.isConfirmed) {
        this.authService.logout().subscribe(() => {
        sessionStorage.removeItem('tp_usuario');
-       this.cookieService.removeItem('SessionCookie')
+       this.cookieService.delete('SessionCookie');
        this.router.navigate(['/']);
     })
     }
