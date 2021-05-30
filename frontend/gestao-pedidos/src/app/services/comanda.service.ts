@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { Item, PedidoDTO, Usuario } from '../shared/model.module';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Item, PedidoDTO, Usuario } from '../shared/model.module';
 })
 export class ComandaService {
 
-  requestUrl = "https://ranch-backend-fbv.herokuapp.com/api"
+  requestUrl = environment.apiUrl;
   orderUrl = this.requestUrl+"/order";
   itemInOrderUrl = this.requestUrl+"/itemInOrder";
   config = {withCredentials: true}; // SEMPRE PASSAR

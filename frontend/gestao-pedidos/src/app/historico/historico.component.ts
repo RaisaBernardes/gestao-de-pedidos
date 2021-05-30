@@ -13,6 +13,8 @@ import { PedidoContemDTO, PedidoDTO, UsuarioDTO } from '../shared/model.module';
 export class HistoricoComponent implements OnInit {
 
   pedidos: PedidoDTO[] = [];
+  page: number = 1;
+  isLoading:boolean = true;
 
   constructor(private cookieService: CookieService, private comandaService: ComandaService, private router: Router) { }
 
@@ -34,7 +36,7 @@ export class HistoricoComponent implements OnInit {
       this.pedidos = this.pedidos.concat(data);
       this.pedidos.map(pedido => this.fetchDetalhesPedidos(pedido));
 
-      console.log(data);
+      this.isLoading = false;
     })
   }
 
@@ -75,6 +77,11 @@ export class HistoricoComponent implements OnInit {
     Swal.fire({title: `Descrição dos Itens:`, 
     html: `<hr>` + itensDescricao + `<hr>`,
     confirmButtonColor: '#000000' })
+  }
+
+  // paginação
+  handlePageChange(event) {
+    this.page = event;
   }
 
 }

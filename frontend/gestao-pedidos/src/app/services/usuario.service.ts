@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 import { Endereco } from '../shared/model.module';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Endereco } from '../shared/model.module';
 })
 export class UsuarioService {
 
-  requestUrl = "https://ranch-backend-fbv.herokuapp.com/api";
+  requestUrl = environment.apiUrl;
   addressUrl = this.requestUrl + "/address";
   userUrl = this.requestUrl + "/user";
   config = {withCredentials: true}; // SEMPRE PASSAR

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../shared/model.module';
+import { environment } from '../../environments/environment.prod';
 
 import { Observable } from 'rxjs';
 
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  requestUrl = "https://ranch-backend-fbv.herokuapp.com/api";
+  requestUrl = environment.apiUrl;
   userUrl = this.requestUrl + "/user";
   authUrl = this.requestUrl + "/auth";
   config = {withCredentials: true}; // SEMPRE PASSAR

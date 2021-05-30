@@ -13,7 +13,7 @@
     padding: 30px;
     display: grid;
     place-items: center;
-    height: fit-content;
+    min-height: 300px;
 }
 
 table {
@@ -35,3 +35,7 @@ table {
     color: white;
     width: 30px;
 }
+
+.my-pagination /deep/ .ngx-pagination .current {
+    background: #000000;
+  }

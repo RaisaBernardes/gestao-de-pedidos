@@ -34,6 +34,8 @@ export class PedidoComponent implements OnInit {
     "sobremesas": []
   }
 
+  isLoading:boolean = true;
+
   constructor(private cookieService: CookieService, private router: Router, private formBuilder: FormBuilder, private pedidoService: PedidoService) { }
 
   ngOnInit(): void {
@@ -70,6 +72,8 @@ export class PedidoComponent implements OnInit {
       forma: ['', [Validators.required]],
       endereco: ['', [Validators.required]]
     })
+
+    this.isLoading = false;
   }
 
   addItem(item: Item) {

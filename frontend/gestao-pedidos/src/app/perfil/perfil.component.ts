@@ -17,6 +17,7 @@ export class PerfilComponent implements OnInit {
   usuario: UsuarioDTO = new UsuarioDTO();
   enderecos: Endereco[] = new Array();
   revealDisplay: boolean = false;
+  isLoading: boolean = true;
 
   constructor(private cookieService: CookieService, private usuarioService: UsuarioService,  private router: Router, private fb: FormBuilder) { }
 
@@ -32,14 +33,14 @@ export class PerfilComponent implements OnInit {
       this.usuario.telefone = telefone;
       this.usuario.email = email;
       this.usuario.cdUsuario = cdUsuario;
-
-      console.log(this.usuario)
     })
 
     this.usuarioService.fetchEnderecoUsuario().subscribe((data) => {
       this.enderecos = this.enderecos.concat(data);
     })
 
+    this.isLoading = false;
+    
     this.emptyForm();
   }
 

@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 import { Endereco, FormaPagamento, Item, Pedido } from '../shared/model.module';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { Endereco, FormaPagamento, Item, Pedido } from '../shared/model.module';
 })
 export class PedidoService {
 
-  requestUrl = "https://ranch-backend-fbv.herokuapp.com/api";
+  requestUrl = environment.apiUrl;
   pedidoUrl = this.requestUrl + "/order";
   tipoPagamentoUrl = this.requestUrl + "/formOfPayment"
   itemUrl = this.requestUrl + "/item";

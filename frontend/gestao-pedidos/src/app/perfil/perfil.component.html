@@ -9,9 +9,27 @@
     </div>
 
     <div class="info-row">
-        <dd class="col-sm-4">{{this.usuario.nome}}</dd>
-        <dd class="col-sm-4">{{this.usuario.email}}</dd>
-        <dd class="col-sm-3">{{this.usuario.telefone}}</dd>
+        <dd class="col-sm-4">{{this.usuario.nome}}
+            <div class="m-3" *ngIf="isLoading">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+        </dd>
+        <dd class="col-sm-4">{{this.usuario.email}}
+            <div class="m-3" *ngIf="isLoading">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+        </dd>
+        <dd class="col-sm-3">{{this.usuario.telefone}}
+            <div class="m-3" *ngIf="isLoading">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+        </dd>
     </div>
 
     <div class="info-row pt-3">
@@ -19,6 +37,11 @@
     </div>
 
     <div class="info-column">
+        <div class="m-3" *ngIf="isLoading">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
         <dd class="col-sm-9" *ngFor="let endereco of enderecos">
             {{endereco.logradouro}}, {{endereco.numero}} {{endereco.complemento}}
             - {{endereco.bairro}}, {{endereco.cidade}}, {{endereco.estado}}  </dd>

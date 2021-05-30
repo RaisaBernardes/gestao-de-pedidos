@@ -13,7 +13,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import {AuthService} from './services/auth.service';
-import { WebSocketService } from './services/websocket.service';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -27,6 +26,7 @@ import { PedidoService } from './services/pedido.service';
 import { ComandasComponent } from './comandas/comandas.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { HistoricoComponent } from './historico/historico.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -54,9 +54,10 @@ import { HistoricoComponent } from './historico/historico.component';
     MatToolbarModule,
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
-  providers: [AuthService, CookieService, WebSocketService, PedidoService],
+  providers: [AuthService, CookieService, PedidoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
