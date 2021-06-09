@@ -1,5 +1,6 @@
 var router = require('express').Router();
 const middlewareFunctions = require('../middleware/Middleware.js');
+const client = require('../../../config/twilio.js');
 
 const Order = require('../../../model/Order.js'); // import
 const OrdersController = require('../../../controller/Order.js'); // import
@@ -12,6 +13,10 @@ const paymentController = new paymentsController(payment);
 const ItemInOrder = require('../../../model/ItemInOrder.js'); // import
 const ItensInOrdersController = require('../../../controller/ItemInOrder.js'); // import
 const ItemInOrderController = new ItensInOrdersController(ItemInOrder);
+
+const User = require('../../../model/User.js');
+const UsersController = require('../../../controller/User.js');
+const UserController = new UsersController(User);
 
 require('express-group-routes');
 
@@ -92,8 +97,22 @@ router.group((router) => {
                 });
             });
 
+            let userOrder;
+            await UserController.getById(responseOrder.data.userCdUsuario).then(response => {
+                userOrder = response.data;
+            });
+
             statusCode.orderStatusCode = responseOrder.statusCode;
             resultData.orderData = responseOrder.data;
+
+            client.messages 
+            .create({ 
+               body: "Seu pedido do número #"+ responseOrder.data.cdPedido +" foi criado com sucesso!", 
+               from: 'whatsapp:+14155238886',       
+               to: 'whatsapp:+55' + userOrder.telefone
+             }) 
+            .then(message => console.log(message.sid)) 
+            .done();
 
             res.status(statusCode.orderStatusCode);
             res.json(resultData);
@@ -102,9 +121,40 @@ router.group((router) => {
     });
 
     router.post('/update', async (req, res) => {
-        await OrderController.update(req.body).then(response => {
-            res.status(response.statusCode);
-            res.json(response.data);
+        await OrderController.update(req.body).then(async responseUpdate => {
+            await OrderController.getById(req.body.cdPedido).then(response => {
+                let messageWhats = "";
+                let isCreate = false;
+                switch (req.body.status) {
+                    case "CRIADO":
+                        messageWhats = "Seu pedido do número #"+ response.data.cdPedido +" foi criado com sucesso!";
+                        isCreate = true;
+                        break;
+                    case "PREPARANDO":
+                        messageWhats = "Seu pedido do número #"+ response.data.cdPedido +" está sendo PREPARADO!"
+                        break;
+                    case "FINALIZADO":
+                        messageWhats = "Seu pedido do número #"+ response.data.cdPedido +" foi ENTREGUE!"
+                        break;
+                    case "CANCELADO":
+                        messageWhats = "Seu pedido do número #"+ response.data.cdPedido +" foi CANCELADO!"
+                        break;
+                }
+    
+                if(!isCreate){
+                    client.messages 
+                    .create({
+                       body: messageWhats,
+                       from: 'whatsapp:+14155238886',
+                       to: 'whatsapp:+55' + response.data.user.telefone
+                     })
+                    .then(message => console.log(message.sid))
+                    .done();
+                }
+    
+                res.status(response.statusCode);
+                res.json(response.data);
+            });
         });
     });
 

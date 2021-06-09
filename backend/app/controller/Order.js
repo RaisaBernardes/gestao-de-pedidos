@@ -15,7 +15,7 @@ class OrdersController {
     }
 
     getById(id){
-        return this.Orders.findByPk(id).then(result => defaultResponse(result))
+        return this.Orders.findByPk(id, { include: [User] }).then(result => defaultResponse(result))
         .catch(error => errorResponse(error.message));
     }
 

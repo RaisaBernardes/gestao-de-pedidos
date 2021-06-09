@@ -30,7 +30,8 @@
     "http-status": "",
     "mysql2": "",
     "sequelize": "",
-    "socket.io": ""
+    "socket.io": "",
+    "twilio": ""
   },
   "devDependencies": {
     "@types/express": ""
